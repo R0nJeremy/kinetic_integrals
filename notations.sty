@@ -1,0 +1,70 @@
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{nicefrac}
+
+% generally useful commands
+\newcommand{\pd}{\partial}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\avg}[1]{\left\langle{#1}\right\rangle}
+
+% upper and lower indices in a text form
+\newcommand{\ltx}[2]{#1_{\mathrm{#2}}}
+\newcommand{\utx}[2]{#1^{\mathrm{#2}}}
+\newcommand{\lutx}[3]{#1_{\mathrm{#2}}^{\mathrm{#3}}}
+\newcommand{\lmax}[1]{\ltx{#1}{max}}
+\newcommand{\lmin}[1]{\ltx{#1}{min}}
+
+% material derivative
+\newcommand{\DD}[1][]{\frac{D{#1}}{Dt}}
+
+% boldface generic vectors
+\newcommand{\bb}{\vb*{b}}
+\newcommand{\bv}{\vb*{v}}
+\newcommand{\bw}{\vb*{w}}
+\newcommand{\bc}{\vb*{c}}
+\newcommand{\bu}{\vb*{u}}
+\newcommand{\bg}{\vb*{g}}
+\newcommand{\br}{\vb*{r}}
+\newcommand{\bp}{\vb*{p}}
+\newcommand{\bq}{\vb*{q}}
+
+\newcommand{\bP}{\vb*{P}}
+\newcommand{\bnull}{\vb*{0}}
+
+% boldface uppercase vectors 
+\newcommand{\bV}{\vb*{V}}
+\newcommand{\bF}{\vb*{F}}
+
+% boldface unit vectors
+\newcommand{\bn}{\hat{\vb*{n}}}
+\newcommand{\be}{\hat{\vb*{e}}}
+
+% typical vector product expressions
+\newcommand{\pve}[1][]{\pqty{\bv\sb{#1}\vdot\be}}
+\newcommand{\pue}[1][]{\pqty{\bu\sb{#1}\vdot\be}}
+\newcommand{\pge}[1][]{\pqty{\bg\sb{#1}\vdot\be}}
+\newcommand{\pVe}[1][]{\pqty{\bV\sb{#1}\vdot\be}}
+\newcommand{\pvu}{\pqty{\bv\vdot\bu}}
+\newcommand{\pgV}[1][]{\pqty{\bg\sb{#1}\vdot\bV}}
+
+\newcommand{\om}[2][]{\ensuremath{\Theta\pqty{-{\vb*{#2}}\sb{#1}\vdot\be}}}
+\newcommand{\dom}[2][]{\ensuremath{\dd{\be}\Theta\pqty{-{\vb*{#2}}\sb{#1}\vdot\be}}}
+
+% gaussian exponents
+\newcommand{\gexp}[2]{\ensuremath{\exp\pqty{-{#1}{#2}^2}}}
+\newcommand{\gexpdp}[3]{\ensuremath{\exp\pqty{{#1}{\vb*{#2}}\vdot{\vb*{#3}}}}}
+
+% various vector integrals forms
+\newcommand{\iom}[2][]{\ensuremath{\int\dom[#1]{#2}\abs{{\vb*{#2}}\sb{#1}\vdot\be}}}
+\newcommand{\igexp}[2]{\ensuremath{\int\dd{\vb*{#2}}\gexp{#1}{#2}}}
+\newcommand{\igexps}[3]{\ensuremath{\int\dd{\vb*{#3}}\,{#3}\sp{#2}\gexp{#1}{#3}}}
+
+% tensoric indices
+\newcommand{\ia}[1]{{#1}_{\alpha}}
+\newcommand{\ib}[1]{{#1}_{\beta}}
+\newcommand{\ig}[1]{{#1}_{\gamma}}
+\newcommand{\iab}[1]{{#1}_{\alpha\beta}}
+\newcommand{\iba}[1]{{#1}_{\beta\alpha}}
