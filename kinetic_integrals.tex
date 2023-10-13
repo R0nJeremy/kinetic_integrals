@@ -39,10 +39,10 @@ corresponding term either do exist or is absent
         \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q,\\
         I_{\bn,r}^{m,p,q}\pqty{\bu,\bw}&=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
         \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
-        \Theta\bqty{\lambda^2-\pqty{\bu\vdot\bn}^2},\\
+        \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2},\\
         I_{\bn,f}^{m,p,q}\pqty{\bu,\bw}&=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
         \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
-        \Theta\bqty{\pqty{\bu\vdot\bn}^2-\lambda^2}.\\
+        \Theta\bqty{\pqty{\bu\vdot\bn}^2-\lambda_f^2}.\\
     \end{split}
 \end{equation}
 If $q=0$, then the angular integral is a function of only the vector $\bu$, otherwise it is
@@ -128,6 +128,33 @@ Now, we can combine both cases of $q=0$ and $q=1$, and write
 \end{equation}
 
 \subsubsection{Restitutive angular integrals}
+These type of integrals have a domain restriction terms given by the parameter $\lambda_f$.
+We can start with a simpler case when $q=0$, and write
+\begin{equation}
+    \begin{split}
+        I_{\bn,r}^{m,p,0}(\bu)&=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+        \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p
+        \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2}=\\
+        &=(-1)^p\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+        \abs{\bu\vdot\bn}^{m+p}
+        \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2}.
+    \end{split}
+\end{equation}
+Again, switching to spherical coordinates, and denoting the angle $\angle(\bn,\bu)$ by
+$\theta$, we write
+\begin{equation}
+    \begin{split}
+        I_{\bn,r}^{m,p,0}(\bu)&=(-1)^p\cdot 2\pi u^{m+p}\int_0^{\pi}\dd{\theta}\sin\theta
+        \Theta\pqty{-\cos\theta}\abs{\cos\theta}^{m+p}
+        \Theta\bqty{\lambda_f^2-\pqty{u\cos\theta}^2}=\\
+        &=(-1)^p\cdot 2\pi u^{m+p}\int_{\pi/2}^{\pi}\dd{\theta}\sin\theta
+        \abs{\cos\theta}^{m+p}\Theta\bqty{\frac{\lambda_f^2}{u^2}-\cos^2\theta}.
+    \end{split}
+\end{equation}
+The domain restriction implies
+\begin{equation}
+    \frac{\lambda_f^2}{u^2}\geqslant\cos^2\theta,
+\end{equation}
 
 
 
