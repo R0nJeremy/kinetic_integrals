@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex kinetic_integrals"] 1697216311 "kinetic_integrals.aux" "kinetic_integrals.bbl" "kinetic_integrals" 1697216358 0
-  "./kinetic_integralsNotes.bib" 1697216357 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
+["bibtex kinetic_integrals"] 0 "kinetic_integrals.aux" "kinetic_integrals.bbl" "kinetic_integrals" 1697223250 -1
+  "./kinetic_integralsNotes.bib" 1697223250 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/revtex/apsrev4-2.bst" 1601932770 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
-  "kinetic_integrals.aux" 1697216357 658 8394a73a238c0fbd1b15abf9d8cf8763 "pdflatex"
+  "kinetic_integrals.aux" 1697223250 860 309152d821de9d44d811c91edf16c468 "pdflatex"
   (generated)
   "kinetic_integrals.bbl"
   "kinetic_integrals.blg"
   (rewritten before read)
-["pdflatex"] 1697216357 "/home/yernur/Projects/kinetic_integrals/kinetic_integrals.tex" "kinetic_integrals.pdf" "kinetic_integrals" 1697216358 0
-  "/home/yernur/Projects/kinetic_integrals/kinetic_integrals.tex" 1697216357 11731 256880fd999debfc05a150c75f35d77c ""
+["pdflatex"] 1697223250 "/home/yernur/Projects/kinetic_integrals/kinetic_integrals.tex" "kinetic_integrals.pdf" "kinetic_integrals" 1697223250 0
+  "/home/yernur/Projects/kinetic_integrals/kinetic_integrals.tex" 1697223249 15382 3c52cd104040fc81218a6ace5375f148 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1246382020 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -146,9 +146,9 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1684972800 40326 aba987258e6d6b6da5dec3a727ea174b ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1687074717 4603192 0eff5d941e341e7e38e369b967619829 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1687243961 7862974 120c963786bba9f2cf2c066866e21da9 ""
-  "kinetic_integrals.aux" 1697216357 658 8394a73a238c0fbd1b15abf9d8cf8763 "pdflatex"
-  "kinetic_integrals.bbl" 1697216311 1982 35453d3875d823f0ec9445e740a573d9 "bibtex kinetic_integrals"
-  "kinetic_integrals.tex" 1697216357 11731 256880fd999debfc05a150c75f35d77c ""
+  "kinetic_integrals.aux" 1697223250 860 309152d821de9d44d811c91edf16c468 "pdflatex"
+  "kinetic_integrals.bbl" 1697223160 1982 35453d3875d823f0ec9445e740a573d9 "bibtex kinetic_integrals"
+  "kinetic_integrals.tex" 1697223249 15382 3c52cd104040fc81218a6ace5375f148 ""
   "notations.sty" 1697120123 2186 d5c78759c003cbaa02777ead65f06824 ""
   (generated)
   "kinetic_integrals.aux"
