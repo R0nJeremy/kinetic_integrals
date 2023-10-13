@@ -10,16 +10,16 @@ We can solve the typical forms of each type of collision integrals in the most g
 \begin{equation}
     \begin{split}
         I_a^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^l
-        e^{-Au^2-Bw^2+R\bw\vdot\bu}\Theta\pqty{\lambda_a-u}
+        e^{-Aw^2-Bu^2+R\bw\vdot\bu}\Theta\pqty{\lambda_a-u}
         \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m
         \pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q,\\
         I_r^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^l
-        e^{-Au^2-Bw^2+R\bw\vdot\bu}\Theta\pqty{u-\lambda_a}
+        e^{-Aw^2-Bu^2+R\bw\vdot\bu}\Theta\pqty{u-\lambda_a}
         \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m
         \pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
         \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2},\\
         I_f^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^l
-        e^{-Au^2-Bw^2+R\bw\vdot\bu}
+        e^{-Aw^2-Bu^2+R\bw\vdot\bu}
         \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m
         \pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
         \Theta\bqty{\pqty{\bu\vdot\bn}^2-\lambda_f^2},\\
@@ -321,11 +321,38 @@ integrals. All three types of collision integrals contain similar forms of the
 center of mass velocity integrals, and we can write a generic form of such integrals
 as
 \begin{equation}
-    I_{\bw}^{l,q}(\bu)=\int\dd{\bw}w^l\pqty{\bw\vdot\bu}^q\exp\pqty{-Bw^2}
+    I_{\bw}^{l,q}(\bu)=\int\dd{\bw}w^l\pqty{\bw\vdot\bu}^q\exp\pqty{-Aw^2}
     \exp\pqty{R\bw\vdot\bu},\quad q=\Bqty{0,1}.
 \end{equation}
 
-Again, we can start by solving for a simpler case $q=0$.
+Switching into spherical coordinates, and denoting by $\theta$ the angle between vectors
+$\bw$ and $\bu$, we have $\dd{\bw}=w^2\sin\theta\dd{w}\dd{\theta}\dd{\varphi}$,
+\begin{equation}
+    I_{\bw}^{l,q}(\bu)=-2\pi u^q\int_0^{\infty}\dd{w}w^{l+q+2}\exp\pqty{-Aw^2}
+    \int_0^{\pi}\dd{\pqty{\cos\theta}}\pqty{\cos\theta}^q\exp\pqty{Rwu\cdot\cos\theta},
+    \quad q=\Bqty{0,1}.
+\end{equation}
+Again, we solve these integrals for two different cases of $q$, starting with the
+simpler case
+
+\subsubsection{The case with $q=0$}
+In this case we write
+\begin{equation}
+    I_{\bw}^{l,0}(\bu)=-2\pi\int_0^{\infty}\dd{w}w^{l+2}\exp\pqty{-Aw^2}
+    \int_0^{\pi}\dd{\pqty{\cos\theta}}\exp\pqty{Rwu\cdot\cos\theta}.
+\end{equation}
+The inner angular integral is solved to give us
+\begin{equation}
+    I^0_R(\bu,\bw)=\int_0^{\pi}\dd{\pqty{\cos\theta}}\exp\pqty{Rwu\cdot\cos\theta}=
+    \frac{1}{Rwu}\pqty{e^{Rwu}-e^{-Rwu}},
+\end{equation}
+and substituting into the center of mass velocity integral, we have
+\begin{equation}
+    I_{\bw}^{l,0}(\bu)=\frac{2\pi}{Ru}\int_0^{\infty}\dd{w}w^{l+1}\exp\pqty{-Aw^2}
+    \pqty{e^{-Ru\cdot w}-e^{Ru\cdot w}}.
+\end{equation}
+
+
 
 
 \end{document}
