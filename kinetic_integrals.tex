@@ -76,7 +76,8 @@ $\cos\theta=z$, we write
 Since in the integration domain $z$ is always negative, we now that $z^p<0$ for odd values of
 $p$, and $z^p>0$ for even values of $p$, hence we can write $z^p=(-1)^p\abs{z}^p$, and
 \begin{equation}
-    I_{\bn,a}^{m,p,0}(\bu)=2\pi u^{m+p}\cdot(-1)^p\int_{-1}^{0}\dd{z}\abs{z}^{m+p}.
+    I_{\bn,a}^{m,p,0}(\bu)=2\pi u^{m+p}\cdot(-1)^p\int_{-1}^{0}\dd{z}\abs{z}^{m+p}=
+    -(-1)^p\cdot 2\pi u^{m+p}\int_{\pi/2}^{\pi}\dd{\pqty{\cos\theta}}\abs{\cos\theta}^{m+p}.
 \end{equation}
 We can see that for both odd and even values of $m+p$, the integral gives the same result,
 and finally we have
@@ -153,10 +154,94 @@ $\theta$, we write
 \end{equation}
 The domain restriction implies
 \begin{equation}
-    \frac{\lambda_f^2}{u^2}\geqslant\cos^2\theta,
+    \frac{\lambda_f}{u}\geqslant\abs{\cos\theta}.
+\end{equation}
+This constraint restricts two variable, both $\theta$ and $u$, although we do not perform
+integration over $u$ at this moment. Since the variable $u$ changes from $0$ to $\infty$,
+the restriction can be split into two cases, (i) when $u\leqslant\lambda_f$, (ii) when
+$u>\lambda_f$. In the first case, when $u\leqslant\lambda_f$, the restriction holds true
+for any values of $\theta\in\bqty{\pi/2,\pi}$, e.g. no constraint in the angle $\theta$.
+In the second case, when $u>\lambda_f$, the restriction holds true only within a certain
+range of values of $\theta$, namely $\theta\in\bqty{\pi/2,\pi-\arccos\pqty{\lambda_f/u}}$.
+Now, we can rewrite the domain restriction term as
+\begin{equation}
+    \Theta\bqty{\frac{\lambda_f^2}{u^2}-\cos^2\theta}=
+    \Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}
+    \Theta\bqty{\pi-\arccos\pqty{\frac{\lambda_f}{u}}-\theta}.
+\end{equation}
+Using this form of the restriction allows us to solve the restitutive angular integrals
+\begin{equation}
+    \begin{split}
+        I_{\bn,r}^{m,p,0}(\bu)=&-(-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{\lambda_f-u}
+        \int_{\pi/2}^{\pi}\dd{\pqty{\cos\theta}}\abs{\cos\theta}^{m+p}-\\
+        &-(-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{u-\lambda_f}
+        \int_{\pi/2}^{\pi-\arccos(\lambda_f/u)}\dd{\pqty{\cos\theta}}\abs{\cos\theta}^{m+p}.
+    \end{split}
+\end{equation}
+The first integral is already solved for the aggregative angular case, and in the
+second integral we substitute $z=\cos\theta$, and write
+\begin{equation}
+    \begin{split}
+        I_{\bn,r}^{m,p,0}(\bu)&=\Theta\pqty{\lambda_f-u}\cdot I_{\bn,a}^{m,p,0}(\bu)-
+        (-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{u-\lambda_f}
+        \int_{0}^{-\lambda_f/u}\dd{z}\abs{z}^{m+p}=\\
+        &=(-1)^p\cdot\Theta\pqty{\lambda_f-u}\cdot
+        \frac{2\pi u^{m+p}}{m+p+1}+
+        (-1)^p\cdot \Theta\pqty{u-\lambda_f}\cdot\frac{2\pi u^{m+p}}{m+p+1}
+        \pqty{\frac{\lambda_f}{u}}^{m+p+1}=\\
+        &=(-1)^p\cdot\frac{2\pi u^{m+p}}{m+p+1}
+        \bqty{\Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}
+            \pqty{\frac{\lambda_f}{u}}^{m+p+1}},
+    \end{split}
+\end{equation}
+or
+\begin{equation}
+    I_{\bn,r}^{m,p,0}(\bu)=I_{\bn,a}^{m,p,0}(\bu)\cdot
+    \bqty{\Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}\pqty{\frac{\lambda_f}{u}}^{m+p+1}}.
 \end{equation}
 
+For the case $q=1$, we can perform the same procedure as before, and write
+\begin{equation}
+    I_{\bn,r}^{m,p,1}\pqty{\bu,\bw}=\bw\vdot\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+    \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p
+    \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2}\bn=\bw\vdot\bF,
+\end{equation}
+where
+\begin{equation}
+    \bF = \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+    \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p
+    \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2}\bn.
+\end{equation}
+Again, we see that $\bF$ vector cannot depend on $\bn$, and depends only on the vector
+$\bu$. This implies that $\bF=f\bu$, or
+\begin{equation}
+    f=\frac{\bF\vdot\bu}{u^2}=\frac{1}{u^2}\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+    \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^{p+1}
+    \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2}=
+    u^{-2}\cdot I_{\bn,r}^{m,p+1,0}(\bu).
+\end{equation}
+Since,
+\begin{equation}
+    I_{\bn,r}^{m,p,1}(\bu,\bw)=\bw\vdot\bF=\pqty{\bw\vdot\bu}f=
+    \frac{\bw\vdot\bu}{u^2}\cdot I_{\bn,r}^{m,p+1,0}(\bu),
+\end{equation}
+or writing explicitly, we have
+\begin{equation}
+    I_{\bn,r}^{m,p,1}(\bu,\bw)=(-1)^{p+1}\cdot\frac{2\pi u^{m+p-1}}{m+p+2}
+    \bqty{\Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}
+        \pqty{\frac{\lambda_f}{u}}^{m+p+2}}\pqty{\bw\vdot\bu}.
+\end{equation}
+By combining both cases $q=0$ and $q=1$, we write the final solution of the
+restitutive angular integrals as
+\begin{equation}
+    I_{\bn,r}^{m,p,q}(\bu,\bw)=(-1)^{p+q}\cdot\frac{2\pi u^{m+p-q}}{m+p+q+1}
+    \bqty{\Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}
+        \pqty{\frac{\lambda_f}{u}}^{m+p+q+1}}\pqty{\bw\vdot\bu}^q.
+\end{equation}
 
+\subsubsection{Fragmentative angular integrals}
+The last type of angular integrals is the fragmentative type, which is very
+similar to the restitutive angular case.
 
 
 
