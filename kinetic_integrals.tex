@@ -1,3 +1,136 @@
 \documentclass[aps,prl,preprint,groupedaddress,10pt]{revtex4-2}
 \usepackage{notations}
 \usepackage{tikz}
+
+\begin{document}
+\section{General form of kinetic collision integrals}
+In our model, we face three types of collision integrals, for each type of collision.
+The aggregative integrals, the restitutive integrals and the fragmentative integrals.
+We can solve the typical forms of each type of collision integrals in the most general form
+\begin{equation}
+    \begin{split}
+        I_a^{k,l,m,p,q} = \int\dd{\bu}\dd{\bw}u^kw^l& e^{-Au^2-Bw^2+R\bu\vdot\bw}
+        \Theta\pqty{\lambda_a-u}
+        \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p
+        \pqty{\bw\vdot\bn}^q,\\
+        I_r^{k,l,m,p,q} = \int\dd{\bu}\dd{\bw}u^kw^l& e^{-Au^2-Bw^2+R\bu\vdot\bw}
+        \Theta\pqty{u-\lambda_a}
+        \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p
+        \pqty{\bw\vdot\bn}^q\Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2},\\
+        I_f^{k,l,m,p,q} = \int\dd{\bu}\dd{\bw}u^kw^l& e^{-Au^2-Bw^2+R\bu\vdot\bw}
+        \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p
+        \pqty{\bw\vdot\bn}^q\Theta\bqty{\pqty{\bu\vdot\bn}^2-\lambda_f^2},
+    \end{split}
+\end{equation}
+where $k,l,m,p,q,s$ are integers, and $q=\Bqty{0,1}$. The difference in each type of
+integrals is in the domains of the vector $\bu$. In the aggregative case, the values of
+$u$ have to be less than a certain threshold $\lambda_a$, in the restitutive case, the
+values of $u$ have to be larger than $\lambda_a$, but restricted by the parameter
+$\lambda_f$ from above. Finally, in the fragmentative case, the values of $u$ are restricted
+by the parameter $\lambda_f$ from below.
+
+\subsection{Angular integrals}
+We start by first solving the inner integrals over $\bn$. By its physical meaning, we can call
+them angular integrals. Note, that $q$ can be either $0$ or $1$, meaning that the
+corresponding term either do exist or is absent
+\begin{equation}
+    \begin{split}
+        I_{\bn,a}^{m,p,q}\pqty{\bu,\bw}&=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+        \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q,\\
+        I_{\bn,r}^{m,p,q}\pqty{\bu,\bw}&=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+        \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
+        \Theta\bqty{\lambda^2-\pqty{\bu\vdot\bn}^2},\\
+        I_{\bn,f}^{m,p,q}\pqty{\bu,\bw}&=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+        \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
+        \Theta\bqty{\pqty{\bu\vdot\bn}^2-\lambda^2}.\\
+    \end{split}
+\end{equation}
+If $q=0$, then the angular integral is a function of only the vector $\bu$, otherwise it is
+a function of both vectors $\bu$ and $\bw$.
+
+Let us first solve the aggregative angular integrals
+\subsubsection{Aggregative angular integrals}
+We start with a simpler case when $q=0$ and the angular integral is a function of only $\bu$
+\begin{equation}
+    I_{\bn,a}^{m,p,0}(\bu)=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+    \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p.
+\end{equation}
+To solve this integral, we fix the vector $\bu$, and denote by $\theta$ the angle between
+$\bu$ and $\bn$. In the spherical coordinates we have
+$\dd{\bn}=\sin\theta\dd{\theta}\dd{\varphi}$, and the integral can be written as
+\begin{equation}
+    \begin{split}
+        I_{\bn,a}^{m,p,0}(\bu)&=2\pi u^{m+p}\int_0^{\pi}\dd{\theta}\sin\theta
+        \Theta\pqty{-\cos\theta}\abs{\cos\theta}^m\pqty{\cos\theta}^p=\\
+        &=2\pi u^{m+p}\int_{\pi/2}^{\pi}\dd{\theta}\sin\theta
+        \abs{\cos\theta}^m\pqty{\cos\theta}^p=\\
+        &=-2\pi u^{m+p}\int_{\pi/2}^{\pi}\dd{\pqty{\cos\theta}}
+        \abs{\cos\theta}^m\pqty{\cos\theta}^p,
+    \end{split}
+\end{equation}
+where we have integrated out over $\varphi$ to give us the $2\pi$ factor. Now, substituting
+$\cos\theta=z$, we write
+\begin{equation}
+    I_{\bn,a}^{m,p,0}(\bu)=2\pi u^{m+p}\int_{-1}^{0}\dd{z}\abs{z}^m z^p.
+\end{equation}
+Since in the integration domain $z$ is always negative, we now that $z^p<0$ for odd values of
+$p$, and $z^p>0$ for even values of $p$, hence we can write $z^p=(-1)^p\abs{z}^p$, and
+\begin{equation}
+    I_{\bn,a}^{m,p,0}(\bu)=2\pi u^{m+p}\cdot(-1)^p\int_{-1}^{0}\dd{z}\abs{z}^{m+p}.
+\end{equation}
+We can see that for both odd and even values of $m+p$, the integral gives the same result,
+and finally we have
+\begin{equation}
+    I_{\bn,a}^{m,p,0}(\bu)=(-1)^p\cdot\frac{2\pi u^{m+p}}{m+p+1}.
+\end{equation}
+
+The case with $q=1$ is trickier, since we have two arbitrary angles $\angle(\bn,\bu)$ and
+$\angle(\bn,\bw)$. However, we can write it as a dot product of $\bw$ and another vector
+$\bF$ as
+\begin{equation}
+    \begin{split}
+        I_{\bn,a}^{m,p,1}(\bu,\bw)&=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+        \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}=\\
+        &=\bw\vdot\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+        \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\bn=\bw\vdot\bF,
+    \end{split}
+\end{equation}
+where the vector $\bF$ is constructed by vectors $\bn$ and $\bu$
+\begin{equation}
+    \bF = \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\bn.
+\end{equation}
+Since it is being integrated
+over $\bn$, it cannot depend on $\bn$. This means that it can be oriented only along the
+vector $\bu$, or $\bF=f\bu$. Now we can write
+\begin{equation}
+    \begin{split}
+        u^2f = \bu\vdot\bF &= \bu\vdot
+        \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\bn=\\
+        &=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^{p+1}=
+        I_{\bn,a}^{m,p+1,0}(\bu),
+    \end{split}
+\end{equation}
+or
+\begin{equation}
+    I_{\bn,a}^{m,p,1}(\bu,\bw)=f\bw\vdot\bu=\frac{\bw\vdot\bu}{u^2}
+    \cdot I_{\bn,a}^{m,p+1,0}(\bu),
+\end{equation}
+which gives us the value of the integral
+\begin{equation}
+    I_{\bn,a}^{m,p,1}(\bu,\bw)=(-1)^{p+1}\cdot\frac{2\pi u^{m+p-1}}{m+p+2}\pqty{\bw\vdot\bu}.
+\end{equation}
+Now, we can combine both cases of $q=0$ and $q=1$, and write
+\begin{equation}
+    I_{\bn,a}^{m,p,q}(\bu,\bw)=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
+    \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q=
+    (-1)^{p+q}\cdot\frac{2\pi u^{m+p-q}}{m+p+q+1}
+    \cdot\pqty{\bw\vdot\bu}^{q},\quad q=\Bqty{0,1}.
+\end{equation}
+
+\subsubsection{Restitutive angular integrals}
+
+
+
+
+
+\end{document}
