@@ -472,6 +472,45 @@ hence
         \pmqty{2p+1\\k}\lambda^{2p-k+1}G_{k}(\sqrt{a}x-\lambda).
     \end{split}
 \end{equation}
+Going back to the original notation for $\lambda$, we have
+\begin{equation}
+    \begin{split}
+        I_{G,\pm}^{2p}(x)&=\frac{1}{a^p\sqrt{a}}\exp\pqty{\frac{b^2}{4a}}
+        \sum_{k=0}^{2p}\pmqty{2p\\k}
+        \pqty{\mp\frac{b}{2\sqrt{a}}}^{2p-k}
+        \cdot G_{k}\pqty{\sqrt{a}x\pm\frac{b}{2\sqrt{a}}},\\
+        I_{G,\pm}^{2p+1}(x)&=\frac{1}{a^{p+1}}\exp\pqty{\frac{b^2}{4a}}\sum_{k=0}^{2p+1}
+        \pmqty{2p+1\\k}\pqty{\mp\frac{b}{2\sqrt{a}}}^{2p-k+1}
+        \cdot G_{k}\pqty{\sqrt{a}x\pm\frac{b}{2\sqrt{a}}}.
+    \end{split}
+\end{equation}
+
+\subsubsection{Symmetric shifted Gaussian integrals}
+By symmetric integrals, we mean the shifted Gaussians of the next form
+\begin{equation}
+    I_{S,\pm}^n(x)=\int\dd{x}x^ne^{-ax^2}\pqty{e^{bx}\pm e^{-bx}}=
+    I_{G,+}^n(x)\pm I_{G,-}^n(x).
+\end{equation}
+Using the solution for $I_G(x)$, we can write
+\begin{equation}
+    \begin{split}
+        I_{S,\pm}^{2p}(x)&=\frac{\exp\pqty{\lambda^2}}{a^p\sqrt{a}}
+        \sum_{k=0}^{2p}\pmqty{2p\\k}\abs{\lambda}^{2p-k}
+        \Bqty{(-1)^{2p-k}\cdot G_{k}\pqty{\sqrt{a}x+\abs{\lambda}}\pm
+            G_{k}\pqty{\sqrt{a}x-\abs{\lambda}}},\\
+        I_{S,\pm}^{2p+1}(x)&=\frac{\exp\pqty{\lambda^2}}{a^{p+1}}
+        \sum_{k=0}^{2p+1}\pmqty{2p+1\\k}
+        \abs{\lambda}^{2p-k}\cdot
+        \Bqty{(-1)^{2p-k}\cdot G_{k}\pqty{\sqrt{a}x+\abs{\lambda}}\pm
+            G_{k}\pqty{\sqrt{a}x-\abs{\lambda}}}.
+    \end{split}
+\end{equation}
+
+
+
+
+
+
 
 
 \end{document}
