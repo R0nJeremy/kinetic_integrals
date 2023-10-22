@@ -9,16 +9,16 @@ The aggregative integrals, the restitutive integrals and the fragmentative integ
 We can solve the typical forms of each type of collision integrals in the most general form
 \begin{equation}
     \begin{split}
-        I_a^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^{l}
+        I_a^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^{2l}
         e^{-Aw^2-Bu^2+R\bw\vdot\bu}\Theta\pqty{\lambda_a-u}
         \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m
         \pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q,\\
-        I_r^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^{l}
+        I_r^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^{2l}
         e^{-Aw^2-Bu^2+R\bw\vdot\bu}\Theta\pqty{u-\lambda_a}
         \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m
         \pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
         \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2},\\
-        I_f^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^{l}
+        I_f^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^{2l}
         e^{-Aw^2-Bu^2+R\bw\vdot\bu}
         \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m
         \pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
@@ -321,14 +321,14 @@ integrals. All three types of collision integrals contain similar forms of the
 center of mass velocity integrals, and we can write a generic form of such integrals
 as
 \begin{equation}
-    I_{\bw}^{l,q}(\bu)=\int\dd{\bw}w^{l}\pqty{\bw\vdot\bu}^q\exp\pqty{-Aw^2}
+    I_{\bw}^{l,q}(\bu)=\int\dd{\bw}w^{2l}\pqty{\bw\vdot\bu}^q\exp\pqty{-Aw^2}
     \exp\pqty{R\bw\vdot\bu},\quad q=\Bqty{0,1}.
 \end{equation}
 
 Switching into spherical coordinates, and denoting by $\theta$ the angle between vectors
 $\bw$ and $\bu$, we have $\dd{\bw}=w^2\sin\theta\dd{w}\dd{\theta}\dd{\varphi}$,
 \begin{equation}
-    I_{\bw}^{l,q}(\bu)=-2\pi u^q\int_0^{\infty}\dd{w}w^{l+q+2}\exp\pqty{-Aw^2}
+    I_{\bw}^{l,q}(\bu)=-2\pi u^q\int_0^{\infty}\dd{w}w^{2l+q+2}\exp\pqty{-Aw^2}
     \int_0^{\pi}\dd{\pqty{\cos\theta}}\pqty{\cos\theta}^q\exp\pqty{Rwu\cdot\cos\theta},
     \quad q=\Bqty{0,1}.
 \end{equation}
@@ -338,7 +338,7 @@ simpler case
 \subsubsection{The case with $q=0$}
 In this case we write
 \begin{equation}
-    I_{\bw}^{l,0}(\bu)=-2\pi\int_0^{\infty}\dd{w}w^{l+2}\exp\pqty{-Aw^2}
+    I_{\bw}^{l,0}(\bu)=-2\pi\int_0^{\infty}\dd{w}w^{2l+2}\exp\pqty{-Aw^2}
     \int_0^{\pi}\dd{\pqty{\cos\theta}}\exp\pqty{Rwu\cdot\cos\theta}.
 \end{equation}
 The inner angular integral is solved to give us
@@ -348,7 +348,7 @@ The inner angular integral is solved to give us
 \end{equation}
 and substituting into the center of mass velocity integral, we have
 \begin{equation}
-    I_{\bw}^{l,0}(\bu)=\frac{2\pi}{Ru}\int_0^{\infty}\dd{w}w^{l+1}\exp\pqty{-Aw^2}
+    I_{\bw}^{l,0}(\bu)=\frac{2\pi}{Ru}\int_0^{\infty}\dd{w}w^{2l+1}\exp\pqty{-Aw^2}
     \pqty{e^{Ru\cdot w}-e^{-Ru\cdot w}}.
 \end{equation}
 
@@ -356,7 +356,7 @@ and substituting into the center of mass velocity integral, we have
 \subsubsection{The case with $q=1$}
 The case with $q=1$ is
 \begin{equation}
-    I_{\bw}^{l,1}(\bu)=-2\pi u\int_0^{\infty}\dd{w}w^{l+3}\exp\pqty{-Aw^2}
+    I_{\bw}^{l,1}(\bu)=-2\pi u\int_0^{\infty}\dd{w}w^{2l+3}\exp\pqty{-Aw^2}
     \int_0^{\pi}\dd{\pqty{\cos\theta}}\pqty{\cos\theta}\exp\pqty{Rwu\cdot\cos\theta},
 \end{equation}
 where the inner angular integral is solved to give us
@@ -367,9 +367,9 @@ where the inner angular integral is solved to give us
 \end{equation}
 Now, the center of mass velocity integral reads
 \begin{equation}
-    I_{\bw}^{1}(\bu)=\frac{2\pi}{R}\int_0^{\infty}\dd{w}w^{l+2}\exp\pqty{-Aw^2}
+    I_{\bw}^{l,1}(\bu)=\frac{2\pi}{R}\int_0^{\infty}\dd{w}w^{2l+2}\exp\pqty{-Aw^2}
     \pqty{e^{Ru\cdot w}+e^{-Ru\cdot w}}
-    -\frac{2\pi}{R^2u}\int_0^{\infty}\dd{w}w^{l+1}\exp\pqty{-Aw^2}
+    -\frac{2\pi}{R^2u}\int_0^{\infty}\dd{w}w^{2l+1}\exp\pqty{-Aw^2}
     \pqty{e^{Ru\cdot w}-e^{Ru\cdot w}}.
 \end{equation}
 
@@ -384,73 +384,166 @@ namely
 To get a general solution for these types of integrals, let us write them in a
 more canonical form first. To do so, let us introduce a variable transformation
 \begin{equation}
-    t:=\sqrt{a}x-\lambda,\qquad\lambda=\pm\frac{b}{2\sqrt{a}},
+    t:=\sqrt{a}x\pm\lambda,\qquad\lambda=\frac{b}{2\sqrt{a}},
 \end{equation}
 this implies
 \begin{equation}
     \begin{split}
         -ax^2\pm bx&=-t^2+\lambda^2,\\
         \dd{x}&=\frac{\dd{t}}{\sqrt{a}},\\
-        x^n&=a^{-n/2}\cdot\pqty{t+\lambda}^n=a^{-n/2}\cdot
-        \sum_{k=0}^{n}\pmqty{n\\k}\lambda^{n-k}t^k,\\
+        x^n&=a^{-n/2}\cdot\pqty{t\pm\lambda}^n=a^{-n/2}\cdot
+        \sum_{k=0}^{n}\pmqty{n\\k}(\pm\lambda)^{n-k}t^k,\\
         \pmqty{n\\k}&=\frac{n!}{k!(n-k)!}.
     \end{split}
 \end{equation}
 Now, our shifted Gaussian integrals become
 \begin{equation}
     I_{G,\pm}^{n}=\frac{\exp\pqty{\lambda^2}}{\sqrt{a^{n+1}}}\sum_{k=0}^{n}\pmqty{n\\k}
-    \lambda^{n-k}\int_{-\lambda}^{\infty}\dd{t}t^ke^{-t^2}.
+    (\pm\lambda)^{n-k}\int_{\pm\lambda}^{\infty}\dd{t}t^ke^{-t^2}.
 \end{equation}
 The $\pm$ sign is now hidden in the parameter $\lambda$. Let us concentrate on the
 canonical Gaussian integral
 \begin{equation}
-    G_k=\int_{-\lambda}^{\infty}\dd{t}t^ke^{-t^2}.
+    G^k_{\pm}=\int_{\pm\lambda}^{\infty}\dd{t}t^ke^{-t^2}.
 \end{equation}
 Let us start with integration by parts and put $u=e^{-t^2}$ and $\dd{v}=t^k\dd{t}$.
 This gives us $\dd{u}=-2te^{-t^2}\dd{t}$, and $v=t^{k+1}/(k+1)$. Now we have
 \begin{equation}
-    G_k=\frac{t^{k+1}}{k+1}\eval{e^{-t^2}}_{-\lambda}^{\infty}+
-    \frac{2}{k+1}\int_{-\lambda}^{\infty}\dd{t}t^{k+2}e^{-t^2}=
-    -(-1)^{k+1}\frac{\lambda^{k+1}}{k+1}e^{-\lambda^2}+\frac{2}{k+1}G_{k+2},
+    G^k_{\pm}=\frac{t^{k+1}}{k+1}\eval{e^{-t^2}}_{\pm\lambda}^{\infty}+
+    \frac{2}{k+1}\int_{\pm\lambda}^{\infty}\dd{t}t^{k+2}e^{-t^2}=
+    -\frac{(\pm\lambda)^{k+1}}{k+1}e^{-\lambda^2}+\frac{2}{k+1}G^{k+2}_{\pm},
 \end{equation}
 a recurrent relation for the integral
 \begin{equation}
-    G_{k+2}=\frac{k+1}{2}G_k+(-\lambda)^{k+1}\cdot\frac{1}{2}e^{-\lambda^2}.
+    G^{k+2}_{\pm}=\frac{k+1}{2}G^k_{\pm}+(\pm\lambda)^{k+1}\cdot\frac{1}{2}e^{-\lambda^2}.
 \end{equation}
 In order to get a full solution, let us calculate the first two cases $k=0$ and $k=1$.
 We have
 \begin{equation}
     \begin{split}
-        G_0&=\int_{-\lambda}^{\infty}\dd{t}e^{-t^2}=
-        \frac{\sqrt{\pi}}{2}\pqty{1+\erf(\lambda)},\\
-        G_1&=\int_{-\lambda}^{\infty}\dd{t}te^{-t^2}=\frac{1}{2}e^{-\lambda^2}.
+        G^0_{\pm}&=\int_{\pm\lambda}^{\infty}\dd{t}e^{-t^2}=
+        \frac{\sqrt{\pi}}{2}\pqty{1\pm\erf(\lambda)},\\
+        G^1_{\pm}&=G^1=\int_{\pm\lambda}^{\infty}\dd{t}te^{-t^2}=\frac{1}{2}e^{-\lambda^2}.
     \end{split}
 \end{equation}
 Given this two functions, we can obtain the solution for any order $k$
 \begin{equation}
-    G_k=\frac{k-1}{2}G_{k-2}+(-\lambda)^{k-1}G_1,
+    G^k_{\pm}=\frac{k-1}{2}G^{k-2}_{\pm}+(\pm\lambda)^{k-1}G^1,
 \end{equation}
-where we have rewritten our recurrent relation with the help of $G_1$.
+where we have rewritten our recurrent relation with the help of $G^1$.
 Extending the the recurrent relation, we obtain two different results, for odd and even $k$.
 For an even $k=2p$, then we have
-\begin{equation}
-    G_{2p}=\frac{\pqty{2p-1}!!}{2^p}G_0+G_1\sum_{j=1}^{p}
-    \frac{1}{2^{j-1}}\frac{\pqty{2p-1}!!}{\pqty{2p-2j+1}!!}(-\lambda)^{2p-2j+1}.
+\begin{equation}\label{eq:shifted_gaussian_even}
+    G^{2p}_{\pm}=\frac{\pqty{2p-1}!!}{2^p}G^0_{\pm}\pm G^1\sum_{j=1}^{p}
+    \frac{1}{2^{j-1}}\frac{\pqty{2p-1}!!}{\pqty{2p-2j+1}!!}\lambda^{2p-2j+1}.
 \end{equation}
-For odd valued $k=2p+1$, we have
-\begin{equation}
-    G_{2p+1}=G_1\sum_{j=1}^{p+1}\frac{1}{2^{j-1}}
-    \frac{\pqty{2p}!!}{\pqty{2p-2j+2}!!}(-\lambda)^{2p-2j+2}.
+Here we used the fact that $2p-2j+1$ is always an odd number, hence
+$(\pm\lambda)^{2p-2j+1}=\pm\lambda^{2p-2j+1}$. For odd valued $k=2p+1$, we have
+\begin{equation}\label{eq:shifted_gaussian_odd}
+    G^{2p+1}_{\pm}=G^{2p+1}=G^1\sum_{j=1}^{p+1}\frac{1}{2^{j-1}}
+    \frac{\pqty{2p}!!}{\pqty{2p-2j+2}!!}\lambda^{2p-2j+2}.
 \end{equation}
-
+Here we used the fact that $2p-2j+2$ is always an even number, hence
+$(\pm\lambda)^{2p-2j+2}=\lambda^{2p-2j+2}$.
 Now, we can write the solution of the original shifted Gaussian integrals as
-\begin{equation}
-    I_{G,\pm}^{n}(t)=\frac{\exp\pqty{\lambda^2}}{\sqrt{a^{n+1}}}\sum_{k=0}^{n}\pmqty{n\\k}
-    \lambda^{n-k}G_{k}.
+\begin{equation}\label{eq:shifted_gaussian_integrals}
+    I_{G,\pm}^{n}=\frac{\exp\pqty{\lambda^2}}{\sqrt{a^{n+1}}}\sum_{k=0}^{n}\pmqty{n\\k}
+    (\pm\lambda)^{n-k}G^{k}_{\pm}.
 \end{equation}
 
 \subsubsection{Symmetric Gaussian integrals}
+In the context of our problem, the shifted Gaussian integrals appear in symmetric pairs,
+such as
+\begin{equation}
+    I^{n}_{\pm}=I^{n}_{G,+}\pm I^{n}_{G,-}=\int_{0}^{\infty}\dd{x}x^n e^{-ax^2}
+    \pqty{e^{bx}\pm e^{-bx}}.
+\end{equation}
+From (\ref{eq:shifted_gaussian_integrals}), we have
+\begin{equation}
+    I^{n}_{\pm}=\frac{\exp\pqty{\lambda^2}}{\sqrt{a^{n+1}}}\sum_{k=0}^{n}\pmqty{n\\k}\lambda^{n-k}
+    \bqty{G^k_{+}\pm(-1)^{n-k}G^k_{-}}.
+\end{equation}
+If we notice, that $G^0_{+}+G^0_{-}=\sqrt{\pi}$, meaning that the error functions cancel each other,
+we can look for specific solution for odd or even values of $n$. Let us look at $n=2p$ for a positive
+version of the symmetric integral, namely
+\begin{equation}
+    I^{2p}_{+}=\frac{\exp\pqty{\lambda^2}}{a^p\sqrt{a}}\sum_{k=0}^{2p}\pmqty{2p\\k}\lambda^{2p-k}
+    \bqty{G^{k}_{+}+(-1)^{2p-k}G^{k}_{-}}.
+\end{equation}
+We can split the sum into two, summing up only the odd indices and only the even indices separately.
+This gives us
+\begin{equation}
+    I^{2p}_{+}=\frac{\exp\pqty{\lambda^2}}{a^p\sqrt{a}}
+    \bqty{\sum_{k=0}^{p}\pmqty{2p\\2k}\lambda^{2p-2k}\pqty{G^{2k}_{+}+G^{2k}_{-}}+
+    \sum_{k=0}^{p-1}\pmqty{2p\\2k+1}\lambda^{2p-2k-1}\pqty{G^{2k+1}_{+}-G^{2k+1}_{-}}},
+\end{equation}
+where we have used $(-1)^{2p-2k}=1$ and $(-1)^{2p-2k-1}=-1$. From (\ref{eq:shifted_gaussian_even})
+and (\ref{eq:shifted_gaussian_odd}) we have
+\begin{equation}
+    G^{2k}_{+}+G^{2k}_{-}=\frac{(2k-1)!!}{2^{k}}\sqrt{\pi},\qquad
+    G^{2k+1}_{+}-G^{2k+1}_{-}=0.
+\end{equation}
+Now, we have
+\begin{equation}\label{eq:symmetric_positive_even_integral}
+    I^{2p}_{+}=\sqrt{\frac{\pi}{a}}\frac{\exp\pqty{\lambda^2}}{a^p}
+    \sum_{k=0}^{p}\pmqty{2p\\2k}\frac{(2k-1)!!}{2^k}\cdot\lambda^{2p-2k}.
+\end{equation}
 
+Next, let us look at $n=2p+1$ for the negative symmetric integral, namely
+\begin{equation}
+    I^{2p+1}_{-}=\frac{\exp\pqty{\lambda^2}}{a^p\sqrt{a}}\sum_{k=0}^{2p+1}\pmqty{2p+1\\k}\lambda^{2p+1-k}
+    \bqty{G^{k}_{+}-(-1)^{2p-k}G^{k}_{-}}.
+\end{equation}
+Again, splitting the sum into two, we write
+\begin{equation}
+    I^{2p+1}_{-}=\frac{\exp\pqty{\lambda^2}}{a^{p+1}}
+    \bqty{\sum_{k=0}^{p}\pmqty{2p+1\\2k}\lambda^{2p-2k+1}\pqty{G^{2k}_{+}+G^{2k}_{-}}+
+    \sum_{k=0}^{p}\pmqty{2p+1\\2k+1}\lambda^{2p-2k}\pqty{G^{2k+1}_{+}-G^{2k+1}_{-}}},
+\end{equation}
+which results in
+\begin{equation}\label{eq:symmetric_negative_odd_integral}
+    I^{2p+1}_{-}=\frac{\sqrt{\pi}\exp\pqty{\lambda^2}}{a^{p+1}}\sum_{k=0}^{p}
+    \pmqty{2p+1\\2k}\frac{(2k-1)!!}{2^{k}}\cdot\lambda^{2p-2k+1}.
+\end{equation}
+As we can see, the odd and negative symmetric integral, together with the even and positive symmetric
+integrals, do not contain the error function, and can be written purely in algebraic terms.
+Luckily, in our problem, for only even powers of $w$, in the original kinetic integrals, we will deal
+with only the analytic versions of the center of mass velocity integrals. Also, the main physical
+parameters, are described by the analytic versions of these integrals as we will see later.
+
+\subsubsection{Solutions of the center of mass velocity integrals}
+Let us write the center of mass velocity integrals for $q=0$ and $q=1$ once again.
+\begin{equation}
+    I_{\bw}^{l,0}(\bu)=\frac{2\pi}{Ru}\int_0^{\infty}\dd{w}w^{2l+1}\exp\pqty{-Aw^2}
+    \pqty{e^{Ru\cdot w}-e^{-Ru\cdot w}},
+\end{equation}
+for $q=0$ and
+\begin{equation}
+    I_{\bw}^{1}(\bu)=\frac{2\pi}{R}\int_0^{\infty}\dd{w}w^{2l+2}\exp\pqty{-Aw^2}
+    \pqty{e^{Ru\cdot w}+e^{-Ru\cdot w}}
+    -\frac{2\pi}{R^2u}\int_0^{\infty}\dd{w}w^{2l+1}\exp\pqty{-Aw^2}
+    \pqty{e^{Ru\cdot w}-e^{Ru\cdot w}},
+\end{equation}
+for $q=1$. They can be written in terms of the symmetric Gaussian integrals as
+\begin{equation}
+    \begin{split}
+        I_{\bw}^{l,0}(\bu)&=\frac{2\pi}{Ru}\cdot I^{2l+1}_{-},\\
+        I_{\bw}^{l,1}(\bu)&=\frac{2\pi}{R}\cdot I^{2l+2}_{+}-\frac{1}{R}\cdot I_{\bw}^{l,0}(\bu),\\
+        a&=A,\quad b=Ru,\quad\Longrightarrow\quad\lambda=\frac{Ru}{2\sqrt{A}}.
+    \end{split}
+\end{equation}
+Using (\ref{eq:symmetric_positive_even_integral}) and (\ref{eq:symmetric_negative_odd_integral}), we have
+\begin{equation}
+    \begin{split}
+        I_{\bw}^{l,0}(\bu)&=\sqrt{\frac{\pi}{A}}\cdot\frac{\pi\exp\pqty{\lambda^2}}{A^{l+1}}
+        \sum_{k=0}^{l}\pmqty{2l+1\\2k}\frac{(2k-1)!!}{2^{k}}\cdot\lambda^{2l-2k},\\
+        I_{\bw}^{l,1}(\bu)&=\frac{2\pi}{R}\sqrt{\frac{\pi}{A}}\frac{\exp\pqty{\lambda^2}}{A^{l+1}}
+        \bqty{\frac{(2l+1)!!}{2^{l+1}}+\sum_{k=0}^{l}\pmqty{2l+1\\2k}\frac{(2k-1)!!}{2^k}\cdot\lambda^{2l-2k}
+            \pqty{\frac{2l+2}{2l+2-2k}\lambda^2-\frac{1}{2}}}.
+    \end{split}
+\end{equation}
+
+\subsection{Relative velocity integrals}
 
 
 \end{document}
