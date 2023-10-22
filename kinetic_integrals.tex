@@ -378,12 +378,13 @@ Now, the center of mass velocity integral reads
 To proceed further, let us analyze the specific types of shifted Gaussian integrals,
 namely
 \begin{equation}
-    I_{G,\pm}^n(x)=\int\dd{x}x^n\exp\pqty{-ax^2\pm bx},\qquad n\in\Bqty{0,1,2,\dots}.
+    I_{G,\pm}^n=\int_{0}^{\infty}\dd{x}x^n\exp\pqty{-ax^2\pm bx},
+    \qquad n\in\Bqty{0,1,2,\dots}.
 \end{equation}
 To get a general solution for these types of integrals, let us write them in a
 more canonical form first. To do so, let us introduce a variable transformation
 \begin{equation}
-    t:=\sqrt{a}x-\lambda,\qquad\lambda=\mp\frac{b}{2\sqrt{a}},
+    t:=\sqrt{a}x-\lambda,\qquad\lambda=\pm\frac{b}{2\sqrt{a}},
 \end{equation}
 this implies
 \begin{equation}
@@ -392,117 +393,55 @@ this implies
         \dd{x}&=\frac{\dd{t}}{\sqrt{a}},\\
         x^n&=a^{-n/2}\cdot\pqty{t+\lambda}^n=a^{-n/2}\cdot
         \sum_{k=0}^{n}\pmqty{n\\k}\lambda^{n-k}t^k,\\
-        \pmqty{n\\k}&=\frac{n!}{k!(n-k)!}.
+        \pmqty{n\\k}&=\frac{n!}{k!(n-k)!},\\
+        x&:=0,\quad\Rightarrow\quad t=-\lambda.
     \end{split}
 \end{equation}
-Now, our shifted Gaussian function becomes
+Now, our shifted Gaussian integral becomes
 \begin{equation}
-    I_{G,\pm}^{n}(t)=a^{-\frac{n+1}{2}}\exp\pqty{\lambda^2}\sum_{k=0}^{n}\pmqty{n\\k}
-    \lambda^{n-k}\int\dd{t}t^ke^{-t^2}.
+    I_{G,\pm}^{n}=\frac{\exp\pqty{\lambda^2}}{\sqrt{a^{n+1}}}\sum_{k=0}^{n}\pmqty{n\\k}
+    \lambda^{n-k}\int_{-\lambda}^{\infty}\dd{t}t^ke^{-t^2}.
 \end{equation}
 The $\pm$ sign is now hidden in the parameter $\lambda$. Let us concentrate on the
 canonical form of the Gaussian integral
 \begin{equation}
-    G_n(t)=\int\dd{t}t^ne^{-t^2}.
+    G_k=\int_{-\lambda}^{\infty}\dd{t}t^ke^{-t^2}.
 \end{equation}
-Let us start with integration by parts and put $u=e^{-t^2}$ and $\dd{v}=t^n\dd{t}$.
-This gives us $\dd{u}=-2te^{-t^2}\dd{t}$, and $v=t^{n+1}/(n+1)$. Now we have
+Let us make a variable transformation $z=t^2$, this leads to
 \begin{equation}
-    G_n(t)=\frac{t^{n+1}}{n+1}e^{-t^2}+\frac{2}{n+1}\int\dd{t}t^{n+2}e^{-t^2}=
-    \frac{t^{n+1}}{n+1}e^{-t^2}+\frac{2}{n+1}G_{n+2}(t),
+    G_k = \frac{1}{2}\int_{\lambda^2}^{\infty}\dd{z}z^{\frac{k+1}{2}-1}e^{-z}=
+    \frac{1}{2}\Gamma\pqty{\frac{k+1}{2},\lambda^2}.
 \end{equation}
-a recurrent relation for the integral
-\begin{equation}
-    G_{n+2}(t)=\frac{n+1}{2}G_n(t)-\frac{1}{2}t^{n+1}e^{-t^2}.
+This is the so called \emph{upper incomplete Gamma function}. When $\lambda=0$, it turns
+into a regular Gamma function. Now, our original shifted Gaussian integral is solved to be
+\begin{equation}\label{eq:shifted_gaussian_solution}
+    I_{G,\pm}^{n}=\frac{\exp\pqty{\lambda^2}}{2\sqrt{a^{n+1}}}
+    \sum_{k=0}^{n}(\pm1)^{n-k}\pmqty{n\\k}\abs{\lambda}^{n-k}\cdot
+    \Gamma\pqty{\frac{k+1}{2},\lambda^2},
 \end{equation}
-In order to get a full solution, let us calculate the first two cases $n=0$ and $n=1$.
-We have
-\begin{equation}
-    \begin{split}
-        G_0(t)&=\int\dd{t}e^{-t^2}=\frac{\pi}{2}\erf(t)+C,\\
-        G_1(t)&=\int\dd{t}te^{-t^2}=-\frac{1}{2}e^{-t^2}+C.
-    \end{split}
-\end{equation}
-Given this two functions, we can obtain the solution for any order $n$
-\begin{equation}
-    G_n(t)=\frac{n-1}{2}G_{n-2}(t)+t^{n-1}G_1(t),
-\end{equation}
-where we have rewritten our recurrent relation with the help the function $G_1(t)$.
-Let us extend the recurrent relation
-\begin{equation}
-    \begin{split}
-        G_n(t)&=\frac{n-1}{2}G_{n-2}(t)+t^{n-1}G_1(t)=\\
-        &=\frac{n-1}{2}\frac{n-3}{2}G_{n-4}(t)+\pqty{t^{n-1}+\frac{n-1}{2}t^{n-3}}G_1(t)=\\
-        &=\frac{n-1}{2}\frac{n-3}{2}\frac{n-5}{2}G_{n-6}(t)
-        +\pqty{t^{n-1}+\frac{n-1}{2}t^{n-3}+\frac{n-1}{2}\frac{n-3}{2}t^{n-5}}G_1(t)=\\
-        &=\frac{1}{2^k}\frac{\pqty{n-1}!!}{\pqty{n-2k-1}!!}G_{n-2k}(t)+
-        \pqty{t^{n-1}+\frac{n-1}{2}t^{n-3}+\cdots+\frac{1}{2^{k-1}}
-        \frac{\pqty{n-1}!!}{\pqty{n-2k+1}!!}t^{n-2k+1}}G_1(t).
-    \end{split}
-\end{equation}
-Following this pattern, we can see that the final result would depend on whether $n$ is
-odd or even. Let us say, $n=2p$, then we have
-\begin{equation}
-    G_{2p}(t)=\frac{\pqty{2p-1}!!}{2^p}G_0(t)+G_1(t)\sum_{j=1}^{p}
-    \frac{1}{2^{j-1}}\frac{\pqty{2p-1}!!}{\pqty{2p-2j+1}!!}t^{2p-2j+1}.
-\end{equation}
-For odd valued $n=2p+1$, we have
-\begin{equation}
-    G_{2p+1}(t)=\frac{\pqty{2p}!!}{2^p}G_1(t)+G_1(t)\sum_{j=1}^{p}
-    \frac{1}{2^{j-1}}\frac{\pqty{2p}!!}{\pqty{2p-2j+2}!!}t^{2p-2j+2}.
-\end{equation}
+where we have written the $\pm$ sign explicitly.
 
-Now, we can write the solution of the original shifted Gaussian integrals, for even and
-odd values of $n$ separately.
+\subsubsection{Symmetric Gaussian integrals}
+We can combine the shifted Gaussian integrals into symmetric forms, like
 \begin{equation}
     \begin{split}
-        I_{G,\pm}^{2p}(t)&=\frac{e^{\lambda^2}}{a^p\sqrt{a}}\sum_{k=0}^{2p}\pmqty{2p\\k}
-        \lambda^{2p-k}G_{k}(t),\\
-        I_{G,\pm}^{2p+1}(t)&=\frac{e^{\lambda^2}}{a^{p+1}}\sum_{k=0}^{2p+1}
-        \pmqty{2p+1\\k}\lambda^{2p-k+1}G_{k}(t).
+        I_{S,+}^{n}&=\int_{0}^{\infty}\dd{x}x^{n}e^{-ax^2}\pqty{e^{bx}+e^{-bx}}=
+        I_{G,+}^{n}+I_{G,-}^{n},\\
+        I_{S,-}^{n}&=\int_{0}^{\infty}\dd{x}x^{n}e^{-ax^2}\pqty{e^{bx}-e^{-bx}}=
+        I_{G,+}^{n}-I_{G,-}^{n},
     \end{split}
 \end{equation}
-To obtain the result in terms of the variable $x$, we change $t=\sqrt{a}x-\lambda$,
-hence
+which are exactly the integral forms in our center of mass velocity integrals.
+From Eq.~(\ref{eq:shifted_gaussian_solution}), we can write the solutions for these
+symmetric integrals
 \begin{equation}
     \begin{split}
-        I_{G,\pm}^{2p}(x)&=\frac{e^{\lambda^2}}{a^p\sqrt{a}}\sum_{k=0}^{2p}\pmqty{2p\\k}
-        \lambda^{2p-k}G_{k}(\sqrt{a}x-\lambda),\\
-        I_{G,\pm}^{2p+1}(t)&=\frac{e^{\lambda^2}}{a^{p+1}}\sum_{k=0}^{2p+1}
-        \pmqty{2p+1\\k}\lambda^{2p-k+1}G_{k}(\sqrt{a}x-\lambda).
-    \end{split}
-\end{equation}
-Going back to the original notation for $\lambda$, we have
-\begin{equation}
-    \begin{split}
-        I_{G,\pm}^{2p}(x)&=\frac{1}{a^p\sqrt{a}}\exp\pqty{\frac{b^2}{4a}}
-        \sum_{k=0}^{2p}\pmqty{2p\\k}
-        \pqty{\mp\frac{b}{2\sqrt{a}}}^{2p-k}
-        \cdot G_{k}\pqty{\sqrt{a}x\pm\frac{b}{2\sqrt{a}}},\\
-        I_{G,\pm}^{2p+1}(x)&=\frac{1}{a^{p+1}}\exp\pqty{\frac{b^2}{4a}}\sum_{k=0}^{2p+1}
-        \pmqty{2p+1\\k}\pqty{\mp\frac{b}{2\sqrt{a}}}^{2p-k+1}
-        \cdot G_{k}\pqty{\sqrt{a}x\pm\frac{b}{2\sqrt{a}}}.
-    \end{split}
-\end{equation}
-
-\subsubsection{Symmetric shifted Gaussian integrals}
-By symmetric integrals, we mean the shifted Gaussians of the next form
-\begin{equation}
-    I_{S,\pm}^n(x)=\int\dd{x}x^ne^{-ax^2}\pqty{e^{bx}\pm e^{-bx}}=
-    I_{G,+}^n(x)\pm I_{G,-}^n(x).
-\end{equation}
-Using the solution for $I_G(x)$, we can write
-\begin{equation}
-    \begin{split}
-        I_{S,\pm}^{2p}(x)&=\frac{\exp\pqty{\lambda^2}}{a^p\sqrt{a}}
-        \sum_{k=0}^{2p}\pmqty{2p\\k}\abs{\lambda}^{2p-k}
-        \Bqty{(-1)^{2p-k}\cdot G_{k}\pqty{\sqrt{a}x+\abs{\lambda}}\pm
-            G_{k}\pqty{\sqrt{a}x-\abs{\lambda}}},\\
-        I_{S,\pm}^{2p+1}(x)&=\frac{\exp\pqty{\lambda^2}}{a^{p+1}}
-        \sum_{k=0}^{2p+1}\pmqty{2p+1\\k}
-        \abs{\lambda}^{2p-k}\cdot
-        \Bqty{(-1)^{2p-k}\cdot G_{k}\pqty{\sqrt{a}x+\abs{\lambda}}\pm
-            G_{k}\pqty{\sqrt{a}x-\abs{\lambda}}}.
+        I_{S,+}^{n}&=\frac{\exp\pqty{\lambda^2}}{\sqrt{a^{n+1}}}
+        \sum_{k=0}^{n}\pmqty{n\\k}\abs{\lambda}^{n-k}\cdot
+        \Gamma\pqty{\frac{k+1}{2},\lambda^2}\cdot\frac{1-(-1)^{n-k-1}}{2},\\
+        I_{S,-}^{n}&=\frac{\exp\pqty{\lambda^2}}{\sqrt{a^{n+1}}}
+        \sum_{k=0}^{n}\pmqty{n\\k}\abs{\lambda}^{n-k}\cdot
+        \Gamma\pqty{\frac{k+1}{2},\lambda^2}\cdot\frac{1-(-1)^{n-k}}{2}.
     \end{split}
 \end{equation}
 
