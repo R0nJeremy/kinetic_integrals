@@ -602,6 +602,130 @@ and we write the recurrent relation
 \end{equation}
 
 \section{Solution of the Kinetic Integrals}
+The collision integrals of the Boltzmann equation have the next structure
+\begin{equation}
+    I_k = \sum_{i,j}\sigma_{ij}^2\int_{\mathcal{D}}\dd{\bv_i}\dd{\bv_j}f_{ij}(\bv_i,\bv_j)
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+    \pqty{P_k(\bv_k\vert\bv_i,\bv_j)-\delta_{k,i}\delta\pqty{\bv_i-\bv_k}}.
+\end{equation}
+The two-particle distribution function $f_{ij}(\bv_i,\bv_j)$, can be approximated by a product of
+two one-particle distribution functions $f_i(\bv_i)$ and $f_j(\bv_j)$
+\begin{equation}
+    f_{ij}(\bv_i,\bv_j)\approx f_i(\bv_i)f_j(\bv_j).
+\end{equation}
+In the context of our work, we assume that the one-particle distribution functions have the
+Maxwellian form
+\begin{equation}
+    f_i(\bv_i)=n_i\pqty{\frac{m_i}{2\pi T_i}}^{3/2}\cdot\exp\pqty{-\frac{m_iv_i^2}{2T_i}}=
+    \frac{n_i}{\pi^{3/2}u_i^3}\cdot\exp\pqty{-\frac{v_i^2}{u_i^2}},\quad
+    u_i^2=\frac{2T_i}{m_i}.
+\end{equation}
+The two-particle distribution function is then approximated as
+\begin{equation}
+    f_{ij}(\bv_i,\bv_j)\approx\frac{n_in_j}{\pqty{\pi u_i u_j}^3}\cdot
+    \exp\pqty{-\frac{v_i^2}{u_i^2}-\frac{v_j^2}{u_j^2}}.
+\end{equation}
+Changing impact velocities into the center of mass velocity $\bV$ and the relative velocity $\bg$
+vectors, we have
+\begin{equation}
+    \begin{split}
+        \frac{v_i^2}{u_i^2}+\frac{v_j^2}{u_j^2}&=AV^2+Bg^2-R\pqty{\bV\vdot\bg},\\
+        A_{ij}&=\frac{1}{u_i^2}+\frac{1}{u_j^2},\\
+        B_{ij}&=\frac{\mu_j^2}{u_i^2}+\frac{\mu_i^2}{u_j^2},\\
+        R_{ij}&=\frac{2\mu_i}{u_j^2}-\frac{2\mu_j}{u_i^2},\\
+        \alpha_{ij}&=\frac{n_in_j}{\pqty{\pi u_iu_j}^3},
+    \end{split}
+\end{equation}
+hence the two-particle distribution function in terms of $\bV$ and $\bg$ is written as
+\begin{equation}
+    f_{ij}\pqty{\bV,\bg}=\alpha_{ij}\exp\pqty{-A_{ij}V^2}\exp\pqty{-B_{ij}g^2}\exp\pqty{R_{ij}\bV\vdot\bg},
+\end{equation}
+and the collision integral becomes
+\begin{equation}
+    I_k = \sum_{i,j}\alpha_{ij}\sigma_{ij}^2\int_{\mathcal{D}}\dd{\bg}\dd{\bV}
+    e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+    \pqty{P_k(\bv_k\vert\bv_i,\bv_j)-\delta_{k,i}\delta\pqty{\bv_i-\bv_k}}.
+\end{equation}
+In general, the collision integral is multiplied by a function of a velocity $\psi_k(\bv_k)$,
+and then integrated over $\bv_k$, hence
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_c=\sum_{i,j}\alpha_{ij}\sigma_{ij}^2&\int\dd{\bv_k}\int_{\mathcal{D}}
+        \dd{\bg}\dd{\bV}e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot\psi_k(\bv_k)\cdot
+        \pqty{P_k(\bv_k\vert\bv_i(\bg,\bV),\bv_j(\bg,\bV))-\delta_{k,i}\delta\pqty{\bv_k-\bv_i(\bg,\bV)}}.
+    \end{split}
+\end{equation}
+In our work, we will be dealing with two functions $\psi_k(\bv_k)=1$ and $\psi_k(\bv_k)=m_kv_k^2/2$.
+
+\subsection{Aggregation terms of the collision integrals}
+For the aggregative collision integrals, we have
+\begin{equation}
+    P_k(\bv_k\vert\bv_i,\bv_j)=\delta_{k,i+j}\delta\bqty{\bv_k-\bV},\qquad
+    \mathcal{D}=\Theta\pqty{\ltx{g}{agg}-g},
+\end{equation}
+and
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_a=\sum_{i,j}\alpha_{ij}\sigma_{ij}^2&\int\dd{\bv_k}\int
+        \dd{\bg}\dd{\bV}e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}\Theta(\ltx{g}{agg}-g)\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot\psi_k(\bv_k)\cdot
+        \pqty{\delta_{k,i+j}\delta\bqty{\bv_k-\bV}-\delta_{k,i}\delta\pqty{\bv_k-\bv_i(\bg,\bV)}}.
+    \end{split}
+\end{equation}
+Now, performing the actions of the delta functions, we write
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_c&=\frac{1}{2}\sum_{i+j=k}\alpha_{ij}\sigma_{ij}^2
+        \int\dd{\bg}\dd{\bV}e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}\Theta(\ltx{g}{agg}-g)
+        \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot\psi_k(\bV)-\\
+        &-\sum_{j}\alpha_{kj}\sigma_{kj}^2\int\dd{\bg}\dd{\bV}e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}
+        \Theta(\ltx{g}{agg}-g)\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+        \cdot\psi_k(\bV+\mu_j\bg).
+    \end{split}
+\end{equation}
+
+\subsection{Restitution terms of the collision integrals}
+The collision integrals for the restitutive terms read
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_r=\sum_{j}\alpha_{kj}\sigma_{kj}^2&\int
+        \dd{\bg}\dd{\bV}e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}\Theta(g-\ltx{g}{agg})\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot
+        \Delta\psi_k(\bV+\mu_j\bg)\Theta\pqty{\ltx{g}{frag}^2-(\bg\vdot\bn)^2},
+    \end{split}
+\end{equation}
+where $\Delta\psi_k$ is the change of the physical value $\psi_k$ due to a single
+restitutive collision.
+
+\subsection{Fragmentation terms of the collision integrals}
+The fragmentative terms of the collision integral reads
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_f=\sum_{i,j}\alpha_{ij}\sigma_{ij}^2&\int\dd{\bv_k}\int
+        \dd{\bg}\dd{\bV}e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot\psi_k(\bv_k)\cdot
+        \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}\times\\
+        &\times\pqty{\delta_{k,1}\frac{i+j}{4\pi}\int\dd{\be}\delta\pqty{\bv_k-\bV-v'_c\be}
+            -\delta_{k,i}\delta\pqty{\bv_k-\bv_i(\bg,\bV)}}.
+    \end{split}
+\end{equation}
+Performing the actions of the delta functions, we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_f&=\frac{\delta_{k,1}}{4\pi}\sum_{i,j}(i+j)
+        \alpha_{ij}\sigma_{ij}^2\int\dd{\bg}\dd{\bV}e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot
+        \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}
+        \int\dd{\be}\psi_k(\bV-v'_c\be)-\\
+        &-\sum_{j}\alpha_{kj}\sigma_{kj}^2\int\dd{\bv_k}\int
+        \dd{\bg}\dd{\bV}e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot\psi_k(\bV+\mu_j\bg)\cdot
+        \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}.
+    \end{split}
+\end{equation}
+
 
 
 
