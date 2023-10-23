@@ -10,27 +10,27 @@ We can solve the typical forms of each type of collision integrals in the most g
 \begin{equation}
     \begin{split}
         I_a^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^{2l}
-        e^{-Aw^2-Bu^2+R\bw\vdot\bu}\Theta\pqty{\lambda_a-u}
+        e^{-Aw^2-Bu^2+R\bw\vdot\bu}\Theta\pqty{v_a-u}
         \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m
         \pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q,\\
         I_r^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^{2l}
-        e^{-Aw^2-Bu^2+R\bw\vdot\bu}\Theta\pqty{u-\lambda_a}
+        e^{-Aw^2-Bu^2+R\bw\vdot\bu}\Theta\pqty{u-v_a}
         \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m
         \pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
-        \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2},\\
+        \Theta\bqty{v_f^2-\pqty{\bu\vdot\bn}^2},\\
         I_f^{k,l,m,p,q} &= \int\dd{\bu}\dd{\bw}u^kw^{2l}
         e^{-Aw^2-Bu^2+R\bw\vdot\bu}
         \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}\abs{\bu\vdot\bn}^m
         \pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
-        \Theta\bqty{\pqty{\bu\vdot\bn}^2-\lambda_f^2},\\
+        \Theta\bqty{\pqty{\bu\vdot\bn}^2-v_f^2},\\
     \end{split}
 \end{equation}
 where $k,l,m,p,q$ are integers, and $q=\Bqty{0,1}$. The difference in each type of
 integrals is in the domains of the vector $\bu$. In the aggregative case, the values of
-$u$ have to be less than a certain threshold $\lambda_a$, in the restitutive case, the
-values of $u$ have to be larger than $\lambda_a$, but restricted by the parameter
-$\lambda_f$ from above. Finally, in the fragmentative case, the values of $u$ are restricted
-by the parameter $\lambda_f$ from below.
+$u$ have to be less than a certain threshold $v_a$, in the restitutive case, the
+values of $u$ have to be larger than $v_a$, but restricted by the parameter
+$v_f$ from above. Finally, in the fragmentative case, the values of $u$ are restricted
+by the parameter $v_f$ from below.
 
 \subsection{Angular integrals}
 We start by first solving the inner integrals over $\bn$. By its physical meaning, we can call
@@ -42,10 +42,10 @@ corresponding term either do exist or is absent
         \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q,\\
         I_{\bn,r}^{m,p,q}\pqty{\bu,\bw}&=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
         \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
-        \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2},\\
+        \Theta\bqty{v_f^2-\pqty{\bu\vdot\bn}^2},\\
         I_{\bn,f}^{m,p,q}\pqty{\bu,\bw}&=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
         \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p\pqty{\bw\vdot\bn}^q
-        \Theta\bqty{\pqty{\bu\vdot\bn}^2-\lambda_f^2}.\\
+        \Theta\bqty{\pqty{\bu\vdot\bn}^2-v_f^2}.\\
     \end{split}
 \end{equation}
 If $q=0$, then the angular integral is a function of only the vector $\bu$, otherwise it is
@@ -132,16 +132,16 @@ Now, we can combine both cases of $q=0$ and $q=1$, and write
 \end{equation}
 
 \subsubsection{Restitutive angular integrals}
-These type of integrals have a domain restriction terms given by the parameter $\lambda_f$.
+These type of integrals have a domain restriction terms given by the parameter $v_f$.
 We can start with a simpler case when $q=0$, and write
 \begin{equation}
     \begin{split}
         I_{\bn,r}^{m,p,0}(\bu)&=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
         \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p
-        \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2}=\\
+        \Theta\bqty{v_f^2-\pqty{\bu\vdot\bn}^2}=\\
         &=(-1)^p\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
         \abs{\bu\vdot\bn}^{m+p}
-        \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2}.
+        \Theta\bqty{v_f^2-\pqty{\bu\vdot\bn}^2}.
     \end{split}
 \end{equation}
 Again, switching to spherical coordinates, and denoting the angle $\angle(\bn,\bu)$ by
@@ -150,77 +150,77 @@ $\theta$, we write
     \begin{split}
         I_{\bn,r}^{m,p,0}(\bu)&=(-1)^p\cdot 2\pi u^{m+p}\int_0^{\pi}\dd{\theta}\sin\theta
         \Theta\pqty{-\cos\theta}\abs{\cos\theta}^{m+p}
-        \Theta\bqty{\lambda_f^2-\pqty{u\cos\theta}^2}=\\
+        \Theta\bqty{v_f^2-\pqty{u\cos\theta}^2}=\\
         &=(-1)^p\cdot 2\pi u^{m+p}\int_{\pi/2}^{\pi}\dd{\theta}\sin\theta
-        \abs{\cos\theta}^{m+p}\Theta\bqty{\frac{\lambda_f^2}{u^2}-\cos^2\theta}.
+        \abs{\cos\theta}^{m+p}\Theta\bqty{\frac{v_f^2}{u^2}-\cos^2\theta}.
     \end{split}
 \end{equation}
 The domain restriction implies
 \begin{equation}
-    \abs{\cos\theta}\leqslant\frac{\lambda_f}{u}.
+    \abs{\cos\theta}\leqslant\frac{v_f}{u}.
 \end{equation}
 This constraint restricts two variable, both $\theta$ and $u$, although we do not perform
 integration over $u$ at this moment. Since the variable $u$ changes from $0$ to $\infty$,
-the restriction can be split into two cases, (i) when $u\leqslant\lambda_f$, (ii) when
-$u>\lambda_f$. In the first case, when $u\leqslant\lambda_f$, the restriction holds true
+the restriction can be split into two cases, (i) when $u\leqslant v_f$, (ii) when
+$u>v_f$. In the first case, when $u\leqslant v_f$, the restriction holds true
 for any values of $\theta\in\bqty{\pi/2,\pi}$, e.g. no constraint in the angle $\theta$.
-In the second case, when $u>\lambda_f$, the restriction holds true only within a certain
-range of values of $\theta$, namely $\theta\in\bqty{\pi/2,\pi-\arccos\pqty{\lambda_f/u}}$.
+In the second case, when $u>v_f$, the restriction holds true only within a certain
+range of values of $\theta$, namely $\theta\in\bqty{\pi/2,\pi-\arccos\pqty{v_f/u}}$.
 Now, we can rewrite the domain restriction term as
 \begin{equation}
-    \Theta\bqty{\frac{\lambda_f^2}{u^2}-\cos^2\theta}=
-    \Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}
-    \Theta\bqty{\pi-\arccos\pqty{\frac{\lambda_f}{u}}-\theta}.
+    \Theta\bqty{\frac{v_f^2}{u^2}-\cos^2\theta}=
+    \Theta\pqty{v_f-u}+\Theta\pqty{u-v_f}
+    \Theta\bqty{\pi-\arccos\pqty{\frac{v_f}{u}}-\theta}.
 \end{equation}
 Using this form of the restriction allows us to solve the restitutive angular integrals
 \begin{equation}
     \begin{split}
-        I_{\bn,r}^{m,p,0}(\bu)=&-(-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{\lambda_f-u}
+        I_{\bn,r}^{m,p,0}(\bu)=&-(-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{v_f-u}
         \int_{\pi/2}^{\pi}\dd{\pqty{\cos\theta}}\abs{\cos\theta}^{m+p}-\\
-        &-(-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{u-\lambda_f}
-        \int_{\pi/2}^{\pi-\arccos(\lambda_f/u)}\dd{\pqty{\cos\theta}}\abs{\cos\theta}^{m+p}.
+        &-(-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{u-v_f}
+        \int_{\pi/2}^{\pi-\arccos(v_f/u)}\dd{\pqty{\cos\theta}}\abs{\cos\theta}^{m+p}.
     \end{split}
 \end{equation}
 The first integral is already solved for the aggregative angular case, and in the
 second integral we substitute $z=\cos\theta$, and write
 \begin{equation}
     \begin{split}
-        I_{\bn,r}^{m,p,0}(\bu)&=\Theta\pqty{\lambda_f-u}\cdot I_{\bn,a}^{m,p,0}(\bu)-
-        (-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{u-\lambda_f}
-        \int_{0}^{-\lambda_f/u}\dd{z}\abs{z}^{m+p}=\\
-        &=(-1)^p\cdot\Theta\pqty{\lambda_f-u}\cdot
+        I_{\bn,r}^{m,p,0}(\bu)&=\Theta\pqty{v_f-u}\cdot I_{\bn,a}^{m,p,0}(\bu)-
+        (-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{u-v_f}
+        \int_{0}^{-v_f/u}\dd{z}\abs{z}^{m+p}=\\
+        &=(-1)^p\cdot\Theta\pqty{v_f-u}\cdot
         \frac{2\pi u^{m+p}}{m+p+1}+
-        (-1)^p\cdot \Theta\pqty{u-\lambda_f}\cdot\frac{2\pi u^{m+p}}{m+p+1}
-        \pqty{\frac{\lambda_f}{u}}^{m+p+1}=\\
+        (-1)^p\cdot \Theta\pqty{u-v_f}\cdot\frac{2\pi u^{m+p}}{m+p+1}
+        \pqty{\frac{v_f}{u}}^{m+p+1}=\\
         &=(-1)^p\cdot\frac{2\pi u^{m+p}}{m+p+1}
-        \bqty{\Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}
-            \pqty{\frac{\lambda_f}{u}}^{m+p+1}},
+        \bqty{\Theta\pqty{v_f-u}+\Theta\pqty{u-v_f}
+            \pqty{\frac{v_f}{u}}^{m+p+1}},
     \end{split}
 \end{equation}
 or
 \begin{equation}
     I_{\bn,r}^{m,p,0}(\bu)=I_{\bn,a}^{m,p,0}(\bu)\cdot
-    \bqty{\Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}\pqty{\frac{\lambda_f}{u}}^{m+p+1}}.
+    \bqty{\Theta\pqty{v_f-u}+\Theta\pqty{u-v_f}\pqty{\frac{v_f}{u}}^{m+p+1}}.
 \end{equation}
 
 For the case $q=1$, we can perform the same procedure as before, and write
 \begin{equation}
     I_{\bn,r}^{m,p,1}\pqty{\bu,\bw}=\bw\vdot\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
     \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p
-    \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2}\bn=\bw\vdot\bF,
+    \Theta\bqty{v_f^2-\pqty{\bu\vdot\bn}^2}\bn=\bw\vdot\bF,
 \end{equation}
 where
 \begin{equation}
     \bF = \int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
     \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p
-    \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2}\bn.
+    \Theta\bqty{v_f^2-\pqty{\bu\vdot\bn}^2}\bn.
 \end{equation}
 Again, we see that $\bF$ vector cannot depend on $\bn$, and depends only on the vector
 $\bu$. This implies that $\bF=f\bu$, or
 \begin{equation}
     f=\frac{\bF\vdot\bu}{u^2}=\frac{1}{u^2}\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
     \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^{p+1}
-    \Theta\bqty{\lambda_f^2-\pqty{\bu\vdot\bn}^2}=
+    \Theta\bqty{v_f^2-\pqty{\bu\vdot\bn}^2}=
     u^{-2}\cdot I_{\bn,r}^{m,p+1,0}(\bu).
 \end{equation}
 Since,
@@ -231,15 +231,15 @@ Since,
 or writing explicitly, we have
 \begin{equation}
     I_{\bn,r}^{m,p,1}(\bu,\bw)=(-1)^{p+1}\cdot\frac{2\pi u^{m+p-1}}{m+p+2}
-    \bqty{\Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}
-        \pqty{\frac{\lambda_f}{u}}^{m+p+2}}\pqty{\bw\vdot\bu}.
+    \bqty{\Theta\pqty{v_f-u}+\Theta\pqty{u-v_f}
+        \pqty{\frac{v_f}{u}}^{m+p+2}}\pqty{\bw\vdot\bu}.
 \end{equation}
 By combining both cases $q=0$ and $q=1$, we write the final solution of the
 restitutive angular integrals as
 \begin{equation}
     I_{\bn,r}^{m,p,q}(\bu,\bw)=(-1)^{p+q}\cdot\frac{2\pi u^{m+p-q}}{m+p+q+1}
-    \bqty{\Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}
-        \pqty{\frac{\lambda_f}{u}}^{m+p+q+1}}\pqty{\bw\vdot\bu}^q.
+    \bqty{\Theta\pqty{v_f-u}+\Theta\pqty{u-v_f}
+        \pqty{\frac{v_f}{u}}^{m+p+q+1}}\pqty{\bw\vdot\bu}^q.
 \end{equation}
 
 \subsubsection{Fragmentative angular integrals}
@@ -249,34 +249,34 @@ $q=0$
 \begin{equation}
     I_{\bn,f}^{m,p,0}\pqty{\bu}=\int\dd{\bn}\Theta\pqty{-\bu\vdot\bn}
     \abs{\bu\vdot\bn}^m\pqty{\bu\vdot\bn}^p
-    \Theta\bqty{\pqty{\bu\vdot\bn}^2-\lambda_f^2}.
+    \Theta\bqty{\pqty{\bu\vdot\bn}^2-v_f^2}.
 \end{equation}
 The difference of this type of angular integrals is in the inverse domain restriction
 function. Switching into spherical coordinates, we write
 \begin{equation}
     I_{\bn,f}^{m,p,0}\pqty{\bu}=-(-1)^p\cdot 2\pi u^{m+p}\int_{\pi/2}^{\pi}
     \dd{\pqty{\cos\theta}}\abs{\cos\theta}^{m+p}
-    \Theta\bqty{\cos^2\theta-\frac{\lambda_f^2}{u^2}}.
+    \Theta\bqty{\cos^2\theta-\frac{v_f^2}{u^2}}.
 \end{equation}
 The domain restriction is now given as
 \begin{equation}
-    \abs{\cos\theta}\geqslant\frac{\lambda_f}{u}.
+    \abs{\cos\theta}\geqslant\frac{v_f}{u}.
 \end{equation}
-This condition can be satisfied only for $u\geqslant\lambda_f$, and we can rewrite
+This condition can be satisfied only for $u\geqslant v_f$, and we can rewrite
 the domain restriction as
 \begin{equation}
-    \Theta\bqty{\cos^2\theta-\frac{\lambda_f^2}{u^2}}=
-    \Theta\pqty{u-\lambda_f}\Theta\bqty{\theta-\pi-\arccos\pqty{\frac{\lambda_f}{u}}},
+    \Theta\bqty{\cos^2\theta-\frac{v_f^2}{u^2}}=
+    \Theta\pqty{u-v_f}\Theta\bqty{\theta-\pi-\arccos\pqty{\frac{v_f}{u}}},
 \end{equation}
 and our fragmentative angular integral becomes
 \begin{equation}
     \begin{split}
-        I_{\bn,f}^{m,p,0}\pqty{\bu}&=-(-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{u-\lambda_f}
-        \int_{\pi-\arccos(\lambda_f/u)}^{\pi}\dd{\pqty{\cos\theta}}\abs{\cos\theta}^{m+p}=\\
-        &=-(-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{u-\lambda_f}
-        \int_{-\lambda_f/u}^{-1}\dd{z}\abs{z}^{m+p}=\\
-        &=(-1)^p\cdot\frac{2\pi u^{m+p}}{m+p+1}\bqty{1-\pqty{\frac{\lambda_f}{u}}^{m+p+1}}
-        \Theta\pqty{u-\lambda_f}.
+        I_{\bn,f}^{m,p,0}\pqty{\bu}&=-(-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{u-v_f}
+        \int_{\pi-\arccos(v_f/u)}^{\pi}\dd{\pqty{\cos\theta}}\abs{\cos\theta}^{m+p}=\\
+        &=-(-1)^p\cdot 2\pi u^{m+p}\Theta\pqty{u-v_f}
+        \int_{-v_f/u}^{-1}\dd{z}\abs{z}^{m+p}=\\
+        &=(-1)^p\cdot\frac{2\pi u^{m+p}}{m+p+1}\bqty{1-\pqty{\frac{v_f}{u}}^{m+p+1}}
+        \Theta\pqty{u-v_f}.
     \end{split}
 \end{equation}
 
@@ -284,14 +284,14 @@ The case with $q=1$ can be solved exactly as the previous cases, and we can imme
 write
 \begin{equation}
     I_{\bn,f}^{m,p,1}(\bu,\bw)=\frac{\bw\vdot\bu}{u^2}\cdot I_{\bn,f}^{m,p+1,0}(\bu)=
-    (-1)^{p+1}\cdot\frac{2\pi u^{m+p-1}}{m+p+2}\bqty{1-\pqty{\frac{\lambda_f}{u}}^{m+p+2}}
-    \Theta\pqty{u-\lambda_f}\pqty{\bw\vdot\bu},
+    (-1)^{p+1}\cdot\frac{2\pi u^{m+p-1}}{m+p+2}\bqty{1-\pqty{\frac{v_f}{u}}^{m+p+2}}
+    \Theta\pqty{u-v_f}\pqty{\bw\vdot\bu},
 \end{equation}
 and combining both cases $q=0$ and $q=1$, we have
 \begin{equation}
     I_{\bn,f}^{m,p,q}(\bu,\bw)=(-1)^{p+q}\cdot\frac{2\pi u^{m+p-q}}{m+p+q+1}
-    \bqty{1-\pqty{\frac{\lambda_f}{u}}^{m+p+q+1}}
-    \Theta\pqty{u-\lambda_f}\pqty{\bw\vdot\bu}^q.
+    \bqty{1-\pqty{\frac{v_f}{u}}^{m+p+q+1}}
+    \Theta\pqty{u-v_f}\pqty{\bw\vdot\bu}^q.
 \end{equation}
 
 \subsubsection{Final results of angular integrals}
@@ -307,11 +307,11 @@ The restitutive and fragmentative angular integrals are solved to give us
 \begin{equation}
     \begin{split}
         I_{\bn,r}^{m,p,q}(\bu,\bw)&=I_{\bn,a}^{m,p,q}(\bu,\bw)\cdot
-        \bqty{\Theta\pqty{\lambda_f-u}+\Theta\pqty{u-\lambda_f}
-            \pqty{\frac{\lambda_f}{u}}^{m+p+q+1}},\\
+        \bqty{\Theta\pqty{v_f-u}+\Theta\pqty{u-v_f}
+            \pqty{\frac{v_f}{u}}^{m+p+q+1}},\\
         I_{\bn,f}^{m,p,q}(\bu,\bw)&=I_{\bn,a}^{m,p,q}(\bu,\bw)\cdot
-        \bqty{1-\pqty{\frac{\lambda_f}{u}}^{m+p+q+1}}
-        \Theta\pqty{u-\lambda_f}.
+        \bqty{1-\pqty{\frac{v_f}{u}}^{m+p+q+1}}
+        \Theta\pqty{u-v_f}.
     \end{split}
 \end{equation}
 
@@ -538,12 +538,79 @@ Using (\ref{eq:symmetric_positive_even_integral}) and (\ref{eq:symmetric_negativ
         I_{\bw}^{l,0}(\bu)&=\sqrt{\frac{\pi}{A}}\cdot\frac{\pi\exp\pqty{\lambda^2}}{A^{l+1}}
         \sum_{k=0}^{l}\pmqty{2l+1\\2k}\frac{(2k-1)!!}{2^{k}}\cdot\lambda^{2l-2k},\\
         I_{\bw}^{l,1}(\bu)&=\frac{2\pi}{R}\sqrt{\frac{\pi}{A}}\frac{\exp\pqty{\lambda^2}}{A^{l+1}}
-        \bqty{\frac{(2l+1)!!}{2^{l+1}}+\sum_{k=0}^{l}\pmqty{2l+1\\2k}\frac{(2k-1)!!}{2^k}\cdot\lambda^{2l-2k}
-            \pqty{\frac{2l+2}{2l+2-2k}\lambda^2-\frac{1}{2}}}.
+        \bqty{\frac{(2l+1)!!}{2^{l+1}}+\sum_{k=0}^{l}\pmqty{2l+1\\2k}\frac{(2k-1)!!}{2^k}
+            \cdot\lambda^{2l-2k}\pqty{\frac{2l+2}{2l+2-2k}\lambda^2-\frac{1}{2}}}.
     \end{split}
 \end{equation}
+Both cases of $q=0$ and $q=1$ can now be combined simply as
+\begin{equation}
+    I_{\bw}^{l,q}(\bu)=\pqty{\frac{2}{R}}^q\sqrt{\frac{\pi}{A}}\frac{\pi\exp\pqty{\lambda^2}}{A^{l+1}}
+    \bqty{\pqty{\frac{(2l+1)!!}{2^{l+1}}}^q+\sum_{j=0}^{l}\pmqty{2l+1\\2j}\frac{(2j-1)!!}{2^j}
+        \cdot\lambda^{2l-2j}\cdot\pqty{\frac{2l+2}{2l+2-2j}\lambda^2-\frac{1}{2}}^q}.
+\end{equation}
+We have changed the dummy index $k$, not to confuse with the index $k$ in the original kinetic integrals.
 
 \subsection{Relative velocity integrals}
+The final type of integrals over $\bu$, is what we call the relative velocity integrals. The general form
+of these integrals are simple Gaussian integrals. Depending on the type of the kinetic integral,
+they can be written as
+\begin{equation}
+    \begin{split}
+        I_{\bu,a}^{k,i}&=\int\dd{\bu}u^{k+i}\exp\pqty{-Cu^2}\Theta\pqty{v_a-u},\\
+        I_{\bu,f}^{k,i}&=\int\dd{\bu}u^{k+i}\exp\pqty{-Cu^2}\Theta\pqty{u-v_f},\\
+        I_{\bu,r}^{k,i}&=\int\dd{\bu}u^{k+i}\exp\pqty{-Cu^2}\Theta\pqty{u-v_a}\Theta\pqty{v_f-u},
+    \end{split}
+\end{equation}
+where we $C$ is constant and $i$ is a combined power of all $u$ vectors appearing in the inner integrals.
+The index $k$ is the original power of $u$ in the kinetic integral. Changing into spherical coordinates,
+we have
+\begin{equation}
+    \begin{split}
+        I_{\bu,a}^{k,i}&=4\pi\int_{0}^{v_a}\dd{u}u^{k+i+2}\exp\pqty{-Cu^2},\\
+        I_{\bu,r}^{k,i}&=4\pi\int_{v_a}^{v_f}\dd{u}u^{k+i+2}\exp\pqty{-Cu^2},\\
+        I_{\bu,f}^{k,i}&=4\pi\int_{v_f}^{\infty}\dd{u}u^{k+i+2}\exp\pqty{-Cu^2}.
+    \end{split}
+\end{equation}
+We can write these integrals in canonical forms by setting $t=\sqrt{C}u$. This implies
+\begin{equation}
+    \begin{split}
+        u&=\frac{t}{\sqrt{C}},\qquad\dd{u}=\frac{\dd{t}}{\sqrt{C}},\\
+        u^{k+i+2}&=\frac{t^{k+i+2}}{\sqrt{C^{k+i+2}}},\\
+        u&=0,\quad\Rightarrow\quad t=0,\\
+        u&=\infty,\quad\Rightarrow\quad t=\infty,\\
+        u&=v_{a/f},\quad\Rightarrow\quad t=\sqrt{C}v_{a/f}.
+    \end{split}
+\end{equation}
+Now, our relative velocity integrals become
+\begin{equation}
+    \begin{split}
+        I_{\bu,a}^{k,i}&=\frac{4\pi}{\sqrt{C^{k+i+3}}}\int_{0}^{\sqrt{C}v_a}\dd{t}t^{k+i+2}e^{-t^2},\\
+        I_{\bu,r}^{k,i}&=\frac{4\pi}{\sqrt{C^{k+i+3}}}\int_{\sqrt{C}v_a}^{\sqrt{C}v_f}
+        \dd{t}t^{k+i+2}e^{-t^2},\\
+        I_{\bu,f}^{k,i}&=\frac{4\pi}{\sqrt{C^{k+i+3}}}\int_{\sqrt{C}v_f}^{\infty}\dd{t}t^{k+i+2}e^{-t^2}.
+    \end{split}
+\end{equation}
+As we did with previously, we can integrate by parts, writing $u=e^{-t^2}$, $\dd{v}=t^{k+i+2}\dd{t}$,
+which gives us $\dd{u}=-2te^{-t^2}\dd{t}$ and $v=t^{k+i+3}/(k+i+3)$. Hence,
+\begin{equation}
+    I^{k}=\int_{L_1}^{L_2}\dd{t}t^{k+i+2}e^{-t^2}=\frac{t^{k+i+3}}{k+i+3}\eval{e^{-t^2}}_{L_1}^{L_2}+
+    \frac{2}{k+i+3}\int_{L_1}^{L_2}\dd{t}t^{k+i+4}e^{-t^2},
+\end{equation}
+and we write the recurrent relation
+\begin{equation}
+    I^{k}=\frac{k+i+1}{2}I^{k-2}+\frac{1}{2}\pqty{L_1^{k+i+1}e^{-L_1^2}-L_2^{k+i+1}e^{-L_2^2}}.
+\end{equation}
+
+\section{Solution of the Kinetic Integrals}
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
