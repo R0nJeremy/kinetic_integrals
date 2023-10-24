@@ -920,15 +920,243 @@ Performing the actions of the delta functions, we have
         &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot
         \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}
         \int\dd{\be}\psi_k(\bV-v'_c\be)-\\
-        &-\sum_{j}\alpha_{kj}\sigma_{kj}^2\int\dd{\bv_k}\int
+        &-\sum_{j}\alpha_{kj}\sigma_{kj}^2\int
         \dd{\bg}\dd{\bV}e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}\\
         &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot\psi_k(\bV+\mu_j\bg)\cdot
         \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}.
     \end{split}
 \end{equation}
+\subsubsection{Number density evolution inegrals for fragmentation}
+Again, putting $\psi_k=1$, we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{n_k}{t}}_f&=\delta_{k,1}\sum_{i,j}(i+j)
+        \alpha_{ij}\sigma_{ij}^2\int\dd{\bg}\dd{\bV}
+        e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}
+        \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot
+        \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}-\\
+        &-\sum_{j}\alpha_{kj}\sigma_{kj}^2
+        \int\dd{\bg}\dd{\bV}e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}
+        \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot
+        \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}.
+    \end{split}
+\end{equation}
+Solving the angular integrals, we get
+\begin{equation}
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot
+    \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}=I_{\bn,f}^{1,0,0}(\bg)=
+    \pi g\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}\Theta\pqty{g-\ltx{g}{frag}},
+\end{equation}
+hence
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{n_k}{t}}_f&=\delta_{k,1}\sum_{i,j}(i+j)4\pi^2
+        \alpha_{ij}\sigma_{ij}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}
+        \exp\pqty{-B_{ij}g^2}\int\dd{\bV}
+        e^{-A_{ij}V^2+R_{ij}\bV\vdot\bg}-\\
+        &-\sum_{j}4\pi^2\alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}
+        \exp\pqty{-B_{ij}g^2}
+        \int\dd{\bV}e^{-A_{kj}V^2+R_{kj}\bV\vdot\bg}.
+    \end{split}
+\end{equation}
+The center of mass velocity integral is solved to give us
+\begin{equation}
+    \int\dd{\bV}\exp\pqty{-A_{kj}V^2+R_{kj}\bV\vdot\bg}=I_{\bV}^{0,0}(\bg)=
+    \pqty{\frac{\pi}{A_{ij}}}^{3/2}\exp\pqty{\frac{R_{ij}^2}{4A_{ij}}\cdot g^2}.
+\end{equation}
+Now, we write the number density evolution integrals as
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{n_k}{t}}_f&=\delta_{k,1}\sum_{i,j}(i+j)4\pi^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \alpha_{ij}\sigma_{ij}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}
+        \exp\pqty{-C_{ij}g^2}-\\
+        &-\sum_{j}4\pi^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}\alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}
+        \exp\pqty{-C_{ij}g^2},
+    \end{split}
+\end{equation}
+and opening the brackets we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{n_k}{t}}_f&=\delta_{k,1}\sum_{i,j}(i+j)4\pi^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \alpha_{ij}\sigma_{ij}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3\exp\pqty{-C_{ij}g^2}-\\
+        &-\delta_{k,1}\ltx{g}{frag}^2\sum_{i,j}(i+j)4\pi^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \alpha_{ij}\sigma_{ij}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g\exp\pqty{-C_{ij}g^2}-\\
+        &-\sum_{j}4\pi^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}\alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3\exp\pqty{-C_{ij}g^2}+\\
+        &+\ltx{g}{frag}^2\sum_{j}4\pi^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}\alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g\exp\pqty{-C_{ij}g^2}.
+    \end{split}
+\end{equation}
+Solving the incomplete Gaussian integrals
+\begin{equation}
+    \begin{split}
+        G^{(1)}_{ij}(\ltx{g}{frag},\infty)&=\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g\exp\pqty{-C_{ij}g^2}=\frac{1}{2C_{ij}}\exp\pqty{-C_{ij}\ltx{g}{frag}^2},\\
+        G^{(3)}_{ij}(\ltx{g}{frag},\infty)&=\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3\exp\pqty{-C_{ij}g^2}=
+        \frac{1}{2C_{ij}^2}\pqty{1+C_{ij}\ltx{g}{frag}^2}\exp\pqty{-C_{ij}\ltx{g}{frag}^2},\\
+    \end{split}
+\end{equation}
+we write
+\begin{equation}
+    \avg{\pdv{n_k}{t}}_f=\delta_{k,1}\sum_{i,j}(i+j)K^{fn}_{ij}n_in_j
+    -\sum_{j}K^{fn}_{ij}n_in_j,
+\end{equation}
+where
+\begin{equation}
+    K^{fn}_{ij}=2\sigma_{kj}^2\sqrt{\pi\pqty{u_i^2+u_j^2}}
+    \exp\pqty{-C_{ij}\ltx{g}{frag}^2}.
+\end{equation}
 
-
-
+\subsubsection{Temperature evolution inegrals for fragmentation}
+By putting $\psi_k(\bv_k)=m_kv_k^2/2$, we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}_f&=\frac{\delta_{k,1}}{4\pi}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\alpha_{ij}\sigma_{ij}^2\int\dd{\bg}\dd{\bV}V^2
+        e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot
+        \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}+\\
+        &+\frac{\delta_{k,1}}{4\pi}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\gamma_{ij}\alpha_{ij}\sigma_{ij}^2\int\dd{\bg}\dd{\bV}
+        e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\pqty{\bg\vdot\bn}^2\cdot
+        \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}-\\
+        &-\frac{m_k}{2}\sum_{j}\alpha_{kj}\sigma_{kj}^2\int
+        \dd{\bg}\dd{\bV}e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}
+        \pqty{V^2+\mu_j^2g^2+2\mu_j\pqty{\bV\vdot\bg}}\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot
+        \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2},
+    \end{split}
+\end{equation}
+where we have used $v'^2_c=\gamma_{ij}(\bg\vdot\bn)^2$. The angular integral parts are
+\begin{equation}
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot
+    \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}=I_{\bn,f}^{1,0,0}(\bg)=
+    \pi g\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}\Theta\pqty{g-\ltx{g}{frag}},
+\end{equation}
+and
+\begin{equation}
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\pqty{\bg\vdot\bn}^2\cdot
+    \Theta\pqty{(\bg\vdot\bn)^2-\ltx{g}{frag}^2}=I_{\bn,f}^{1,2,0}=
+    \frac{\pi g^3}{2}\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^4}\Theta\pqty{g-\ltx{g}{frag}}.
+\end{equation}
+Now we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}_f&=\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pi\alpha_{ij}\sigma_{ij}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}e^{-B_{ij}g^2}
+        \int\dd{\bV}V^2e^{-A_{ij}V^2+R_{ij}\bV\vdot\bg}-\\
+        &-\delta_{k,1}\frac{m_k}{4}
+        \sum_{i,j}(i+j)\gamma_{ij}\pi\alpha_{ij}\sigma_{ij}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^5\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^4}e^{-B_{ij}g^2}
+        \int\dd{\bV}e^{-A_{ij}V^2+R_{ij}\bV\vdot\bg}-\\
+        &-\frac{m_k}{2}\sum_{j}4\pi\alpha_{kj}\sigma_{kj}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}e^{-B_{kj}g^2}
+        \int\dd{\bV}V^2e^{-A_{kj}V^2+R_{kj}\bV\vdot\bg}-\\
+        &-\frac{m_k}{2}\sum_{j}\mu_j^2\cdot4\pi\alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^5
+        \bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}e^{-B_{kj}g^2}
+        \int\dd{\bV}e^{-A_{kj}V^2+R_{kj}\bV\vdot\bg}-\\
+        &-\frac{m_k}{2}\sum_{j}2\mu_j\cdot4\pi\alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}e^{-B_{kj}g^2}\int\dd{\bV}
+        \pqty{\bV\vdot\bg}e^{-A_{kj}V^2+R_{kj}\bV\vdot\bg}.
+    \end{split}
+\end{equation}
+The center of mass velocity integrals read
+\begin{equation}
+    \begin{split}
+        I_{\bV}^{0,0}(\bu)&=\int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=
+        \pqty{\frac{\pi}{A_{ij}}}^{3/2}\exp\pqty{\frac{R_{ij}^2}{4A_{ij}}\cdot g^2},\\
+        I_{\bV}^{1,0}(\bu)&=\int\dd{\bV}V^2\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=
+        \pqty{\frac{\pi}{A_{ij}}}^{3/2}\frac{1}{A_{ij}}
+        \exp\pqty{\frac{R_{ij}^2}{4A_{ij}}\cdot g^2}
+        \pqty{\frac{R_{ij}^2}{4A_{ij}}\cdot g^2+\frac{3}{2}},\\
+        I_{\bV}^{0,1}(\bu)&=\int\dd{\bV}(\bV\vdot\bg)
+        \exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=
+        \frac{2}{R}\pqty{\frac{\pi}{A_{ij}}}^{3/2}\frac{R_{ij}^2g^2}{4A_{ij}}
+        \exp\pqty{\frac{R_{ij}^2}{4A_{ij}}\cdot g^2}.
+    \end{split}
+\end{equation}
+Using them, we write
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}_f&=\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}\alpha_{ij}\sigma_{ij}^2
+        \int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}
+        \pqty{\frac{R_{ij}^2}{4A_{ij}}\cdot g^2+\frac{3}{2}}e^{-C_{ij}g^2}-\\
+        &-\delta_{k,1}\frac{m_k}{4}
+        \sum_{i,j}(i+j)\gamma_{ij}\pi\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \alpha_{ij}\sigma_{ij}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^5\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^4}e^{-C_{ij}g^2}-\\
+        &-\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}\alpha_{kj}
+        \sigma_{kj}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}
+        \pqty{\frac{R_{kj}^2}{4A_{kj}}\cdot g^2+\frac{3}{2}}e^{-C_{kj}g^2}-\\
+        &-\frac{m_k}{2}\sum_{j}\mu_j^2\cdot4\pi\pqty{\frac{\pi}{A_{kj}}}^{3/2}
+        \alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^5
+        \bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}e^{-C_{kj}g^2}-\\
+        &-\frac{m_k}{2}\sum_{j}2\mu_j\cdot4\pi\frac{2}{R_{kj}}
+        \pqty{\frac{\pi}{A_{kj}}}^{3/2}\frac{R_{kj}^2}{4A_{kj}}\alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^5\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}e^{-C_{kj}g^2}.
+    \end{split}
+\end{equation}
+Opening the brackets, we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}_f&=\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
+        \bqty{\frac{R_{ij}^2}{4A_{ij}}-\frac{\gamma_{ij}A_{ij}}{2}}
+        \alpha_{ij}\sigma_{ij}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^5e^{-C_{ij}g^2}-\\
+        &-\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
+        \bqty{\frac{R_{ij}^2}{4A_{ij}}\ltx{g}{frag}^2-\frac{3}{2}}
+        \alpha_{ij}\sigma_{ij}^2
+        \int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3e^{-C_{ij}g^2}-\\
+        &-\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
+        \bqty{\frac{3}{2}\ltx{g}{frag}^2+\frac{\gamma_{ij}A_{ij}}{2}\ltx{g}{frag}^4}
+        \alpha_{ij}\sigma_{ij}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}ge^{-C_{ij}g^2}-\\
+        &-\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
+        \frac{R_{kj}^2}{4A_{kj}}\alpha_{kj}\sigma_{kj}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^5 e^{-C_{kj}g^2}+\\
+        &+\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
+        \bqty{\frac{R_{kj}^2}{4A_{kj}}\cdot\ltx{g}{frag}^2-\frac{3}{2}}
+        \alpha_{kj}\sigma_{kj}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^3e^{-C_{kj}g^2}+\\
+        &+\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
+        \frac{3}{2}\ltx{g}{frag}^2\alpha_{kj}
+        \sigma_{kj}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}ge^{-C_{kj}g^2}-\\
+        &-\frac{m_k}{2}\sum_{j}\mu_j^2\cdot4\pi\pqty{\frac{\pi}{A_{kj}}}^{3/2}
+        \alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^5e^{-C_{kj}g^2}+\\
+        &+\frac{m_k}{2}\sum_{j}\mu_j^2\cdot4\pi\pqty{\frac{\pi}{A_{kj}}}^{3/2}
+        \ltx{g}{frag}^2\alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3e^{-C_{kj}g^2}-\\
+        &-\frac{m_k}{2}\sum_{j}2\mu_j\cdot4\pi\frac{2}{R_{kj}}
+        \pqty{\frac{\pi}{A_{kj}}}^{3/2}\frac{R_{kj}^2}{4A_{kj}}\alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^5e^{-C_{kj}g^2}+\\
+        &+\frac{m_k}{2}\sum_{j}2\mu_j\cdot4\pi\frac{2}{R_{kj}}
+        \pqty{\frac{\pi}{A_{kj}}}^{3/2}\frac{R_{kj}^2}{4A_{kj}}
+        \ltx{g}{frag}^2\alpha_{kj}\sigma_{kj}^2
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3e^{-C_{kj}g^2}.
+    \end{split}
+\end{equation}
 
 
 
