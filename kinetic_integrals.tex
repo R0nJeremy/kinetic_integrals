@@ -677,7 +677,7 @@ and
 Now, performing the actions of the delta functions, we write
 \begin{equation}
     \begin{split}
-        \avg{\pdv{t}(n_k\psi_k)}_c&=\frac{1}{2}\sum_{i+j=k}\alpha_{ij}\sigma_{ij}^2
+        \avg{\pdv{t}(n_k\psi_k)}_a&=\frac{1}{2}\sum_{i+j=k}\alpha_{ij}\sigma_{ij}^2
         \int\dd{\bg}\dd{\bV}e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}\Theta(\ltx{g}{agg}-g)
         \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}\cdot\psi_k(\bV)-\\
         &-\sum_{j}\alpha_{kj}\sigma_{kj}^2\int\dd{\bg}\dd{\bV}e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}
@@ -685,6 +685,179 @@ Now, performing the actions of the delta functions, we write
         \cdot\psi_k(\bV+\mu_j\bg).
     \end{split}
 \end{equation}
+
+\subsubsection{Number density evolution inegrals for aggregation}
+We put $\psi_k=1$ and solve the integral
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{n_k}{t}}_a&=\frac{1}{2}\sum_{i+j=k}\alpha_{ij}\sigma_{ij}^2
+        \int\dd{\bg}\dd{\bV}e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}\Theta(\ltx{g}{agg}-g)
+        \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}-\\
+        &-\sum_{j}\alpha_{kj}\sigma_{kj}^2\int\dd{\bg}\dd{\bV}e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}
+        \Theta(\ltx{g}{agg}-g)\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}.
+    \end{split}
+\end{equation}
+Both angular integrals are immediately solved as
+\begin{equation}
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}=\pi g,
+\end{equation}
+and we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{n_k}{t}}_a&=\frac{\pi}{2}\sum_{i+j=k}\alpha_{ij}\sigma_{ij}^2
+        \int\dd{\bg}g\exp\pqty{-B_{ij}g^2}\Theta(\ltx{g}{agg}-g)
+        \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}-\\
+        &-\pi\sum_{j}\alpha_{kj}\sigma_{kj}^2\int\dd{\bg}g\exp\pqty{-B_{ij}g^2}\Theta(\ltx{g}{agg}-g)
+        \int\dd{\bV}\exp\pqty{-A_{kj}V^2+R_{kj}\bV\vdot\bg}.
+    \end{split}
+\end{equation}
+The center of mass velocity integrals are solved to be
+\begin{equation}
+    \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=I_{\bV}^{0,0}(\bg)=
+    \pqty{\frac{\pi}{A_{ij}}}^{3/2}\cdot\exp\pqty{\frac{R_{ij}^2}{4A_{ij}}\cdot g^2}.
+\end{equation}
+Defining
+\begin{equation}
+    C_{ij}=\frac{4A_{ij}B_{ij}-R_{ij}^2}{4A_{ij}}=\frac{1}{u_i^2+u_j^2},
+\end{equation}
+we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{n_k}{t}}_a&=2\pi^2\sum_{i+j=k}\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \alpha_{ij}\sigma_{ij}^2\int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-C_{ij}g^2}-\\
+        &-4\pi^2\sum_{j}\pqty{\frac{\pi}{A_{kj}}}^{3/2}\alpha_{kj}\sigma_{kj}^2
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-C_{kj}g^2}.
+    \end{split}
+\end{equation}
+The final incomplete Gaussian integral has an analytic solution
+\begin{equation}
+    \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-C_{ij}g^2}=
+    \frac{1}{2C_{ij}^2}\bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}},
+\end{equation}
+and the number density evolution due to aggregation is given by
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{n_k}{t}}_a&=\pi^2\sum_{i+j=k}\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \frac{\alpha_{ij}}{C_{ij}^2}\sigma_{ij}^2
+        \bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}}-\\
+        &-2\pi^2\sum_{j}\pqty{\frac{\pi}{A_{kj}}}^{3/2}\frac{\alpha_{kj}}{C_{kj}^2}\sigma_{kj}^2
+        \bqty{1-\pqty{1+C_{kj}\ltx{g}{agg}^2}\exp\pqty{-C_{kj}\ltx{g}{agg}^2}}.
+    \end{split}
+\end{equation}
+From simple algebra we have
+\begin{equation}
+    \pi^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}\frac{\alpha_{ij}}{C_{ij}^2}=n_in_j\sqrt{\pi\pqty{u_i^2+u_j^2}},
+\end{equation}
+and we write the final result as
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{n_k}{t}}_a&=\frac{1}{2}\sum_{i+j=k}K_{ij}^{an}n_in_j-n_k\sum_{j}K_{kj}^{an}n_j,\\
+        K_{ij}^{an}&=2\sigma_{ij}^2\sqrt{\pi\pqty{u_i^2+u_j^2}}
+        \bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}}.
+    \end{split}
+\end{equation}
+
+\subsubsection{Temperature evolution inegrals for aggregation}
+For the temperature evolution due to aggregative collisions, we put $\psi_k(\bv_k)=m_kv_k^2/2$, hence
+our collision integrals become
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_k T_k}}_a&=\frac{m_k}{4}\sum_{i+j=k}\pi\alpha_{ij}\sigma_{ij}^2
+        \int\dd{\bg}\dd{\bV}gV^2e^{-A_{ij}V^2-B_{ij}g^2+R_{ij}\bV\vdot\bg}\Theta(\ltx{g}{agg}-g)-\\
+        &-\frac{m_k}{2}\sum_{j}\pi\alpha_{kj}\sigma_{kj}^2\int\dd{\bg}\dd{\bV}
+        \pqty{gV^2+\mu_j^2g^3+2\mu_jg\pqty{\bV\vdot\bg}}
+        e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}\Theta(\ltx{g}{agg}-g),\\
+    \end{split}
+\end{equation}
+where have performed the angular integration. Now, separating integrals over $\bg$ and $\bV$, we write
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_k T_k}}_a&=m_k\sum_{i+j=k}\pi^2\alpha_{ij}\sigma_{ij}^2
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-B_{ij}g^2}
+        \int\dd{\bV}V^2\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}-\\
+        &-2m_k\sum_{j}\pi^2\alpha_{kj}\sigma_{kj}^2
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-B_{kj}g^2}
+        \int\dd{\bV}V^2\exp\pqty{-A_{kj}V^2+R_{kj}\bV\vdot\bg}-\\
+        &-2m_k\sum_{j}\pi^2\alpha_{kj}\sigma_{kj}^2\mu_j^2
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^5\exp\pqty{-B_{kj}g^2}
+        \int\dd{\bV}\exp\pqty{-A_{kj}V^2+R_{kj}\bV\vdot\bg}-\\
+        &-4m_k\sum_{j}\pi^2\alpha_{kj}\sigma_{kj}^2\mu_j
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-B_{kj}g^2}
+        \int\dd{\bV}\pqty{\bV\vdot\bg}\exp\pqty{-A_{kj}V^2+R_{kj}\bV\vdot\bg},
+    \end{split}
+\end{equation}
+or
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_k T_k}}_a&=m_k\sum_{i+j=k}\pi^2\alpha_{ij}\sigma_{ij}^2
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-B_{ij}g^2}\cdot I_{\bV}^{1,0}(\bg)-\\
+        &-2m_k\sum_{j}\pi^2\alpha_{kj}\sigma_{kj}^2
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-B_{kj}g^2}\cdot I_{\bV}^{1,0}(\bg)-\\
+        &-2m_k\sum_{j}\pi^2\alpha_{kj}\sigma_{kj}^2\mu_j^2
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^5\exp\pqty{-B_{kj}g^2}\cdot I_{\bV}^{0,0}(\bg)-\\
+        &-4m_k\sum_{j}\pi^2\alpha_{kj}\sigma_{kj}^2\mu_j
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-B_{kj}g^2}\cdot I_{\bV}^{0,1}(\bg).
+    \end{split}
+\end{equation}
+Putting in the solutions of the center of mass velocity integrals, we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_k T_k}}_a&=m_k\sum_{i+j=k}\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \frac{\pi^2\alpha_{ij}}{A_{ij}}\sigma_{ij}^2
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-C_{ij}g^2}\cdot
+        \pqty{\frac{R_{ij}^2}{4A_{ij}}\cdot g^2+\frac{3}{2}}-\\
+        &-2m_k\sum_{j}\pqty{\frac{\pi}{A_{kj}}}^{3/2}\frac{\pi^2\alpha_{kj}}{A_{kj}}\sigma_{kj}^2
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-C_{kj}g^2}\cdot
+        \pqty{\frac{R_{kj}^2}{4A_{kj}}\cdot g^2+\frac{3}{2}}-\\
+        &-2m_k\sum_{j}\pqty{\frac{\pi}{A_{kj}}}^{3/2}\pi^2\alpha_{kj}\sigma_{kj}^2\mu_j^2
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^5\exp\pqty{-C_{kj}g^2}-\\
+        &-2m_k\sum_{j}\pqty{\frac{\pi}{A_{kj}}}^{3/2}\frac{R_{kj}}{A_{kj}}\pi^2\alpha_{kj}
+        \sigma_{kj}^2\mu_j
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^5\exp\pqty{-C_{kj}g^2},
+    \end{split}
+\end{equation}
+and opening the brackets we write
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_k T_k}}_a&=m_k\sum_{i+j=k}\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \frac{R_{ij}^2}{4A_{ij}^2}\cdot\pi^2\alpha_{ij}\sigma_{ij}^2G^{(5)}_{ij}+\\
+        &+m_k\sum_{i+j=k}\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \frac{3}{2A_{ij}}\cdot\pi^2\alpha_{ij}\sigma_{ij}^2G^{(3)}_{ij}-\\
+        &-2m_k\sum_{j}\pqty{\frac{\pi}{A_{kj}}}^{3/2}
+        \pqty{\frac{R_{kj}}{2A_{kj}}+\mu_j}^2
+        \cdot\pi^2\alpha_{kj}\sigma_{kj}^2G^{(5)}_{kj}-\\
+        &-2m_k\sum_{j}\pqty{\frac{\pi}{A_{kj}}}^{3/2}\frac{3}{2A_{kj}}
+        \cdot\pi^2\alpha_{kj}\sigma_{kj}^2G^{(3)}_{kj},
+    \end{split}
+\end{equation}
+where the incomplete Gaussian integrals have the next solutions
+\begin{equation}
+    \begin{split}
+        G^{(3)}_{ij}(0,\ltx{g}{agg})=\int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-C_{ij}g^2}&=
+        \frac{1}{2C_{ij}^2}\bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}},\\
+        G^{(5)}_{ij}(0,\ltx{g}{agg})=\int_{0}^{\ltx{g}{agg}}\dd{g}g^5\exp\pqty{-C_{ij}g^2}&=\frac{1}{2C_{ij}^3}
+        \bqty{1-\pqty{2+2C_{ij}\ltx{g}{agg}^2+C_{ij}^2\ltx{g}{agg}^4}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}}.\\
+    \end{split}
+\end{equation}
+After some algebraic manipulations, we can rewrite
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_k T_k}}_a&=\frac{1}{2}m_k\sum_{i+j=k}
+        \bqty{\frac{1}{2}K^{aT}_{ij}\bqty{\frac{\mu_iu_i^2-\mu_ju_j^2}{u_i^2+u_j^2}}^2+
+        \frac{3}{4}K^{an}_{ij}\frac{u_i^2u_j^2}{u_i^2+u_j^2}}n_in_j-\\
+        &-m_kn_k\sum_{j}\bqty{\frac{1}{2}K^{aT}_{kj}\pqty{\frac{u_{k}^2}{u_{k}^2+u_{j}^2}}^2+
+        \frac{3}{4}K^{an}_{kj}\frac{u_k^2u_j^2}{u_k^2+u_j^2}}n_j,
+    \end{split}
+\end{equation}
+where
+\begin{equation}
+    \begin{split}
+        K^{an}_{ij}&=4\sigma_{ij}^2C_{ij}^2G^{(3)}_{ij}\sqrt{\pi\pqty{u_i^2+u_j^2}},\\
+        K^{aT}_{ij}&=4\sigma_{ij}^2C_{ij}^2G^{(5)}_{ij}\sqrt{\pi\pqty{u_i^2+u_j^2}}.
+    \end{split}
+\end{equation}
+
+
 
 \subsection{Restitution terms of the collision integrals}
 The collision integrals for the restitutive terms read
@@ -697,7 +870,35 @@ The collision integrals for the restitutive terms read
     \end{split}
 \end{equation}
 where $\Delta\psi_k$ is the change of the physical value $\psi_k$ due to a single
-restitutive collision.
+restitutive collision. For the restitutive type of collisions, the number densities do not
+change, since $\Delta(n_k)=0$. Hence we have only the temperature evolution term
+\subsubsection{Temperature evolution inegrals for restitution}
+Putting $\psi_k(\bv_k)=m_kv_k^2/2$, we have
+\begin{equation}
+    \avg{\pdv{t}\pqty{\frac{3}{2}n_k T_k}}_r=-\frac{1+\eps}{2}m_kn_k
+    \sum_{j}\frac{\mu_jR_{kj}}{A_{kj}^2}F_{kj}\cdot n_j-
+    \frac{1-\eps^2}{2}m_kn_k\sum_{j}\frac{\mu_j^2}{A_{kj}}F_{kj}\cdot n_j,
+\end{equation}
+where
+\begin{equation}
+    F_{kj}=2\sigma_{kj}^2C_{kj}^2\sqrt{\pi\pqty{u_i^2+u_j^2}}
+    \pqty{A_{kj}\ltx{g}{frag}^4G^{(1)}_{kj}(\ltx{g}{frag},\infty)+
+    A_{kj}G^{(5)}_{kj}(\ltx{g}{agg},\ltx{g}{frag})},
+\end{equation}
+where
+\begin{equation}
+    \begin{split}
+        G^{(1)}_{kj}(\ltx{g}{frag},\infty)&=
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g\exp\pqty{-C_{kj}g^2}=
+        \frac{1}{2C_{kj}^2}\exp\pqty{-C_{kj}\ltx{g}{frag}^2},\\
+        G^{(5)}_{kj}(\ltx{g}{agg},\ltx{g}{frag})&=
+        \int_{\ltx{g}{agg}}^{\ltx{g}{frag}}\dd{g}g^5\exp\pqty{-C_{kj}g^2}=\\
+        &=\frac{1}{2C_{kj}^3}\bqty{\pqty{2+2C_{kj}\ltx{g}{agg}^2+C_{kj}^2\ltx{g}{agg}^4}
+        \exp\pqty{-C_{kj}\ltx{g}{agg}^2}-
+        \pqty{2+2C_{kj}\ltx{g}{frag}^2+C_{kj}^2\ltx{g}{frag}^4}
+        \exp\pqty{-C_{kj}\ltx{g}{frag}^2}}.
+    \end{split}
+\end{equation}
 
 \subsection{Fragmentation terms of the collision integrals}
 The fragmentative terms of the collision integral reads
