@@ -3,6 +3,593 @@
 \usepackage{tikz}
 
 \begin{document}
+\section{The mechanics of binary interactions}
+Our system comprises an infinite number of mechanically identical, spherical particles
+known as monomers. These particles have masses $m_1$ and radii $R_1$. When two
+monomers collide, they lose a certain amount of impact energy and rebound with a
+coefficient of restitution $\eps$. If the impact energy is below a specific threshold
+value $\ltx{E}{imp}\leqslant\ltx{E}{agg}$, the monomers stick together due to surface
+forces like van der Waals forces, forming a larger aggregate particle with mass $m_2$
+and radius $R_2$. This process is known as \emph{aggregation} and allows the creation
+of larger particles from individual monomers. A particle of mass $m_k$ is an aggregate
+of $k$ monomers, hence $m_k=k\cdot m_1$. We assume that the aggregates remain
+spherically shaped, and their radii scale as $R_k\sim m_k^{1/3}\sim k^{1/3}$.
+
+Conversely, there is another mechanism called \emph{fragmentation} that decreases the
+sizes of aggregates. If the impact energy is higher than a certain threshold value
+$\ltx{E}{imp}\geqslant\ltx{E}{frag}$, the colliding aggregates break into smaller pieces.
+The size distribution of the fragmented pieces are difficult to model analytically, and
+in this work we assume a simplistic model of fragmentation, called \emph{shattering}.
+When two aggregates of masses $m_i$ and $m_j$ collide with a sufficient energy, both
+of them shatter into singular monomers, $m_i\to i\cdot m_1$ and $m_j\to j\cdot m_1$.
+
+\subsection{Generalized collisions}
+Let us consider a collision of particles of masses $m_i$, $m_j$ and
+velocities $\bv_i$, $\bv_j$, and radii $R_i$, $R,j$. The collision geometry is
+characterized by the unit vector $\bn$, which is directed from the center of particle
+$j$ to the center of particle $i$ at the moment of contact of two particles
+\begin{equation}
+    \bn=\frac{\br_i-\br_j}{R_i+R_j},
+\end{equation}
+where $\br_i$ and $\br_j$ are position vectors of the particles. The next parameter
+which describes the collision, is the \emph{restitution coefficient}
+$0\leqslant\eps\leqslant 1$. This parameter controls the amount of energy dissipated
+after the collision. The total energy of this binary system, can be split into two parts,
+the translational energy and the internal energy
+\begin{equation}
+    E=\ltx{E}{translation}+\ltx{E}{internal}=\frac{MV^2}{2}+\frac{\mu g^2}{2},
+\end{equation}
+where
+\begin{equation}
+    \begin{split}
+        &\bV=\mu_i\bv_i+\mu_j\bv_j,\quad\bg=\bv_i-\bv_j,\\
+        &M=m_i+m_j,\quad\mu=\frac{m_im_j}{m_i+m_j},\\
+        &\mu_i=\frac{m_i}{m_i+m_j},\quad\mu_j=\frac{m_j}{m_i+m_j}.
+    \end{split}
+\end{equation}
+The translational energy does not change after the collision, but the internal part
+dissipates. Using $\bn$, we can split the relative velocity into normal and tangential
+parts
+\begin{equation}
+    \bg_n=\pqty{\bg\vdot\bn}\bn,\quad\bg_t=\bg-\bg_n,
+\end{equation}
+and write the total energy as
+\begin{equation}
+    E=\frac{MV^2}{2}+\frac{\mu g_t^2}{2}+\frac{\mu g_n^2}{2}.
+\end{equation}
+Now, we can write the post-collision total energy $E'$ as
+\begin{equation}
+    E'=\frac{MV^2}{2}+\frac{\mu g_t^2}{2}+\eps^2\frac{\mu g_n^2}{2},
+\end{equation}
+where only the normal part of the internal energy dissipates.
+
+In the most general case, we assume that
+the outcome of the collision is a collection of particles with various masses and
+velocities. Introducing the function $P_k\pqty{\bv_k\vert\bv_i,\bv_j}$, which is the number of
+particles of mass $m_k$ and velocity $\bv_k$ created after the collision of particles with
+velocities $\bv_i$ and $\bv_j$ and sizes $i,j$,
+or in other words, introducing the velocity distribution function of the particles of
+mass $m_k$. Using this distribution function, we can write the total mass, momentum and
+energy of particles in the outcome of the generalized collision
+\begin{equation}
+    \begin{split}
+        M &= \sum_{k=1}^{i+j}\int\dd{\bv}m_kP_k\pqty{\bv_k\vert\bv_i,\bv_j},\\
+        M\bV &= \sum_{k=1}^{i+j}\int\dd{\bv}m_k\bv P_k\pqty{\bv_k\vert\bv_i,\bv_j},\\
+        \frac{MV^2}{2}+\frac{\mu g_t^2}{2}+\eps^2\frac{\mu g_n^2}{2} &=
+        \sum_{k=1}^{i+j}\int\dd{\bv}\frac{m_kv^2}{2}P_k\pqty{\bv_k\vert\bv_i,\bv_j}.
+    \end{split}
+\end{equation}
+
+\subsection{Restitution}
+For a restitutive rebound of particles, the outcome velocities are analytic and given by
+\begin{equation}
+    \begin{split}
+        \bv_i'&=\bv_i-\mu_j\pqty{1+\eps}\bg_n,\\
+        \bv_j'&=\bv_j+\mu_i\pqty{1+\eps}\bg_n,
+    \end{split}
+\end{equation}
+Let us write the distribution function $P_k\pqty{\bv}$ for the restitutive collision.
+First of all, the masses of impacting particles do not change, hence the distribution
+function should contain $\delta$-functions to control this. Together with the analytic
+expression for the outcome velocities, we can write
+\begin{equation}
+    \utx{P_k}{res}\pqty{\bv_k\vert\bv_i,\bv_j}=
+    \delta_{k,i}\delta\bqty{\bv_k-\bv_i+\mu_j\pqty{1+\eps}\bg_n}+
+    \delta_{k,j}\delta\bqty{\bv_k-\bv_j-\mu_i\pqty{1+\eps}\bg_n}.
+\end{equation}
+The $\delta_{k,x}$ is a Kronecker-delta operator.
+
+\subsection{Aggregation}
+If the impact energy is smaller than a certain threshold
+$\ltx{E}{imp}\leqslant\ltx{E}{agg}$, the outcome of the collision is merging of two
+particles. From the momentum conservation we can write the outcome of the aggregative
+collision, which is a single particle with a mass and velocity
+\begin{equation}
+    m'=m_i+m_j\qquad\bv'=\bV=\frac{m_i\bv_i+m_j\bv_j}{m_i+m_j}.
+\end{equation}
+The total energy loss is
+\begin{equation}
+    \Delta E=\frac{MV^2}{2}-\frac{m_iv_i^2}{2}-\frac{m_jv_j^2}{2}
+    =-\frac{\mu g^2}{2}=-\ltx{E}{internal},
+\end{equation}
+so, all the internal energy is lost during the aggregative collision.
+The threshold energy value $\ltx{E}{agg}$ is in general a function of the sizes of
+particles.
+
+Let us write the debris velocity distribution function for the aggregation process.
+Since the outcome is a single particle of mass $m_i+m_j$, with velocity $\bV$, we have
+\begin{equation}
+    \utx{P_k}{agg}\pqty{\bv_k\vert\bv_i,\bv_j}=\delta_{k,i+j}
+    \delta\bqty{\bv_k-\mu_i\bv_i-\mu_j\bv_j}.
+\end{equation}
+
+
+\subsection{Fragmentation}
+If the impact energy exceeds the certain threshold value
+$\ltx{E}{imp}\geqslant\ltx{E}{frag}$, the two impactors break into into smaller
+particles in the collision.
+We cannot obtain the velocities of the monomers from only conservation laws, hence
+we have to assume that certain constraints are valid. Namely, we assume two
+constraints:
+\begin{enumerate}
+    \item Both particles shatter into their constituent monomers;
+    \item Complete isotropy of the momenta of the monomers in CoM frame;
+\end{enumerate}
+These two constraints allow us to write the outcome velocities of the fragmented pieces.
+Let us write the energy needed to release a single monomer from a particle as $\gamma$.
+Hence, the total energy needed for a complete decomposition of an aggregate of mass $m_k$
+can be estimated as
+\begin{equation}
+    E_k = \gamma\cdot k.
+\end{equation}
+The fragmentation process of two particles of masses $m_i$ and $m_j$, with velocities
+$\bv_i$ and $\bv_j$ can be then described as a decay of a single particle of mass
+$m_k=m_i+m_j$ with velocity $\bv_k=\bV=\mu_i\bv_i+\mu_j\bv_j$. The decay energy can
+be estimated as
+\begin{equation}
+    \ltx{E}{decay}=\ltx{E}{imp}-\gamma\cdot k,
+\end{equation}
+which is the amount of energy which is equally distributed among all the shattered
+monomers. From this, we can see that the impact energy should be larger than
+$\gamma\cdot k$, which can be treated as the threshold energy. Since the impact energy
+is the normal part of the internal energy, we can write
+\begin{equation}
+    \ltx{E}{decay}=\frac{\mu g_n^2}{2}-\gamma\cdot k=\eps^2\frac{\mu g_n^2}{2},
+\end{equation}
+and the restitution coefficient for the fragmentation is
+\begin{equation}
+    \eps=\sqrt{1-\frac{2\gamma k}{\mu g_n^2}}.
+\end{equation}
+Since the decay energy has to be positive, we can write the threshold value for the
+normal relative velocity as
+\begin{equation}
+    g_n\geqslant\sqrt{\frac{2\gamma k}{\mu}}=
+    \sqrt{\frac{2\gamma}{m_1}}\cdot\frac{i+j}{\sqrt{ij}}.
+\end{equation}
+In the CoM frame, each released monomer has an energy
+\begin{equation}
+    E'_{c}=\frac{m_1v'^2_{c}}{2}=\frac{\ltx{E}{decay}}{k}=\eps^2\frac{\mu g_n^2}{2k},
+\end{equation}
+where $v'_{c}$ is the speed of a monomer in CoM frame
+\begin{equation}
+    v'_{c}=\frac{\sqrt{ij}}{i+j}\cdot\eps g_n.
+\end{equation}
+
+Let us estimate the number of monomers $\dd{N}$ in a small solid angle $\dd{\Omega}$.
+From the second constraint, we deduce that this number has to be proportional to the
+angle itself, hence
+\begin{equation}
+    \dd{N}=\frac{k}{4\pi}\dd{\Omega},\qquad k=i+j.
+\end{equation}
+
+In the Lab frame, the speeds of monomers are not equal, but rather uniformly
+distribution in the range
+\begin{equation}
+    \lmin{v'}=V-v'_c,\qquad\lmax{v'}=V+v'_c.
+\end{equation}
+
+Since the fragmented debris consist of only monomers, the distribution function
+$P_k\pqty{\bv_k\vert\bv_i,\bv_j}$ has to contain the term $\delta_{k,1}$.
+In the CoM frame, we can write
+\begin{equation}
+    \utx{P_k}{frag, CoM}\pqty{\bv_k\vert\bv_i,\bv_j}=
+    \delta_{k,1}\delta\pqty{v_k-v'_c}\frac{i+j}{4\pi}.
+\end{equation}
+In this case, the integral of any velocity function $\varphi\pqty{\bv_k}$ in the form of
+\begin{equation}
+    \int\dd{\bv_k}\varphi\pqty{\bv_k}\utx{P_k}{frag,CoM}\pqty{\bv_k\vert\bv_i,\bv_j}=
+    \delta_{k,1}\frac{i+j}{4\pi}\int\dd{\bv_k}\varphi\pqty{\bv_k}\delta\pqty{v_k-v'_c},
+\end{equation}
+can be written as
+\begin{equation}
+    \delta_{k,1}\frac{i+j}{4\pi}\int\dd{\be}
+    \int_{0}^{\infty}\dd{v}\varphi\pqty{v,\be}\delta\pqty{v-v'_c}=
+    \delta_{k,1}\frac{i+j}{4\pi}\int\dd{\be}\varphi\pqty{v'_c,\be}.
+\end{equation}
+If $\varphi\pqty{\bv}\equiv\varphi\pqty{v,\be}=\be\varphi\pqty{v}$, such as $\bv=v\be$,
+then
+\begin{equation}
+    \int\dd{\be}\be\varphi\pqty{v}=\bnull.
+\end{equation}
+If $\varphi\pqty{\bv}\equiv\varphi\pqty{v,\be}=\varphi\pqty{v}$, then
+\begin{equation}
+    \int\dd{\be}\varphi\pqty{v}=4\pi\varphi\pqty{v}.
+\end{equation}
+
+To write the debris velocity distribution function in the Lab frame, we have to
+add the center of mass velocity to all the velocities of the monomers. This can be
+written as
+\begin{equation}
+    \utx{P_k}{frag}\pqty{\bv_k\vert\bv_i,\bv_j}=
+    \delta_{k,1}\frac{i+j}{4\pi}\int\dd{\be}\delta\pqty{\bv_k-\bV-v'_c\be}.
+\end{equation}
+Now, integrating over a function $\varphi\pqty{\bv_k}$ becomes
+\begin{equation}
+    \delta_{k,1}\frac{i+j}{4\pi}\int\dd{\be}\int\dd{\bv_k}\varphi\pqty{\bv_k}
+    \delta\pqty{\bv_k-\bV-v'_c\be}=
+    \delta_{k,1}\frac{i+j}{4\pi}\int\dd{\be}\varphi\pqty{\bV-v'_c\be}.
+\end{equation}
+If $\varphi\pqty{\bV-v'_c\be}=\varphi\pqty{\bV}-\be\varphi\pqty{v'_c}$, then
+we have
+\begin{equation}
+    \delta_{k,1}\frac{i+j}{4\pi}\int\dd{\be}\int\dd{\bv}\varphi\pqty{\bv}
+    \delta\pqty{\bv-\bV-v'_c\be}=\delta_{k,1}\pqty{i+j}\varphi\pqty{\bV}.
+\end{equation}
+
+
+\section{Distribution function}
+The statistical description of the system is fully described by a set of distribution
+functions $f_k\pqty{\br,\bv,t}$. It is normalized, such that
+$f_k\pqty{\br,\bv,t}\dd{\br}\dd{\bv}$ gives the number of particles of size $k$
+in the phase space volume $\dd{\Gamma}=\dd{\br}\dd{\bv}$, around the point
+$\pqty{\br,\bv}$. Hence, integrating over the whole phase space gives us the total
+number of particles of size $k$
+\begin{equation}
+    N_k=\int\dd{\br}\dd{\bv}f_k\pqty{\br,\bv,t}.
+\end{equation}
+The spacial distribution of particles is not very important for us, hence in the following
+we assume that the system is spatially homogeneous, and we use only the velocity
+distribution function $f_k\pqty{\bv,t}$
+\begin{equation}
+    N_k=\int\dd{\br}\int\dd{\bv}f_k\pqty{\bv,t},
+\end{equation}
+hence
+\begin{equation}
+    n_k\equiv\frac{N_k}{V}=\int\dd{\bv}f_k\pqty{\bv,t},
+\end{equation}
+is the number density of the subsystem of particles with size $k$. The other field
+functions, such as the mean flow velocity $\bu_k$ or granular temperature $T_k$
+can be defined as velocity moments of the distribution function
+\begin{equation}
+    \begin{split}
+        n_k\bu_k &= \int\dd{\bv}\bv f_k\pqty{\bv,t},\\
+        \frac{3}{2}n_kT_k &=\int\dd{\bv}\frac{m_kc_k^2}{2}f_k\pqty{\bv,t},\\
+        \bc_k &= \bv-\bu_k.
+    \end{split}
+\end{equation}
+
+\section{Kinetic equations}
+The time evolution of the distribution functions obey the Boltzmann equations
+\begin{equation}\label{eq:kinetic_equation_generic}
+    \pqty{\pdv{t}+\bv\vdot\pdv{\br}-\frac{1}{m_k}\pdv{U(r)}{\br}\vdot\pdv{\bv}}
+    f_k\pqty{\br,\bv,t}=\mathcal{I}_k\pqty{f_i,f_j},
+\end{equation}
+where $U(r)$ is the potential of the external gravitational field. The LHS
+of the Boltzmann equation describes the change over time in the function $f_k$ due to the
+local flow of the particles, subject to external driving. The function
+$\mathcal{I}\pqty{f_i,f_j}$ on the RHS is the \emph{collision integral}, which
+describes the change over time in the function $f_k$ due to collisions of particles $i$
+with particles of size $j$. Since we have three types of collisional outcomes, the
+collision integral $\mathcal{I}$ has to take into account all these types of outcomes.
+Without the loss of generality, we can write the collision integral as a sum of three
+functions
+\begin{equation}
+    \mathcal{I}_k\pqty{f_i,f_j}=\utx{\mathcal{I}_k}{agg}\pqty{f_i,f_j}+
+    \utx{\mathcal{I}_k}{res}\pqty{f_i,f_j}+\utx{\mathcal{I}_k}{frag}\pqty{f_i,f_j},
+\end{equation}
+each corresponding to the specific type of collision.
+
+\subsection{General structure of collision integrals}
+Let us consider a collision integral $\mathcal{J}\pqty{f_i,f_j}$ for a generalized
+collision. If we consider a small volume in the phase space $\dd{\Gamma}$
+around a point $\pqty{\br,\bv}$, the term $f_i\pqty{\br,\bv,t}\dd{\Gamma}$ gives us
+the number of particles of size $i$ in that volume at time $t$. The collision integral
+shows how many particles leave and enter this phase space volume per unit time, due
+to collisions only. So, the collision integral contains two terms, the gain term, which
+shows the number of particles that enter the phase space volume per unit time, and the
+loss terms, which shows the number of particles that leave this phase space volume per
+unit time
+\begin{equation}
+    \mathcal{J}_k\pqty{f_i,f_j}=\mathcal{G}_k\pqty{f_i,f_j}-\mathcal{L}_k\pqty{f_i,f_j}.
+\end{equation}
+
+These terms are proportional to the number of collisions happening in unit volume per unit
+time. Estimation of the number of collisions between the particles of sizes $i$ and $j$
+gives us
+\begin{equation}
+    \utx{\dd{N}}{cols}_{ij}=\sigma_{ij}^2\dd{\bv_i}\dd{\bv_j}\int\dd{\bn}
+    \Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}f_i\pqty{\bv_i,t}f_j\pqty{\bv_j,t}.
+\end{equation}
+Now, integrating over all possible pairs of velocities and mass combinations, we can write
+the gain and loss terms as
+\begin{equation}
+    \begin{split}
+        \mathcal{G}_k\pqty{f_i,f_j}&=\sum_{i,j}\sigma_{ij}^2\int\dd{\bv_i}\dd{\bv_j}
+        \int\dd{\Omega}P_k\pqty{\bv_k\vert\bv_i,\bv_j}f_i\pqty{\bv_i,t}f_j\pqty{\bv_j,t},\\
+        \mathcal{L}_k\pqty{f_i,f_j}&=\sum_{i,j}\sigma_{ij}^2\int\dd{\bv_i}\dd{\bv_j}
+        \int\dd{\Omega}\delta_{k,i}\delta\pqty{\bv_i-\bv_k}f_i\pqty{\bv_i,t}f_j\pqty{\bv_j,t}.
+    \end{split}
+\end{equation}
+The delta functions in the loss term make sure that one of the collision partners is always
+the considered particle of size $k$ and velocity $\bv_k$. Now, the collision integral for a
+general type of collision is written as
+\begin{equation}
+    \mathcal{I}_k\pqty{f_i,f_j}=\sum_{i,j}\sigma_{ij}^2\int\dd{\bv_i}\dd{\bv_j}\int\dd{\Omega}
+    \bqty{P_k\pqty{\bv_k\vert\bv_i,\bv_j}-\delta_{k,i}\delta\pqty{\bv_i-\bv_k}}f_if_j,
+\end{equation}
+where
+\begin{equation}
+    \dd{\Omega}=\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn},\quad\bg=\bv_i-\bv_j.
+\end{equation}
+
+For specific types of collisions, e.g. aggregation, fragmentation, restitution, we have
+to make sure that the integration domains are specified as well. Usually, this domains are
+the function of the relative velocity $\mathcal{D}(\bg)$. Hence, the specific collision
+integrals are written as
+\begin{equation}
+    \utx{\mathcal{I}_k}{type}\pqty{f_i,f_j}=\sum_{i,j}\sigma_{ij}^2\int\dd{\bv_i}\dd{\bv_j}
+    \utx{\mathcal{D}}{type}(\bg)\int\dd{\Omega}\bqty{\utx{P_k}{type}
+        \pqty{\bv_k\vert\bv_i,\bv_j}-\delta_{k,i}\delta\pqty{\bv_i-\bv_k}}f_if_j,
+\end{equation}
+where \emph{type} can be aggregation, fragmentation or restitution.
+
+\section{Hydrodynamic equations}
+Using the kinetic equations, we can construct the balance equations for macroscopic or
+hydrodynamic fields. Namely, we focus on three of them, the number density fields
+$\Bqty{n_k\pqty{\br,t}}$, the mean velocity field $\bu_k=\bu\pqty{\br,t}$, and the temperature
+fields $\Bqty{T_k\pqty{\br,t}}$. All these fields can be defined as certain moments of the
+distribution function $f_k\pqty{\bv, \br,t}$
+\begin{equation}
+    \begin{split}
+        n_k\pqty{\br,t} &= \int\dd{\bv} f_k\pqty{\bv,\br,t},\\
+        n_k\bu_k\pqty{\br,t} &= \int\dd{\bv} \bv f_k\pqty{\bv,\br,t},\\
+        \frac{3}{2}n_kT_k\pqty{\br,t} &= \int\dd{\bv}\frac{m_kc_k^2}{2}f_k\pqty{\bv,\br,t},\\
+        \bc_k\pqty{\br,t} &= \bv - \bu_k\pqty{\br,t}.
+    \end{split}
+\end{equation}
+Also, we introduce the momentum flux (pressure tensor) and heat flux terms as
+\begin{equation}
+    \begin{split}
+        \bP_k\pqty{\br,t} &= \int\dd{\bv}m_k\bc_k\bc_kf_k\pqty{\br,\bv,t},\\
+        \bq_k\pqty{\br,t} &= \int\dd{\bv}\frac{m_kc_k^2}{2}\bc_kf_k\pqty{\br,\bv,t}.
+    \end{split}
+\end{equation}
+Here, the notation with two vectors next to each other $\bc\bc$ denote a dyadic tensor, while
+$\bc\vdot\bc$ is a dot product.
+
+We can write the mean field equations, by averaging the parameters over all ensembles $k$.
+\begin{equation}
+    \begin{split}
+        n\pqty{\br,t} &= \sum_kn_k\pqty{\br,t}=const,\\
+        n\bu\pqty{\br,t} &= \sum_kn_k\bu_k\pqty{\br,t},\\
+        nT\pqty{\br,t} &= \sum_kn_kT_k\pqty{\br,t}.
+    \end{split}
+\end{equation}
+
+Since the total mass of the entire system is constant $n\pqty{\br,t}=const$, we need a more
+informative parameter to describe the dynamics of the mean mass of the system. We can use the
+squared number density as a more informative parameter
+\begin{equation}
+    \bar{n}\pqty{\br,t}=\frac{1}{n\pqty{\br,t}}\sum_kn_k^2\pqty{\br,t}.
+\end{equation}
+In the following, we normalize the total number density as one $n\pqty{\br,t}=1$ for the sake
+of brevity. The hydrodynamic balance equations can be obtained by multiplying the kinetic
+equation with specific functions and integrating over the velocities.
+
+\subsection{Balance equations}
+Let us take a certain function of the velocity $\psi_k(\bv)$, which describe a specific physical
+characteristics of the system. We can multiply the kinetic equation (\ref{eq:kinetic_equation_generic})
+by this function, and integrate over the velocity
+\begin{equation}
+    \int\dd{\bv}\pqty{\pdv{t}+\bv\vdot\pdv{\br}+\bw\vdot\pdv{\bv}}
+    \psi_k(\bv)f_k\pqty{\br,\bv,t}=\int\dd{\bv}\mathcal{I}_k\pqty{f_i,f_j}\psi_k(\bv),
+\end{equation}
+where
+\begin{equation}
+    \bw = -\frac{1}{m_k}\pdv{U(r)}{\br}.
+\end{equation}
+The RHS of this equation can be written as a difference of gain and loss terms, without a loss
+of generality
+\begin{equation}
+    \int\dd{\bv}\mathcal{I}_k\pqty{f_i,f_j}\psi_k(\bv)=\mathcal{G}(\psi_k)-\mathcal{L}(\psi_k)=
+    \ltx{\avg{\pdv{t}\pqty{n_k\psi_k}}}{coll},
+\end{equation}
+where the exact forms of the gain and loss functions are obtained only after specifying the
+distribution function $f_k\pqty{\br,\bv,t}$. If the physical characteristic specified by the function
+$\psi_k(\bv)$ is conserved after a collision, the gain and loss terms are identical and the RHS
+vanish. The piece by piece integration gives us the next generalized form for balance equations
+of the physical value $\psi_k(\bv)$
+\begin{equation}
+    \pdv{t}\int\dd{\bv}\psi_k\pqty{\ib{v}}f_k+
+    \pdv{\ia{r}}\int\dd{\bv}\psi_k\pqty{\ib{v}}\ia{v}f_k-
+    \ib{w}\int\dd{\bv}\pdv{\psi_k\pqty{\ia{v}}}{\ia{v}}f_k=
+    \ltx{\avg{\pdv{t}\pqty{n_k\psi_k}}}{coll},
+\end{equation}
+where we use the index notation forms, and greek letters $\alpha,\beta,\gamma$ denote the
+coordinate indices. Also, we invoke the summation notation convention for the repeated indices.
+By plugging in the functions $\psi_k=m_k$, $\psi_k=m_k\ib{v}$ and $\psi_k=m_kv^2/2$, we obtain
+the balance equations for the mass density, momentum density and energy density
+\begin{equation}
+    \begin{split}
+        \pdv{\rho_k}{t}+\pdv{\ia{r}}\pqty{\rho_k\ia{u}} &=\ltx{\avg{\pdv{\rho_k}{t}}}{coll},\\
+        \rho_k\pdv{\ib{u}}{t}+\rho_k\ia{u}\pdv{\ib{u}}{\ia{r}}+\pdv{\iab{P}}{\ia{r}}&=
+        \rho_k\ib{w}-\ib{u}\ltx{\avg{\pdv{\rho_k}{t}}}{coll},\\
+        \pdv{t}\pqty{\frac{3}{2}n_kT_k}+\pdv{\ia{r}}\pqty{\frac{3}{2}n_kT_k\ib{u}}+
+        \pdv{\ia{q}}{\ia{r}}+\iab{P}\pdv{\ib{u}}{\ia{r}}&=
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}}{coll}+
+        \frac{u^2}{2}\ltx{\avg{\pdv{\rho_k}{t}}}{coll}.
+    \end{split}
+\end{equation}
+
+To proceed further, we assume certain condition in our system. First condition is that the
+mass density and temperature fields are homogeneous in space, hence their gradients vanish.
+This also implies that the heat flux is absent. Second condition is that the mean velocity
+field is stationary but has a steady spacial gradient. These conditions give us
+\begin{equation}
+    \pdv{\rho_k}{\ia{r}}=\bnull,\quad\pdv{T_k}{\ia{r}}=\bnull,\quad\ia{q}=\bnull.
+    \quad\pdv{\ia{u}}{t}=0,
+\end{equation}
+
+Using these conditions, our balance equations simplify into
+\begin{equation}
+    \begin{split}
+        \pdv{\rho_k}{t}+\rho_k\pdv{\ia{u}}{\ia{r}} &=\ltx{\avg{\pdv{\rho_k}{t}}}{coll},\\
+        \rho_k\ia{u}\pdv{\ib{u}}{\ia{r}}+\pdv{\iab{P}}{\ia{r}}&=
+        \rho_k\ib{w}-\ib{u}\ltx{\avg{\pdv{\rho_k}{t}}}{coll},\\
+        \pdv{t}\pqty{\frac{3}{2}n_kT_k}+\frac{3}{2}n_kT_k\pdv{\ia{u}}{\ia{r}}+
+        \iab{P}\pdv{\ib{u}}{\ia{r}}&=
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}}{coll}+
+        \frac{u^2}{2}\ltx{\avg{\pdv{\rho_k}{t}}}{coll}.
+    \end{split}
+\end{equation}
+
+Next, we can assume a zero divergence mean velocity field, which yields the balance
+equations in the next form
+\begin{equation}
+    \begin{split}
+        \pdv{\rho_k}{t} &= \ltx{\avg{\pdv{\rho_k}{t}}}{coll},\\
+        \pdv{t}\pqty{\frac{3}{2}n_kT_k} &= -\iab{P}\pdv{\ib{u}}{\ia{r}}+
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}}{coll}+
+        \frac{u^2}{2}\ltx{\avg{\pdv{\rho_k}{t}}}{coll}.
+    \end{split}
+\end{equation}
+To close the balance equations, we have to write the pressure tensor in terms of the macroscopic
+fields $\rho_k$, $\bu$ and $T_k$. In the simplest form, we can write the empirical dependence
+\begin{equation}
+    \iab{P} = p\iab{\delta}-\eta\pqty{\pdv{\ia{u}}{\ib{r}}+\pdv{\ib{u}}{\ia{r}}
+        -\frac{2}{3}\iab{\delta}\pdv{\ig{u}}{\ig{r}}},
+\end{equation}
+where $p$ is the hydrostatic pressure and $\eta$ is the shear viscosity coefficient. It is shown
+that the hydrostatic pressure depends on the granular temperature through the equation of state
+\begin{equation}
+    p = nT\pqty{1+\frac{1+\eps}{3}\pi n\sigma^{3}g_2\pqty{\sigma}}.
+\end{equation}
+Writing a similar form for te polydisperse system, and assuming the zero divergence mean velocity
+field, we have for the pressure tensor
+\begin{equation}
+    \iab{P}=n_kT_k(1+\phi_k)\iab{\delta}-\eta\pqty{\pdv{\ia{u}}{\ib{r}}+\pdv{\ib{u}}{\ia{r}}},
+\end{equation}
+and write the final form of the balance equations as
+\begin{equation}
+    \begin{split}
+        \pdv{n_k}{t} &= \ltx{\avg{\pdv{n_k}{t}}}{coll},\\
+        \pdv{t}\pqty{\frac{3}{2}n_kT_k} &=
+        \eta_k\bqty{\pdv{\ia{u}}{\ib{r}}\pdv{\ib{u}}{\ia{r}}+\pdv{\ib{u}}{\ia{r}}\pdv{\ib{u}}{\ia{r}}}+
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}}{coll}+
+        \frac{m_ku^2}{2}\ltx{\avg{\pdv{n_k}{t}}}{coll}.
+    \end{split}
+\end{equation}
+Here we used
+\begin{equation}
+    \iab{\delta}\pdv{\ib{u}}{\ia{r}}=\pdv{\ia{u}}{\ia{r}}=0.
+\end{equation}
+Since
+\begin{equation}
+    \pdv{t}\pqty{\frac{3}{2}n_kT_k}=\frac{3}{2}n_k\pdv{T_k}{t}+
+    \frac{3}{2}T_k\pdv{n_k}{t}=\frac{3}{2}n_k\pdv{T_k}{t}+
+    \frac{3}{2}T_k\ltx{\avg{\pdv{n_k}{t}}}{coll},
+\end{equation}
+we can rewrite the hydrodynamic balance equations as
+\begin{equation}
+    \begin{split}
+        \pdv{n_k}{t} &= \ltx{\avg{\pdv{n_k}{t}}}{coll},\\
+        \frac{3}{2}n_k\pdv{T_k}{t} &=
+        \eta_k\bqty{\pdv{\ia{u}}{\ib{r}}\pdv{\ib{u}}{\ia{r}}+
+            \pdv{\ib{u}}{\ia{r}}\pdv{\ib{u}}{\ia{r}}}+
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}}{coll}+
+        \pqty{\frac{m_ku^2}{2}-\frac{3T_k}{2}}\ltx{\avg{\pdv{n_k}{t}}}{coll}.
+    \end{split}
+\end{equation}
+
+The mean velocity field in the ring environment is expressed as
+\begin{equation}
+    \bu = -\frac{3}{2}\Omega x\be_y,
+\end{equation}
+in the local Hill's box, $\Omega$ is the orbital speed.
+Hence, the velocity gradients tensor has a single non-zero term
+\begin{equation}
+    \pdv{u_y}{x}=-\frac{3}{2}\Omega,
+\end{equation}
+which means that
+\begin{equation}
+    \pdv{\ia{u}}{\ib{r}}\pdv{\ib{u}}{\ia{r}}+\pdv{\ib{u}}{\ia{r}}\pdv{\ib{u}}{\ia{r}}=
+    \frac{9}{2}\Omega^2.
+\end{equation}
+Now, we write our balance equations as
+\begin{equation}
+    \begin{split}
+        \pdv{n_k}{t} &= \ltx{\avg{\pdv{n_k}{t}}}{coll},\\
+        \frac{3}{2}n_k\pdv{T_k}{t} &=
+        \frac{9}{2}\Omega^2\eta_k+
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}}{coll}+
+        \pqty{\frac{m_ku^2}{2}-\frac{3T_k}{2}}\ltx{\avg{\pdv{n_k}{t}}}{coll}.
+    \end{split}
+\end{equation}
+where
+\begin{equation}
+    \begin{split}
+        \ltx{\avg{\pdv{n_k}{t}}}{coll}&=\frac{1}{2}\sum_{i+j=k}K_{ij}^{an}n_in_j
+        +\delta_{k,1}\sum_{i,j}(i+j)K^{fn}_{ij}n_in_j-n_k\sum_{j}
+        \pqty{K_{kj}^{an}+K^{fn}_{kj}}n_j,\\
+        K_{ij}^{an}&=\nu_{ij}\bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}
+        \exp\pqty{-C_{ij}\ltx{g}{agg}^2}},\\
+        K^{fn}_{ij}&=\nu_{ij}\exp\pqty{-C_{ij}\ltx{g}{frag}^2},\\
+        C_{ij}&=\pqty{\frac{2T_i}{m_i}+\frac{2T_j}{m_j}}^{-1},\\
+        \nu_{ij}&=2\sigma_{ij}^2\sqrt{\frac{2\pi T_i}{m_i}+\frac{2\pi T_j}{m_j}},
+    \end{split}
+\end{equation}
+and
+\begin{equation}
+    \begin{split}
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}}{coll}&=\frac{1}{2}m_k\sum_{i+j=k}
+        \bqty{\frac{1}{2}K^{aT}_{ij}\bqty{\frac{\mu_iu_i^2-\mu_ju_j^2}{u_i^2+u_j^2}}^2+
+        \frac{3}{4}K^{an}_{ij}\frac{u_i^2u_j^2}{u_i^2+u_j^2}}n_in_j-\\
+        &-m_kn_k\sum_{j}\bqty{\frac{1}{2}K^{aT}_{kj}\pqty{\frac{u_{k}^2}{u_{k}^2+u_{j}^2}}^2+
+        \frac{3}{4}K^{an}_{kj}\frac{u_k^2u_j^2}{u_k^2+u_j^2}}n_j-\\
+        &-\frac{1+\eps}{2}m_kn_k
+        \sum_{j}\frac{\mu_jR_{kj}}{A_{kj}^2}F_{kj}\cdot n_j-
+        \frac{1-\eps^2}{2}m_kn_k\sum_{j}\frac{\mu_j^2}{A_{kj}}F_{kj}\cdot n_j+\\
+        &+\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
+        \bqty{\frac{R_{ij}^2}{4A_{ij}}-\frac{\gamma_{ij}A_{ij}}{2}}
+        \alpha_{ij}\sigma_{ij}^2\frac{1}{2C_{ij}^3}\pqty{2+2C_{ij}\ltx{g}{frag}^2+C_{ij}^2
+        \ltx{g}{frag}^4}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}-\\
+        &-\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
+        \bqty{\frac{R_{ij}^2}{4A_{ij}}\ltx{g}{frag}^2-\frac{3}{2}}
+        \alpha_{ij}\sigma_{ij}^2\frac{1}{2C_{ij}^2}\pqty{1+C_{ij}\ltx{g}{frag}^2}
+        \exp\pqty{-C_{ij}\ltx{g}{frag}^2}-\\
+        &-\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
+        \bqty{\frac{3}{2}\ltx{g}{frag}^2+\frac{\gamma_{ij}A_{ij}}{2}\ltx{g}{frag}^4}
+        \alpha_{ij}\sigma_{ij}^2\frac{1}{2C_{ij}}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}-\\
+        &-\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
+        \bqty{\frac{R_{kj}^2}{4A_{kj}}+\mu_j^2A_{kj}+\mu_jR_{kj}}
+        \alpha_{kj}\sigma_{kj}^2
+        \frac{1}{2C_{ij}^3}\pqty{2+2C_{ij}\ltx{g}{frag}^2+C_{ij}^2\ltx{g}{frag}^4}
+        \exp\pqty{-C_{ij}\ltx{g}{frag}^2}+\\
+        &+\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
+        \bqty{\pqty{\frac{R_{kj}^2}{4A_{kj}}+\mu_j^2A_{kj}+\mu_jR_{kj}}\cdot\ltx{g}{frag}^2
+        -\frac{3}{2}}
+        \alpha_{kj}\sigma_{kj}^2
+        \frac{1}{2C_{ij}^2}\pqty{1+C_{ij}\ltx{g}{frag}^2}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}+\\
+        &+\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
+        \frac{3}{2}\ltx{g}{frag}^2\alpha_{kj}
+        \sigma_{kj}^2\frac{1}{2C_{ij}}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}.
+    \end{split}
+\end{equation}
+
+
 \section{General form of kinetic collision integrals}
 In our model, we face three types of collision integrals, for each type of collision.
 The aggregative integrals, the restitutive integrals and the fragmentative integrals.
@@ -659,6 +1246,38 @@ and then integrated over $\bv_k$, hence
 \end{equation}
 In our work, we will be dealing with two functions $\psi_k(\bv_k)=1$ and $\psi_k(\bv_k)=m_kv_k^2/2$.
 
+\subsection{Collision frequency density}
+The collision frequency density $\nu_{ij}$ between the particles of sizes $i$ and $j$,
+is given by
+\begin{equation}
+    \nu_{ij}=\pi\sigma_{ij}^2\avg{g_{ij}},
+\end{equation}
+where $\avg{g_{ij}}$ is the mean impact speed. Given the two-particle distribution function
+$f_{ij}(\bV,\bg)$, the mean value of the impact velocity is given by
+\begin{equation}
+    \begin{split}
+        n_in_j\avg{g}&=\int\dd{\bV}\dd{\bg}g f_{ij}(\bV,\bg)=
+        \alpha_{ij}\int\dd{\bg} g\exp\pqty{-B_{ij}g^2}
+        \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
+        &=4\alpha_{ij}\pi\pqty{\frac{\pi}{A_{ij}}}^{3/2}\int_{0}^{\infty}\dd{g} g^3
+        \exp\pqty{-\lambda_{ij}g^2}=
+        \frac{2\pi\alpha_{ij}}{\lambda_{ij}^2}\pqty{\frac{\pi}{A_{ij}}}^{3/2},
+    \end{split}
+\end{equation}
+where
+\begin{equation}
+    \lambda_{ij}=\frac{1}{u_i^2+u_j^2},\qquad
+    A_{ij}=\frac{u_i^2+u_j^2}{u_i^2u_j^2}.
+\end{equation}
+After simple algebra, we have
+\begin{equation}
+    \avg{g_{ij}}=\frac{2}{\sqrt{\pi}}\sqrt{u_i^2+u_j^2},
+\end{equation}
+hence the collision frequency is
+\begin{equation}
+    n_in_j\nu_{ij}=\frac{2\pi^2\sigma_{ij}^2\alpha_{ij}}{\lambda_{ij}^2}
+    \pqty{\frac{\pi}{A_{ij}}}^{3/2}=2n_in_j\sigma_{ij}^2\sqrt{\pi\pqty{u_i^2+u_j^2}}.
+\end{equation}
 \subsection{Aggregation terms of the collision integrals}
 For the aggregative collision integrals, we have
 \begin{equation}
@@ -752,8 +1371,7 @@ and we write the final result as
 \begin{equation}
     \begin{split}
         \avg{\pdv{n_k}{t}}_a&=\frac{1}{2}\sum_{i+j=k}K_{ij}^{an}n_in_j-n_k\sum_{j}K_{kj}^{an}n_j,\\
-        K_{ij}^{an}&=2\sigma_{ij}^2\sqrt{\pi\pqty{u_i^2+u_j^2}}
-        \bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}}.
+        K_{ij}^{an}&=\nu_{ij}\bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}}.
     \end{split}
 \end{equation}
 
@@ -1132,32 +1750,64 @@ Opening the brackets, we have
         \alpha_{ij}\sigma_{ij}^2
         \int_{\ltx{g}{frag}}^{\infty}\dd{g}ge^{-C_{ij}g^2}-\\
         &-\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
-        \frac{R_{kj}^2}{4A_{kj}}\alpha_{kj}\sigma_{kj}^2\int_{\ltx{g}{frag}}^{\infty}
+        \bqty{\frac{R_{kj}^2}{4A_{kj}}+\mu_j^2A_{kj}+\mu_jR_{kj}}
+        \alpha_{kj}\sigma_{kj}^2\int_{\ltx{g}{frag}}^{\infty}
         \dd{g}g^5 e^{-C_{kj}g^2}+\\
         &+\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
-        \bqty{\frac{R_{kj}^2}{4A_{kj}}\cdot\ltx{g}{frag}^2-\frac{3}{2}}
+        \bqty{\pqty{\frac{R_{kj}^2}{4A_{kj}}+\mu_j^2A_{kj}+\mu_jR_{kj}}\cdot\ltx{g}{frag}^2
+        -\frac{3}{2}}
         \alpha_{kj}\sigma_{kj}^2\int_{\ltx{g}{frag}}^{\infty}
         \dd{g}g^3e^{-C_{kj}g^2}+\\
         &+\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
         \frac{3}{2}\ltx{g}{frag}^2\alpha_{kj}
         \sigma_{kj}^2\int_{\ltx{g}{frag}}^{\infty}
-        \dd{g}ge^{-C_{kj}g^2}-\\
-        &-\frac{m_k}{2}\sum_{j}\mu_j^2\cdot4\pi\pqty{\frac{\pi}{A_{kj}}}^{3/2}
-        \alpha_{kj}\sigma_{kj}^2
-        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^5e^{-C_{kj}g^2}+\\
-        &+\frac{m_k}{2}\sum_{j}\mu_j^2\cdot4\pi\pqty{\frac{\pi}{A_{kj}}}^{3/2}
-        \ltx{g}{frag}^2\alpha_{kj}\sigma_{kj}^2
-        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3e^{-C_{kj}g^2}-\\
-        &-\frac{m_k}{2}\sum_{j}2\mu_j\cdot4\pi\frac{2}{R_{kj}}
-        \pqty{\frac{\pi}{A_{kj}}}^{3/2}\frac{R_{kj}^2}{4A_{kj}}\alpha_{kj}\sigma_{kj}^2
-        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^5e^{-C_{kj}g^2}+\\
-        &+\frac{m_k}{2}\sum_{j}2\mu_j\cdot4\pi\frac{2}{R_{kj}}
-        \pqty{\frac{\pi}{A_{kj}}}^{3/2}\frac{R_{kj}^2}{4A_{kj}}
-        \ltx{g}{frag}^2\alpha_{kj}\sigma_{kj}^2
-        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3e^{-C_{kj}g^2}.
+        \dd{g}ge^{-C_{kj}g^2}.
     \end{split}
 \end{equation}
-
+The incomplete Gaussian integrals are
+\begin{equation}
+    \begin{split}
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g e^{-C_{ij}g^2}&=
+        \frac{1}{2C_{ij}}\exp\pqty{-C_{ij}\ltx{g}{frag}^2},\\
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3 e^{-C_{ij}g^2}&=
+        \frac{1}{2C_{ij}^2}\pqty{1+C_{ij}\ltx{g}{frag}^2}\exp\pqty{-C_{ij}\ltx{g}{frag}^2},\\
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^5 e^{-C_{ij}g^2}&=
+        \frac{1}{2C_{ij}^3}\pqty{2+2C_{ij}\ltx{g}{frag}^2+C_{ij}^2\ltx{g}{frag}^4}
+        \exp\pqty{-C_{ij}\ltx{g}{frag}^2},
+    \end{split}
+\end{equation}
+and the fragmentative temperature evolution terms become
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}_f&=\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
+        \bqty{\frac{R_{ij}^2}{4A_{ij}}-\frac{\gamma_{ij}A_{ij}}{2}}
+        \alpha_{ij}\sigma_{ij}^2\frac{1}{2C_{ij}^3}\pqty{2+2C_{ij}\ltx{g}{frag}^2+C_{ij}^2
+        \ltx{g}{frag}^4}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}-\\
+        &-\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
+        \bqty{\frac{R_{ij}^2}{4A_{ij}}\ltx{g}{frag}^2-\frac{3}{2}}
+        \alpha_{ij}\sigma_{ij}^2\frac{1}{2C_{ij}^2}\pqty{1+C_{ij}\ltx{g}{frag}^2}
+        \exp\pqty{-C_{ij}\ltx{g}{frag}^2}-\\
+        &-\delta_{k,1}\frac{m_k}{2}
+        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
+        \bqty{\frac{3}{2}\ltx{g}{frag}^2+\frac{\gamma_{ij}A_{ij}}{2}\ltx{g}{frag}^4}
+        \alpha_{ij}\sigma_{ij}^2\frac{1}{2C_{ij}}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}-\\
+        &-\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
+        \bqty{\frac{R_{kj}^2}{4A_{kj}}+\mu_j^2A_{kj}+\mu_jR_{kj}}
+        \alpha_{kj}\sigma_{kj}^2
+        \frac{1}{2C_{ij}^3}\pqty{2+2C_{ij}\ltx{g}{frag}^2+C_{ij}^2\ltx{g}{frag}^4}
+        \exp\pqty{-C_{ij}\ltx{g}{frag}^2}+\\
+        &+\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
+        \bqty{\pqty{\frac{R_{kj}^2}{4A_{kj}}+\mu_j^2A_{kj}+\mu_jR_{kj}}\cdot\ltx{g}{frag}^2
+        -\frac{3}{2}}
+        \alpha_{kj}\sigma_{kj}^2
+        \frac{1}{2C_{ij}^2}\pqty{1+C_{ij}\ltx{g}{frag}^2}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}+\\
+        &+\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
+        \frac{3}{2}\ltx{g}{frag}^2\alpha_{kj}
+        \sigma_{kj}^2\frac{1}{2C_{ij}}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}.
+    \end{split}
+\end{equation}
 
 
 
