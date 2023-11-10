@@ -1122,16 +1122,16 @@ for $q=1$. They can be written in terms of the symmetric Gaussian integrals as
 Using (\ref{eq:symmetric_positive_even_integral}) and (\ref{eq:symmetric_negative_odd_integral}), we have
 \begin{equation}
     \begin{split}
-        I_{\bw}^{l,0}(\bu)&=\sqrt{\frac{\pi}{A}}\cdot\frac{\pi\exp\pqty{\lambda^2}}{A^{l+1}}
+        I_{\bw}^{l,0}(\bu)&=\pqty{\frac{\pi}{A}}^{3/2}\frac{\exp\pqty{\lambda^2}}{A^l}
         \sum_{k=0}^{l}\pmqty{2l+1\\2k}\frac{(2k-1)!!}{2^{k}}\cdot\lambda^{2l-2k},\\
-        I_{\bw}^{l,1}(\bu)&=\frac{2\pi}{R}\sqrt{\frac{\pi}{A}}\frac{\exp\pqty{\lambda^2}}{A^{l+1}}
+        I_{\bw}^{l,1}(\bu)&=\frac{2}{R}\pqty{\frac{\pi}{A}}^{3/2}\frac{\exp\pqty{\lambda^2}}{A^l}
         \bqty{\frac{(2l+1)!!}{2^{l+1}}+\sum_{k=0}^{l}\pmqty{2l+1\\2k}\frac{(2k-1)!!}{2^k}
             \cdot\lambda^{2l-2k}\pqty{\frac{2l+2}{2l+2-2k}\lambda^2-\frac{1}{2}}}.
     \end{split}
 \end{equation}
 Both cases of $q=0$ and $q=1$ can now be combined simply as
 \begin{equation}
-    I_{\bw}^{l,q}(\bu)=\pqty{\frac{2}{R}}^q\sqrt{\frac{\pi}{A}}\frac{\pi\exp\pqty{\lambda^2}}{A^{l+1}}
+    I_{\bw}^{l,q}(\bu)=\pqty{\frac{2}{R}}^q\pqty{\frac{\pi}{A}}^{3/2}\frac{\exp\pqty{\lambda^2}}{A^l}
     \bqty{\pqty{\frac{(2l+1)!!}{2^{l+1}}}^q+\sum_{j=0}^{l}\pmqty{2l+1\\2j}\frac{(2j-1)!!}{2^j}
         \cdot\lambda^{2l-2j}\cdot\pqty{\frac{2l+2}{2l+2-2j}\lambda^2-\frac{1}{2}}^q}.
 \end{equation}
@@ -1247,12 +1247,53 @@ and then integrated over $\bv_k$, hence
 In our work, we will be dealing with two functions $\psi_k(\bv_k)=1$ and $\psi_k(\bv_k)=m_kv_k^2/2$.
 
 \subsection{Collision frequency density}
-The collision frequency density $\nu_{ij}$ between the particles of sizes $i$ and $j$,
-is given by
+Let us estimate the number of collisions per unit time per unit volume of particles of types $i$ and $j$.
+First, we can fix a single particle of type $j$ with velocity $\bv_j$, and consider the particles of
+type $i$ and velocities $\bv_i$, which become $\bg_{ij}=\bv_i-\bv_j$ in the frame of the fixed particle $i$.
+The total number of particles of type $i$ with velocities $\bv_i$ in a unit volume is given by
+$\dd{N}_i(\bv_i)=f_i(\bv_i)\dd{\bv_i}$. Now we can look at the problem as if a rain of point-mass
+particles of type $i$ are falling with identical velocities $\bg_{ij}$ on the surface of a stationary
+particle of type $j$ and radius $\sigma_{ij}=R_i+R_j$. Consider a collision cylinder with base
+$\sigma_{ij}^2\dd{\bn}$, where $\bn$ is the unit vector from the center of the stationary particle $j$.
+The height of the collision cylinder is $\abs{\bg_{ij}\vdot\bn}\dd{t}$, which results in the volume
+element
 \begin{equation}
-    \nu_{ij}=\pi\sigma_{ij}^2\avg{g_{ij}},
+    \dd{V}_{cc}(\bn)=\sigma_{ij}^2\abs{\bg_{ij}\vdot\bn}\dd{\bn}\dd{t}.
 \end{equation}
-where $\avg{g_{ij}}$ is the mean impact speed. Given the two-particle distribution function
+Now, the number of particles of type $i$, raining on the surface of the stationary particle, within
+this volume $\dd{V}_{cc}(\bn)$ is given by
+\begin{equation}
+    \dd{N}_{i}(\bv_i,\bv_j,\bn)=\sigma_{ij}^2\abs{\bg_{ij}\vdot\bn}f_i(\bv_i)\dd{\bv_i}\dd{\bn}\dd{t}.
+\end{equation}
+On the other hand, the total number of such collision cylinders in a unit volume is given by
+$\dd{N}_j=f_j(\bv_j)\dd{\bv_j}$, hence the total number of raining particles of type $i$ within all
+collision cylinders is given by
+\begin{equation}
+    \dd{N}_{ij}(\bv_i,\bv_j,\bn)=\sigma_{ij}^2\abs{\bg_{ij}\vdot\bn}
+    f_i(\bv_i)f_j(\bv_j)\dd{\bv_i}\dd{\bv_j}\dd{\bn}\dd{t}.
+\end{equation}
+The collision frequency is the calculated by integrating over all angles $\bn$ and velocities $\bv_i,\bv_j$
+\begin{equation}
+    \nu_{ij}=\sigma_{ij}^2\int\dd{\bv_i}\dd{\bv_j}f_i(\bv_i)f_j(\bv_j)
+    \int\dd{\bn}\Theta\pqty{-\bg_{ij}\vdot\bn}\abs{\bg_{ij}\vdot\bn},
+\end{equation}
+or changing variables we have
+\begin{equation}
+    \nu_{ij}=\sigma_{ij}^2\int\dd{\bg}\dd{\bV}f_{ij}\pqty{\bV,\bg}
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn},
+\end{equation}
+where the $\Theta$ function is included in order to count only approaching particles. The angular part is
+solved immediately to give us
+\begin{equation}
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}=\pi g,
+\end{equation}
+hence the collision frequency becomes
+\begin{equation}
+    \nu_{ij}=\pi\sigma_{ij}^2\int\dd{\bg}\dd{\bV}\,gf_{ij}\pqty{\bV,\bg}
+    =\pi\sigma_{ij}^2\avg{g},
+\end{equation}
+where $\avg{g}$ is the mean impact speed. We have omitted the $ij$ index for $\bg_{ij}$ for the sake of
+brevity. Given the two-particle distribution function
 $f_{ij}(\bV,\bg)$, the mean value of the impact velocity is given by
 \begin{equation}
     \begin{split}
@@ -1278,6 +1319,53 @@ hence the collision frequency is
     n_in_j\nu_{ij}=\frac{2\pi^2\sigma_{ij}^2\alpha_{ij}}{\lambda_{ij}^2}
     \pqty{\frac{\pi}{A_{ij}}}^{3/2}=2n_in_j\sigma_{ij}^2\sqrt{\pi\pqty{u_i^2+u_j^2}}.
 \end{equation}
+
+\subsection{Partial collision frequency densities}
+Let us introduce a partial collision frequency density, namely, the frequency of certain type of
+collisions, such us only the aggregative collisions. The general idea remains the same, except now
+instead of the total mean impact speed, we take the mean impact speed of only specific values of
+velocities within a specific domain $\utx{\mathcal{D}}{type}(\bg)$
+\begin{equation}
+    \utx{\nu_{ij}}{type}=\sigma_{ij}^2\int\dd{\bv_i}\dd{\bv_j}f_i(\bv_i)f_j(\bv_j)
+    \int\dd{\bn}\Theta\pqty{-\bg_{ij}\vdot\bn}\abs{\bg_{ij}\vdot\bn}\utx{\mathcal{D}}{type}(\bg).
+\end{equation}
+
+For aggregative collisions, the impact velocity domain function is given by
+\begin{equation}
+    \utx{\mathcal{D}}{agg}(\bg)=\Theta\pqty{\ltx{g}{agg}-g},
+\end{equation}
+hence we have
+\begin{equation}
+    \begin{split}
+        n_in_j\utx{\avg{g_{ij}}}{agg}&=\alpha_{ij}\int\dd{\bg} g\exp\pqty{-B_{ij}g^2}
+        \Theta\pqty{\ltx{g}{agg}-g}\int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
+        &=4\alpha_{ij}\pi\int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-B_{ij}g^2}
+        \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
+        &=4\alpha_{ij}\pi\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-\lambda_{ij}g^2}=\\
+        &=\frac{2\alpha_{ij}\pi}{\lambda_{ij}^2}\pqty{\frac{\pi}{A_{ij}}}^{3/2}\cdot
+        \bqty{1-\pqty{1+\lambda_{ij}\ltx{g}{agg}^2}\exp\pqty{-\lambda_{ij}\ltx{g}{agg}^2}}.
+    \end{split}
+\end{equation}
+
+For fragmentative collisions, the impact velocity domain function is given by
+\begin{equation}
+    \utx{\mathcal{D}}{type}(\bg)=\Theta\pqty{g-\ltx{g}{frag}},
+\end{equation}
+hence we have
+\begin{equation}
+    \begin{split}
+        n_in_j\utx{\avg{g_{ij}}}{frag}&=\alpha_{ij}\int\dd{\bg} g\exp\pqty{-B_{ij}g^2}
+        \Theta\pqty{g-\ltx{g}{frag}}\int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
+        &=4\alpha_{ij}\pi\int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3\exp\pqty{-B_{ij}g^2}
+        \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
+        &=4\alpha_{ij}\pi\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3\exp\pqty{-\lambda_{ij}g^2}=\\
+        &=\frac{2\alpha_{ij}\pi}{\lambda_{ij}^2}\pqty{\frac{\pi}{A_{ij}}}^{3/2}\cdot
+        \pqty{1+\lambda_{ij}\ltx{g}{frag}^2}\exp\pqty{-\lambda_{ij}\ltx{g}{frag}^2}.
+    \end{split}
+\end{equation}
+
 \subsection{Aggregation terms of the collision integrals}
 For the aggregative collision integrals, we have
 \begin{equation}
