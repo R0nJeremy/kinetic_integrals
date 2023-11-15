@@ -1246,7 +1246,7 @@ and then integrated over $\bv_k$, hence
 \end{equation}
 In our work, we will be dealing with two functions $\psi_k(\bv_k)=1$ and $\psi_k(\bv_k)=m_kv_k^2/2$.
 
-\subsection{Collision frequency density}
+\subsection{Collision frequency and collision rate}
 Let us estimate the number of collisions per unit time per unit volume of particles of types $i$ and $j$.
 First, we can fix a single particle of type $j$ with velocity $\bv_j$, and consider the particles of
 type $i$ and velocities $\bv_i$, which become $\bg_{ij}=\bv_i-\bv_j$ in the frame of the fixed particle $i$.
@@ -1294,34 +1294,39 @@ hence the collision frequency becomes
 \end{equation}
 where $\avg{g}$ is the mean impact speed. We have omitted the $ij$ index for $\bg_{ij}$ for the sake of
 brevity. Given the two-particle distribution function
-$f_{ij}(\bV,\bg)$, the mean value of the impact velocity is given by
+$f_{ij}(\bV,\bg)$, we can obtain the value of the collision frequency
 \begin{equation}
     \begin{split}
-        n_in_j\avg{g}&=\int\dd{\bV}\dd{\bg}g f_{ij}(\bV,\bg)=
-        \alpha_{ij}\int\dd{\bg} g\exp\pqty{-B_{ij}g^2}
+        \nu_{ij}&=\pi\sigma_{ij}^2\alpha_{ij}\int\dd{\bg} g\exp\pqty{-B_{ij}g^2}
         \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
-        &=4\alpha_{ij}\pi\pqty{\frac{\pi}{A_{ij}}}^{3/2}\int_{0}^{\infty}\dd{g} g^3
-        \exp\pqty{-\lambda_{ij}g^2}=
-        \frac{2\pi\alpha_{ij}}{\lambda_{ij}^2}\pqty{\frac{\pi}{A_{ij}}}^{3/2},
+        &=4\alpha_{ij}\pi^2\sigma_{ij}^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}\int_{0}^{\infty}\dd{g} g^3
+        \exp\pqty{-C_{ij}g^2}=
+        \frac{2\pi^2\sigma_{ij}^2\alpha_{ij}}{C_{ij}^2}\pqty{\frac{\pi}{A_{ij}}}^{3/2},
     \end{split}
 \end{equation}
 where
 \begin{equation}
-    \lambda_{ij}=\frac{1}{u_i^2+u_j^2},\qquad
+    C_{ij}=\frac{4A_{ij}B_{ij}-R_{ij}^2}{4A_{ij}}=\frac{1}{u_i^2+u_j^2},\qquad
     A_{ij}=\frac{u_i^2+u_j^2}{u_i^2u_j^2}.
 \end{equation}
 After simple algebra, we have
 \begin{equation}
-    \avg{g_{ij}}=\frac{2}{\sqrt{\pi}}\sqrt{u_i^2+u_j^2},
-\end{equation}
-hence the collision frequency is
-\begin{equation}
-    n_in_j\nu_{ij}=\frac{2\pi^2\sigma_{ij}^2\alpha_{ij}}{\lambda_{ij}^2}
+    \nu_{ij}=\frac{2\pi^2\sigma_{ij}^2\alpha_{ij}}{C_{ij}^2}
     \pqty{\frac{\pi}{A_{ij}}}^{3/2}=2n_in_j\sigma_{ij}^2\sqrt{\pi\pqty{u_i^2+u_j^2}}.
 \end{equation}
 
-\subsection{Partial collision frequency densities}
-Let us introduce a partial collision frequency density, namely, the frequency of certain type of
+We can also introduce a collision rate, defined as
+\begin{equation}
+    K_{ij}=\frac{\nu_{ij}}{n_in_j}=2\sigma_{ij}^2\sqrt{\pi\pqty{u_i^2+u_j^2}}.
+\end{equation}
+
+The standard collision frequency term $\nu_{ij}$ answers the question of {\bf how many} collisions between
+particle types $i$ and $j$ happen in unit time in unit volume, while the collision rate term $K_{ij}$
+answers the question of {\bf how fast} the collisions between particle type $i$ and $j$ are
+happening, e.g. describes the rate of collisions.
+
+\subsection{Partial collision frequencies and rates}
+Let us introduce a partial collision frequency, namely, the frequency of certain type of
 collisions, such us only the aggregative collisions. The general idea remains the same, except now
 instead of the total mean impact speed, we take the mean impact speed of only specific values of
 velocities within a specific domain $\utx{\mathcal{D}}{type}(\bg)$
@@ -1337,34 +1342,123 @@ For aggregative collisions, the impact velocity domain function is given by
 hence we have
 \begin{equation}
     \begin{split}
-        n_in_j\utx{\avg{g_{ij}}}{agg}&=\alpha_{ij}\int\dd{\bg} g\exp\pqty{-B_{ij}g^2}
+        \utx{\nu_{ij}}{agg}&=\pi\sigma_{ij}^2\alpha_{ij}\int\dd{\bg} g\exp\pqty{-B_{ij}g^2}
         \Theta\pqty{\ltx{g}{agg}-g}\int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
-        &=4\alpha_{ij}\pi\int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-B_{ij}g^2}
+        &=4\sigma_{ij}^2\alpha_{ij}\pi^2\int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-B_{ij}g^2}
         \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
-        &=4\alpha_{ij}\pi\pqty{\frac{\pi}{A_{ij}}}^{3/2}
-        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-\lambda_{ij}g^2}=\\
-        &=\frac{2\alpha_{ij}\pi}{\lambda_{ij}^2}\pqty{\frac{\pi}{A_{ij}}}^{3/2}\cdot
-        \bqty{1-\pqty{1+\lambda_{ij}\ltx{g}{agg}^2}\exp\pqty{-\lambda_{ij}\ltx{g}{agg}^2}}.
+        &=4\sigma_{ij}^2\alpha_{ij}\pi^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \int_{0}^{\ltx{g}{agg}}\dd{g}g^3\exp\pqty{-C_{ij}g^2}=\\
+        &=\frac{2\sigma_{ij}^2\alpha_{ij}\pi^2}{C_{ij}^2}\pqty{\frac{\pi}{A_{ij}}}^{3/2}\cdot
+        \bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}},
     \end{split}
+\end{equation}
+or
+\begin{equation}
+    \utx{\nu_{ij}}{agg}=\nu_{ij}\cdot\bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}}.
 \end{equation}
 
 For fragmentative collisions, the impact velocity domain function is given by
 \begin{equation}
-    \utx{\mathcal{D}}{type}(\bg)=\Theta\pqty{g-\ltx{g}{frag}},
+    \utx{\mathcal{D}}{frag}(\bg)=\Theta\bqty{\pqty{\bg\vdot\bn}^2-\ltx{g}{frag}^2},
+\end{equation}
+hence we have
+\begin{equation}
+    \utx{\nu_{ij}}{frag}=\sigma_{ij}^2\alpha_{ij}\int\dd{\bg} \exp\pqty{-B_{ij}g^2}
+    \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+    \Theta\bqty{\pqty{\bg\vdot\bn}^2-\ltx{g}{frag}^2}.
+\end{equation}
+The angular part is solved to give us
+\begin{equation}
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+    \Theta\bqty{\pqty{\bg\vdot\bn}^2-\ltx{g}{frag}^2}=
+    \pi g\cdot\bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}\Theta\pqty{g-\ltx{g}{frag}},
 \end{equation}
 hence we have
 \begin{equation}
     \begin{split}
-        n_in_j\utx{\avg{g_{ij}}}{frag}&=\alpha_{ij}\int\dd{\bg} g\exp\pqty{-B_{ij}g^2}
-        \Theta\pqty{g-\ltx{g}{frag}}\int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
-        &=4\alpha_{ij}\pi\int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3\exp\pqty{-B_{ij}g^2}
-        \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
-        &=4\alpha_{ij}\pi\pqty{\frac{\pi}{A_{ij}}}^{3/2}
-        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3\exp\pqty{-\lambda_{ij}g^2}=\\
-        &=\frac{2\alpha_{ij}\pi}{\lambda_{ij}^2}\pqty{\frac{\pi}{A_{ij}}}^{3/2}\cdot
-        \pqty{1+\lambda_{ij}\ltx{g}{frag}^2}\exp\pqty{-\lambda_{ij}\ltx{g}{frag}^2}.
+        \utx{\nu_{ij}}{frag}&=4\sigma_{ij}^2\alpha_{ij}\pi^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3
+        \bqty{1-\pqty{\frac{\ltx{g}{frag}}{g}}^2}\exp\pqty{-C_{ij}g^2}=\\
+        &=4\sigma_{ij}^2\alpha_{ij}\pi^2\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \bqty{\int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3\exp\pqty{-C_{ij}g^2}-
+        \ltx{g}{frag}^2\int_{\ltx{g}{frag}}^{\infty}\dd{g}g\exp\pqty{-C_{ij}g^2}}=\\
+        &=\frac{2\sigma_{ij}^2\alpha_{ij}\pi^2}{C_{ij}^2}\pqty{\frac{\pi}{A_{ij}}}^{3/2}\cdot
+        \exp\pqty{-C_{ij}\ltx{g}{frag}^2},
     \end{split}
 \end{equation}
+or
+\begin{equation}
+    \utx{\nu_{ij}}{frag}=\nu_{ij}\cdot\exp\pqty{-C_{ij}\ltx{g}{frag}^2}.
+\end{equation}
+
+For restitutive collisions, the domain functions is
+\begin{equation}
+    \utx{\mathcal{D}}{res}(\bg)=\Theta\bqty{\ltx{g}{frag}^2-\pqty{\bg\vdot\bn}^2}
+    \cdot\Theta\pqty{g-\ltx{g}{agg}},
+\end{equation}
+and the restitutive partial collision frequency is
+\begin{equation}
+    \begin{split}
+        \utx{\nu_{ij}}{res}=\sigma_{ij}^2\alpha_{ij}\int\dd{\bg}\exp\pqty{-B_{ij}g^2}
+        \Theta\pqty{g-\ltx{g}{agg}}
+        &\int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+        \Theta\bqty{\ltx{g}{frag}^2-\pqty{\bg\vdot\bn}^2}.
+    \end{split}
+\end{equation}
+The angular integral is solved to give us
+\begin{equation}
+    \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+    \Theta\bqty{\ltx{g}{frag}^2-\pqty{\bg\vdot\bn}^2}=\pi g\cdot
+    \bqty{\Theta\pqty{\ltx{g}{frag}-g}+\Theta\pqty{g-\ltx{g}{frag}}
+        \pqty{\frac{\ltx{g}{frag}}{g}}^2},
+\end{equation}
+and the restitutive partial collision frequency becomes
+\begin{equation}
+    \begin{split}
+        \utx{\nu_{ij}}{res}&=\pi\sigma_{ij}^2\alpha_{ij}\int\dd{\bg}g\exp\pqty{-B_{ij}g^2}
+        \Theta\pqty{g-\ltx{g}{agg}}\Theta\pqty{\ltx{g}{frag}-g}
+        \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}+\\
+        &+\pi\sigma_{ij}^2\alpha_{ij}\ltx{g}{frag}^2\int\dd{\bg}g^{-1}\exp\pqty{-B_{ij}g^2}
+        \Theta\pqty{g-\ltx{g}{frag}}\int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
+        &=4\pi^2\sigma_{ij}^2\alpha_{ij}\int_{\ltx{g}{agg}}^{\ltx{g}{frag}}
+        \dd{g}g^3\exp\pqty{-B_{ij}g^2}
+        \int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}+\\
+        &+4\pi^2\sigma_{ij}^2\alpha_{ij}\ltx{g}{frag}^2\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g\exp\pqty{-B_{ij}g^2}\int\dd{\bV}\exp\pqty{-A_{ij}V^2+R_{ij}\bV\vdot\bg}=\\
+        &=4\pi^2\sigma_{ij}^2\alpha_{ij}\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \bqty{\int_{\ltx{g}{agg}}^{\ltx{g}{frag}}\dd{g}g^3\exp\pqty{-C_{ij}g^2}+
+        \ltx{g}{frag}^2\int_{\ltx{g}{frag}}^{\infty}\dd{g}g\exp\pqty{-C_{ij}g^2}}=\\
+        &=\frac{2\pi^2\sigma_{ij}^2\alpha_{ij}}{C_{ij}^2}\pqty{\frac{\pi}{A_{ij}}}^{3/2}
+        \cdot\bqty{\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}-
+        \exp\pqty{-C_{ij}\ltx{g}{frag}^2}},
+    \end{split}
+\end{equation}
+or
+\begin{equation}
+    \utx{\nu_{ij}}{res}=\nu_{ij}\cdot
+    \bqty{\pqty{1+C_{ij}\ltx{g}{agg}^2}
+    \exp\pqty{-C_{ij}\ltx{g}{agg}^2}-\exp\pqty{-C_{ij}\ltx{g}{frag}^2}}.
+\end{equation}
+Let us write all the partial collision frequencies together
+\begin{equation}
+    \begin{split}
+        \nu_{ij}&=\frac{2\pi^2\sigma_{ij}^2\alpha_{ij}}{C_{ij}^2}
+        \pqty{\frac{\pi}{A_{ij}}}^{3/2},\\
+        \utx{\nu_{ij}}{agg}&=\nu_{ij}\cdot
+        \bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}},\\
+        \utx{\nu_{ij}}{res}&=\nu_{ij}\cdot\bqty{\pqty{1+C_{ij}\ltx{g}{agg}^2}
+        \exp\pqty{-C_{ij}\ltx{g}{agg}^2}-\exp\pqty{-C_{ij}\ltx{g}{frag}^2}},\\
+        \utx{\nu_{ij}}{frag}&=\nu_{ij}\cdot\exp\pqty{-C_{ij}\ltx{g}{frag}^2}.
+    \end{split}
+\end{equation}
+We can see that
+\begin{equation}
+    \utx{\nu_{ij}}{agg}+\utx{\nu_{ij}}{res}+\utx{\nu_{ij}}{frag}=\nu_{ij}.
+\end{equation}
+
+
 
 \subsection{Aggregation terms of the collision integrals}
 For the aggregative collision integrals, we have
