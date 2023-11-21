@@ -1132,7 +1132,7 @@ Using (\ref{eq:symmetric_positive_even_integral}) and (\ref{eq:symmetric_negativ
 Both cases of $q=0$ and $q=1$ can now be combined simply as
 \begin{equation}
     I_{\bw}^{l,q}(\bu)=\pqty{\frac{2}{R}}^q\pqty{\frac{\pi}{A}}^{3/2}\frac{\exp\pqty{\lambda^2}}{A^l}
-    \bqty{\pqty{\frac{(2l+1)!!}{2^{l+1}}}^q+\sum_{j=0}^{l}\pmqty{2l+1\\2j}\frac{(2j-1)!!}{2^j}
+    \bqty{q\cdot\pqty{\frac{(2l+1)!!}{2^{l+1}}}+\sum_{j=0}^{l}\pmqty{2l+1\\2j}\frac{(2j-1)!!}{2^j}
         \cdot\lambda^{2l-2j}\cdot\pqty{\frac{2l+2}{2l+2-2j}\lambda^2-\frac{1}{2}}^q}.
 \end{equation}
 We have changed the dummy index $k$, not to confuse with the index $k$ in the original kinetic integrals.
@@ -1551,11 +1551,10 @@ From simple algebra we have
 \end{equation}
 and we write the final result as
 \begin{equation}
-    \begin{split}
-        \avg{\pdv{n_k}{t}}_a&=\frac{1}{2}\sum_{i+j=k}K_{ij}^{an}n_in_j-n_k\sum_{j}K_{kj}^{an}n_j,\\
-        K_{ij}^{an}&=\nu_{ij}\bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}}.
-    \end{split}
+    \avg{\pdv{n_k}{t}}_a=\frac{1}{2}\sum_{i+j=k}\utx{K}{agg}_{ij}\cdot n_in_j
+    -\sum_{j}\utx{K}{agg}_{kj}\cdot n_kn_j.
 \end{equation}
+
 
 \subsubsection{Temperature evolution inegrals for aggregation}
 For the temperature evolution due to aggregative collisions, we put $\psi_k(\bv_k)=m_kv_k^2/2$, hence
@@ -1642,22 +1641,23 @@ where the incomplete Gaussian integrals have the next solutions
 After some algebraic manipulations, we can rewrite
 \begin{equation}
     \begin{split}
-        \avg{\pdv{t}\pqty{\frac{3}{2}n_k T_k}}_a&=\frac{1}{2}m_k\sum_{i+j=k}
-        \bqty{\frac{1}{2}K^{aT}_{ij}\bqty{\frac{\mu_iu_i^2-\mu_ju_j^2}{u_i^2+u_j^2}}^2+
-        \frac{3}{4}K^{an}_{ij}\frac{u_i^2u_j^2}{u_i^2+u_j^2}}n_in_j-\\
-        &-m_kn_k\sum_{j}\bqty{\frac{1}{2}K^{aT}_{kj}\pqty{\frac{u_{k}^2}{u_{k}^2+u_{j}^2}}^2+
-        \frac{3}{4}K^{an}_{kj}\frac{u_k^2u_j^2}{u_k^2+u_j^2}}n_j,
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_k T_k}}_a&=\frac{1}{2}\sum_{i+j=k}
+        \utx{K}{agg}_{ij}\cdot n_in_j\cdot\frac{3m_k}{4A_{ij}}
+        \pqty{1+\frac{R_{ij}^2}{3A_{ij}C_{ij}}\pqty{1-f_{ij}}}\\
+        &-\sum_{j}\utx{K}{agg}_{kj}\cdot n_kn_j\cdot\frac{3m_k}{4A_{kj}}
+        \pqty{1+\frac{\pqty{R_{kj}+2\mu_jA_{kj}}^2}{3A_{kj}C_{kj}}\pqty{1-f_{kj}}},
     \end{split}
 \end{equation}
 where
 \begin{equation}
-    \begin{split}
-        K^{an}_{ij}&=4\sigma_{ij}^2C_{ij}^2G^{(3)}_{ij}\sqrt{\pi\pqty{u_i^2+u_j^2}},\\
-        K^{aT}_{ij}&=4\sigma_{ij}^2C_{ij}^2G^{(5)}_{ij}\sqrt{\pi\pqty{u_i^2+u_j^2}}.
-    \end{split}
+    f_{ij}=\frac{C_{ij}\ltx{g}{agg}^2}{2}
+    \frac{C_{ij}\ltx{g}{agg}^2\exp\pqty{-C_{ij}\ltx{g}{agg}^2}}
+    {1-(1+C_{ij}\ltx{g}{agg}^2)\exp\pqty{-C_{ij}\ltx{g}{agg}^2}}.
 \end{equation}
-
-
+Taking $C_{ij}\sim\frac{1}{T}$, we can plot the behavior of the $f_{ij}$ function.
+\begin{figure}[!ht]
+    \centerline{\includegraphics[width=0.5\paperwidth]{code/f_T.png}}
+\end{figure}
 
 \subsection{Restitution terms of the collision integrals}
 The collision integrals for the restitutive terms read
