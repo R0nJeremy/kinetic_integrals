@@ -1675,31 +1675,154 @@ change, since $\Delta(n_k)=0$. Hence we have only the temperature evolution term
 \subsubsection{Temperature evolution inegrals for restitution}
 Putting $\psi_k(\bv_k)=m_kv_k^2/2$, we have
 \begin{equation}
-    \avg{\pdv{t}\pqty{\frac{3}{2}n_k T_k}}_r=-\frac{1+\eps}{2}m_kn_k
-    \sum_{j}\frac{\mu_jR_{kj}}{A_{kj}^2}F_{kj}\cdot n_j-
-    \frac{1-\eps^2}{2}m_kn_k\sum_{j}\frac{\mu_j^2}{A_{kj}}F_{kj}\cdot n_j,
+    \Delta\psi_k\pqty{\bv_k}=\Delta\pqty{\frac{m_kv_k^2}{2}}=
+    -\frac{1-\eps^2}{2}\frac{\mu_{kj}^2}{m_k}\pqty{\bg\vdot\bn}^2
+    -\mu_{kj}\pqty{1+\eps}\pqty{\bV\vdot\bn}\pqty{\bg\vdot\bn}.
 \end{equation}
-where
-\begin{equation}
-    F_{kj}=2\sigma_{kj}^2C_{kj}^2\sqrt{\pi\pqty{u_i^2+u_j^2}}
-    \pqty{A_{kj}\ltx{g}{frag}^4G^{(1)}_{kj}(\ltx{g}{frag},\infty)+
-    A_{kj}G^{(5)}_{kj}(\ltx{g}{agg},\ltx{g}{frag})},
-\end{equation}
-where
+Now, our collision integral reads
 \begin{equation}
     \begin{split}
-        G^{(1)}_{kj}(\ltx{g}{frag},\infty)&=
-        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g\exp\pqty{-C_{kj}g^2}=
-        \frac{1}{2C_{kj}^2}\exp\pqty{-C_{kj}\ltx{g}{frag}^2},\\
-        G^{(5)}_{kj}(\ltx{g}{agg},\ltx{g}{frag})&=
-        \int_{\ltx{g}{agg}}^{\ltx{g}{frag}}\dd{g}g^5\exp\pqty{-C_{kj}g^2}=\\
-        &=\frac{1}{2C_{kj}^3}\bqty{\pqty{2+2C_{kj}\ltx{g}{agg}^2+C_{kj}^2\ltx{g}{agg}^4}
-        \exp\pqty{-C_{kj}\ltx{g}{agg}^2}-
-        \pqty{2+2C_{kj}\ltx{g}{frag}^2+C_{kj}^2\ltx{g}{frag}^4}
-        \exp\pqty{-C_{kj}\ltx{g}{frag}^2}}.
+        \avg{\pdv{t}(n_k\psi_k)}_r=-\frac{1-\eps^2}{2}\sum_{j}\frac{\mu_{kj}^2}{m_k}
+        \alpha_{kj}\sigma_{kj}^2&\int
+        \dd{\bg}\dd{\bV}e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}\Theta(g-\ltx{g}{agg})\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+        \pqty{\bg\vdot\bn}^2\cdot\Theta\pqty{\ltx{g}{frag}^2-(\bg\vdot\bn)^2}\\
+        -\pqty{1+\eps}\sum_{j}\mu_{kj}\alpha_{kj}\sigma_{kj}^2&\int
+        \dd{\bg}\dd{\bV}e^{-A_{kj}V^2-B_{kj}g^2+R_{kj}\bV\vdot\bg}\Theta(g-\ltx{g}{agg})\\
+        &\int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+        \pqty{\bV\vdot\bn}\pqty{\bg\vdot\bn}\cdot
+        \Theta\pqty{\ltx{g}{frag}^2-(\bg\vdot\bn)^2}.
     \end{split}
 \end{equation}
-
+First, we solve the angular integrals. They are of the standard form
+\begin{equation}
+    \begin{split}
+        \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+        \pqty{\bg\vdot\bn}^2\cdot\Theta\pqty{\ltx{g}{frag}^2-(\bg\vdot\bn)^2}&=
+        I^{1,2,0}_{\bn,r}(\bg),\\
+        \int\dd{\bn}\Theta\pqty{-\bg\vdot\bn}\abs{\bg\vdot\bn}
+        \pqty{\bg\vdot\bn}\pqty{\bV\vdot\bn}\cdot
+        \Theta\pqty{\ltx{g}{frag}^2-(\bg\vdot\bn)^2}&=I^{1,1,1}_{\bn,r}\pqty{\bg,\bV}.
+    \end{split}
+\end{equation}
+Their solutions are
+\begin{equation}
+    \begin{split}
+        I^{1,2,0}_{\bn,r}(\bg)&=
+        \frac{\pi g^{3}}{2}\bqty{\Theta\pqty{\ltx{g}{frag}-g}+
+            \Theta\pqty{g-\ltx{g}{frag}}\pqty{\frac{\ltx{g}{frag}}{g}}^4},\\
+        I^{1,1,1}_{\bn,r}(\bg)&=
+        \frac{\pi g}{2}\pqty{\bV\vdot\bg}\bqty{\Theta\pqty{\ltx{g}{frag}-g}+
+            \Theta\pqty{g-\ltx{g}{frag}}\pqty{\frac{\ltx{g}{frag}}{g}}^4}.
+    \end{split}
+\end{equation}
+Now, the collision integrals become
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_r=-\frac{1-\eps^2}{4}\sum_{j}\frac{\mu^2}{m_k}
+        \pi\alpha\sigma^2&\int
+        \dd{\bg}g^{3}e^{-Bg^2}
+        \int\dd{\bV}e^{-AV^2+R\bV\vdot\bg}\\
+        &\bqty{\Theta(g-\ltx{g}{agg})\Theta\pqty{\ltx{g}{frag}-g}+
+            \Theta\pqty{g-\ltx{g}{frag}}\pqty{\frac{\ltx{g}{frag}}{g}}^4}\\
+        -\frac{1+\eps}{2}\sum_{j}\mu\pi\alpha\sigma^2&\int
+        \dd{\bg}g e^{-Bg^2}\int\dd{\bV}\pqty{\bV\vdot\bg}
+        e^{-AV^2+R\bV\vdot\bg}\\
+        &\bqty{\Theta(g-\ltx{g}{agg})\Theta\pqty{\ltx{g}{frag}-g}+
+            \Theta\pqty{g-\ltx{g}{frag}}\pqty{\frac{\ltx{g}{frag}}{g}}^4},
+    \end{split}
+\end{equation}
+where we have omitted the $kj$ indices everywhere for the sake of brevity, and
+utilized the fact that $\ltx{g}{agg}<\ltx{g}{frag}$. Opening the
+brackets with domain constraints, we write
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_r=-\frac{1-\eps^2}{2}\sum_{j}\frac{\mu^2}{m_k}\cdot
+        2\pi^2\alpha\sigma^2&\int_{\ltx{g}{agg}}^{\ltx{g}{frag}}
+        \dd{g}g^{5}e^{-Bg^2}
+        \int\dd{\bV}e^{-AV^2+R\bV\vdot\bg}\\
+        -\frac{1-\eps^2}{2}\ltx{g}{frag}^4\sum_{j}\frac{\mu^2}{m_k}\cdot
+        2\pi^2\alpha\sigma^2&\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}ge^{-Bg^2}\int\dd{\bV}e^{-AV^2+R\bV\vdot\bg}\\
+        -\pqty{1+\eps}\sum_{j}\mu\cdot 2\pi^2\alpha\sigma^2
+        &\int_{\ltx{g}{agg}}^{\ltx{g}{frag}}
+        \dd{g}g^3 e^{-Bg^2}\int\dd{\bV}\pqty{\bV\vdot\bg}
+        e^{-AV^2+R\bV\vdot\bg}\\
+        -\pqty{1+\eps}\ltx{g}{frag}^4\sum_{j}\mu\cdot 2\pi^2\alpha\sigma^2
+        &\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g^{-1} e^{-Bg^2}\int\dd{\bV}\pqty{\bV\vdot\bg}
+        e^{-AV^2+R\bV\vdot\bg}.
+    \end{split}
+\end{equation}
+The center of mass velocity integrals are
+\begin{equation}
+    \begin{split}
+        \int\dd{\bV}\exp\pqty{-AV^2+R\bV\vdot\bg}&=I_{\bV}^{0,0}(\bg)=
+        \pqty{\frac{\pi}{A}}^{3/2}\exp\pqty{\frac{R^2}{4A}\cdot g^2},\\
+        \int\dd{\bV}\pqty{\bV\vdot\bg}\exp\pqty{-AV^2+R\bV\vdot\bg}&=I_{\bV}^{0,1}(\bg)=
+        \frac{2g^2}{R}\pqty{\frac{\pi}{A}}^{3/2}\frac{R^2}{4A}
+        \exp\pqty{\frac{R^2}{4A}\cdot g^2},
+    \end{split}
+\end{equation}
+and we are left with
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_r=-\frac{1-\eps^2}{2}\sum_{j}\frac{\mu^2}{m_k}\cdot
+        2\pi^2\alpha\sigma^2\pqty{\frac{\pi}{A}}^{3/2}
+        &\int_{\ltx{g}{agg}}^{\ltx{g}{frag}}\dd{g}g^{5}e^{-Cg^2}\\
+        -\frac{1-\eps^2}{2}\ltx{g}{frag}^4\sum_{j}\frac{\mu^2}{m_k}\cdot
+        2\pi^2\alpha\sigma^2\pqty{\frac{\pi}{A}}^{3/2}
+        &\int_{\ltx{g}{frag}}^{\infty}\dd{g}ge^{-Cg^2}\\
+        -\pqty{1+\eps}\sum_{j}\frac{2\mu}{R}\frac{R^2}{4A}
+        \cdot 2\pi^2\alpha\sigma^2\pqty{\frac{\pi}{A}}^{3/2}
+        &\int_{\ltx{g}{agg}}^{\ltx{g}{frag}}
+        \dd{g}g^5 e^{-Cg^2}\\
+        -\pqty{1+\eps}\ltx{g}{frag}^4\sum_{j}\frac{2\mu}{R}\frac{R^2}{4A}
+        \cdot 2\pi^2\alpha\sigma^2\pqty{\frac{\pi}{A}}^{3/2}
+        &\int_{\ltx{g}{frag}}^{\infty}
+        \dd{g}g e^{-Cg^2},
+    \end{split}
+\end{equation}
+or
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_r=-\frac{1-\eps^2}{2}\sum_{j}\frac{\mu^2}{m_k}\cdot
+        2\pi^2\alpha\sigma^2\pqty{\frac{\pi}{A}}^{3/2}
+        &\bqty{\int_{\ltx{g}{agg}}^{\ltx{g}{frag}}\dd{g}g^{5}e^{-Cg^2}+
+        \ltx{g}{frag}^4\int_{\ltx{g}{frag}}^{\infty}\dd{g}ge^{-Cg^2}}\\
+        -\pqty{1+\eps}\sum_{j}\frac{2\mu}{R}\frac{R^2}{4A}
+        \cdot 2\pi^2\alpha\sigma^2\pqty{\frac{\pi}{A}}^{3/2}
+        &\bqty{\int_{\ltx{g}{agg}}^{\ltx{g}{frag}}\dd{g}g^5 e^{-Cg^2}+
+            \ltx{g}{frag}^4\int_{\ltx{g}{frag}}^{\infty}\dd{g}g e^{-Cg^2}},
+    \end{split}
+\end{equation}
+Now we are left with two gaussian integrals of the next form
+\begin{equation}
+    \begin{split}
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}ge^{-Cg^2}&=
+        \frac{1}{2C}\exp\pqty{-C\ltx{g}{frag}^2},\\
+        \int_{\ltx{g}{agg}}^{\ltx{g}{frag}}\dd{g}g^{5}e^{-Cg^2}&=
+        \frac{1}{2C^3}\bqty{\pqty{2+2C\ltx{g}{agg}^2+C^2\ltx{g}{agg}^4}
+            \exp\pqty{-C\ltx{g}{agg}^2}-
+            \pqty{2+2C\ltx{g}{frag}^2+C^2\ltx{g}{frag}^4}
+            \exp\pqty{-C\ltx{g}{frag}^2}}.
+    \end{split}
+\end{equation}
+Combining these terms, we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}(n_k\psi_k)}_r=-\sum_{j}\utx{K}{res}_{kj}\cdot n_kn_j\cdot
+        \bqty{\frac{1-\eps^2}{2}\frac{\mu_{kj}^2}{C_{kj}m_k}+\frac{1+\eps}{2}
+        \frac{\mu_{kj}R_{kj}}{C_{kj}A_{kj}}}\pqty{1+\utx{f}{res}_{kj}},
+    \end{split}
+\end{equation}
+where
+\begin{equation}
+    \utx{f}{res}_{kj}=\frac{C_{kj}\ltx{g}{agg}^2}{2}\frac{C_{kj}\ltx{g}{agg}^2
+    \exp\pqty{-C_{kj}\ltx{g}{agg}^2}-2\pqty{\ltx{g}{frag}/\ltx{g}{agg}}^2
+    \exp\pqty{-C_{kj}\ltx{g}{frag}^2}}{\pqty{1+C_{kj}\ltx{g}{agg}^2}
+    \exp\pqty{-C_{kj}\ltx{g}{agg}^2}-\exp\pqty{-C_{kj}\ltx{g}{frag}^2}}.
+\end{equation}
 \subsection{Fragmentation terms of the collision integrals}
 The fragmentative terms of the collision integral reads
 \begin{equation}
