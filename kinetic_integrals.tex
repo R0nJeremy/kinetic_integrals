@@ -2072,11 +2072,14 @@ Opening the brackets, we have
 The incomplete Gaussian integrals are
 \begin{equation}
     \begin{split}
-        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g e^{-C_{ij}g^2}&=
+        G_{ij}^{(1)}\pqty{\ltx{g}{frag},\infty}&=
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g e^{-C_{ij}g^2}=
         \frac{1}{2C_{ij}}\exp\pqty{-C_{ij}\ltx{g}{frag}^2},\\
-        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3 e^{-C_{ij}g^2}&=
+        G_{ij}^{(3)}\pqty{\ltx{g}{frag},\infty}&=
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^3 e^{-C_{ij}g^2}=
         \frac{1}{2C_{ij}^2}\pqty{1+C_{ij}\ltx{g}{frag}^2}\exp\pqty{-C_{ij}\ltx{g}{frag}^2},\\
-        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^5 e^{-C_{ij}g^2}&=
+        G_{ij}^{(5)}\pqty{\ltx{g}{frag},\infty}&=
+        \int_{\ltx{g}{frag}}^{\infty}\dd{g}g^5 e^{-C_{ij}g^2}=
         \frac{1}{2C_{ij}^3}\pqty{2+2C_{ij}\ltx{g}{frag}^2+C_{ij}^2\ltx{g}{frag}^4}
         \exp\pqty{-C_{ij}\ltx{g}{frag}^2},
     \end{split}
@@ -2084,39 +2087,55 @@ The incomplete Gaussian integrals are
 and the fragmentative temperature evolution terms become
 \begin{equation}
     \begin{split}
-        \avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}_f&=\delta_{k,1}\frac{m_k}{2}
-        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
-        \bqty{\frac{R_{ij}^2}{4A_{ij}}-\frac{\gamma_{ij}A_{ij}}{2}}
-        \alpha_{ij}\sigma_{ij}^2\frac{1}{2C_{ij}^3}\pqty{2+2C_{ij}\ltx{g}{frag}^2+C_{ij}^2
-        \ltx{g}{frag}^4}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}-\\
-        &-\delta_{k,1}\frac{m_k}{2}
-        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
-        \bqty{\frac{R_{ij}^2}{4A_{ij}}\ltx{g}{frag}^2-\frac{3}{2}}
-        \alpha_{ij}\sigma_{ij}^2\frac{1}{2C_{ij}^2}\pqty{1+C_{ij}\ltx{g}{frag}^2}
-        \exp\pqty{-C_{ij}\ltx{g}{frag}^2}-\\
-        &-\delta_{k,1}\frac{m_k}{2}
-        \sum_{i,j}(i+j)\pqty{\frac{\pi}{A_{ij}}}^{5/2}
-        \bqty{\frac{3}{2}\ltx{g}{frag}^2+\frac{\gamma_{ij}A_{ij}}{2}\ltx{g}{frag}^4}
-        \alpha_{ij}\sigma_{ij}^2\frac{1}{2C_{ij}}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}-\\
-        &-\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
-        \bqty{\frac{R_{kj}^2}{4A_{kj}}+\mu_j^2A_{kj}+\mu_jR_{kj}}
-        \alpha_{kj}\sigma_{kj}^2
-        \frac{1}{2C_{ij}^3}\pqty{2+2C_{ij}\ltx{g}{frag}^2+C_{ij}^2\ltx{g}{frag}^4}
-        \exp\pqty{-C_{ij}\ltx{g}{frag}^2}+\\
-        &+\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
-        \bqty{\pqty{\frac{R_{kj}^2}{4A_{kj}}+\mu_j^2A_{kj}+\mu_jR_{kj}}\cdot\ltx{g}{frag}^2
-        -\frac{3}{2}}
-        \alpha_{kj}\sigma_{kj}^2
-        \frac{1}{2C_{ij}^2}\pqty{1+C_{ij}\ltx{g}{frag}^2}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}+\\
-        &+\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}
-        \frac{3}{2}\ltx{g}{frag}^2\alpha_{kj}
-        \sigma_{kj}^2\frac{1}{2C_{ij}}\exp\pqty{-C_{ij}\ltx{g}{frag}^2}.
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}_f&=
+        \delta_{k,1}\frac{m_k}{2}\sum_{i,j}(i+j)
+        \pqty{\frac{\pi}{A_{ij}}}^{5/2}\alpha_{ij}\sigma_{ij}^2
+        \bqty{P_1\cdot G_{ij}^{(5)}\pqty{\ltx{g}{frag},\infty}-
+            P_2\cdot G_{ij}^{(3)}\pqty{\ltx{g}{frag},\infty}-
+            P_3\cdot G_{ij}^{(1)}\pqty{\ltx{g}{frag},\infty}}\\
+        &-\frac{m_k}{2}\sum_{j}4\pqty{\frac{\pi}{A_{kj}}}^{5/2}\alpha_{kj}\sigma_{kj}^2
+        \bqty{Q_1\cdot G_{ij}^{(5)}\pqty{\ltx{g}{frag},\infty}-
+            Q_2\cdot G_{ij}^{(3)}\pqty{\ltx{g}{frag},\infty}-
+            Q_3\cdot G_{ij}^{(1)}\pqty{\ltx{g}{frag},\infty}},
     \end{split}
 \end{equation}
-
-
-
-
+where
+\begin{equation}
+    \begin{split}
+        P_1&=\frac{R_{ij}^2}{4A_{ij}}-\frac{\gamma_{ij}A_{ij}}{2},\\
+        P_2&=\frac{R_{ij}^2}{4A_{ij}}\ltx{g}{frag}^2-\frac{3}{2},\\
+        P_3&=\frac{3}{2}\ltx{g}{frag}^2+\frac{\gamma_{ij}A_{ij}}{2}\ltx{g}{frag}^4,
+    \end{split}
+\end{equation}
+and
+\begin{equation}
+    \begin{split}
+        Q_1&=\frac{R_{kj}^2}{4A_{kj}}+\mu_j^2A_{kj}+\mu_jR_{kj},\\
+        Q_2&=\pqty{\frac{R_{kj}^2}{4A_{kj}}+\mu_j^2A_{kj}+
+        \mu_jR_{kj}}\cdot\ltx{g}{frag}^2-\frac{3}{2},\\
+        Q_3&=\frac{3}{2}\ltx{g}{frag}^2.
+    \end{split}
+\end{equation}
+After substituting all the terms, we have
+\begin{equation}
+    \begin{split}
+        \avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}_f=\delta_{k,1}\cdot\frac{1}{2}&\sum_{i,j}
+        \utx{K}{frag}_{ij}\cdot n_in_j\cdot\frac{i+j}{4\pi}\cdot\frac{3m_k}{2A_{ij}}
+        \pqty{1+f_f^{(1)}}\\
+        -&\sum_k\utx{K}{frag}_{kj}\cdot n_kn_j\cdot\frac{3m_k}{4\pi A_{kj}}
+        \pqty{1+f_f^{(2)}},
+    \end{split}
+\end{equation}
+where
+\begin{equation}
+    \begin{split}
+        f_f^{(1)}&=\frac{R_{ij}^2}{6A_{ij}C_{ij}}\pqty{2+C_{ij}\ltx{g}{frag}^2}-
+        \frac{2\gamma_{ij}A_{ij}}{3C_{ij}}
+        \pqty{1+C_{ij}\ltx{g}{frag}^2+C_{ij}^2\ltx{g}{frag}^4},\\
+        f_f^{(2)}&=\frac{\pqty{R_{kj}+2\mu_jA_{kj}}^2}{6A_{kj}C_{kj}}
+        \pqty{2+C_{kj}\ltx{g}{frag}^2}.
+    \end{split}
+\end{equation}
 
 
 
