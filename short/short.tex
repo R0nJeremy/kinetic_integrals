@@ -4,6 +4,156 @@
 
 \begin{document}
 \section{The final form of balance equations}
+The balance equations are
+\begin{equation}
+    \begin{split}
+        \pdv{n_k}{t}&=\ltx{\avg{\pdv{n_k}{t}}}{coll},\\
+        \frac{3}{2}n_k\pdv{T_k}{t}&=\frac{9}{2}\Omega^2\eta_k+
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}}{coll}+
+        \pqty{\frac{9}{8}m_k\Omega^2x^2-\frac{3T_k}{2}}\ltx{\avg{\pdv{n_k}{t}}}{coll},
+    \end{split}
+\end{equation}
+where
+\begin{equation}
+    \begin{split}
+        \ltx{\avg{\pdv{n_1}{t}}}{coll}&=\frac{1}{2}\sum_{i+j>2}\utx{K}{frag}_{ij}\cdot
+        n_in_j-n_1\sum_{j}\utx{K}{agg}_{1j}\cdot n_j,\\
+        \ltx{\avg{\pdv{n_k}{t}}}{coll}&=\frac{1}{2}\sum_{i+j=k}\utx{K}{agg}_{ij}\cdot
+        n_in_j-n_k\sum_{j}\pqty{\utx{K}{agg}_{kj}+\utx{K}{frag}_{kj}}\cdot n_j,\quad k>1,
+    \end{split}
+\end{equation}
+and
+\begin{equation}
+    \begin{split}
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_1T_1}}}{coll}&=
+        \frac{1}{2}\sum_{i+j>2}\utx{K}{frag}_{ij}\cdot n_in_j\cdot
+        \utx{\mathcal{G}}{frag}_{ij}
+        -n_1\sum_{j}\pqty{\utx{K}{agg}_{1j}\cdot \utx{\mathcal{L}}{agg}_{1j}
+            +\utx{K}{res}_{1j}\cdot\utx{\mathcal{L}}{res}_{1j}}\cdot n_j\\
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_kT_k}}}{coll}&=
+        \frac{1}{2}\sum_{i+j=k}\utx{K}{agg}_{ij}\cdot n_in_j\cdot
+        \utx{\mathcal{G}}{agg}_{ij}-
+        n_k\sum_{j}\pqty{\utx{K}{agg}_{kj}\cdot\utx{\mathcal{L}}{agg}_{kj}+
+            \utx{K}{res}_{kj}\cdot\utx{\mathcal{L}}{res}_{kj}+
+            \utx{K}{frag}_{kj}\cdot\utx{\mathcal{L}}{frag}_{kj}}\cdot n_j,\quad k>1.
+    \end{split}
+\end{equation}
+The kernels for each specific type of collision are
+\begin{equation}
+    \begin{split}
+        \utx{K}{agg}_{ij}&=K_{ij}\cdot\bqty{1-\pqty{1+C_{ij}\ltx{g}{agg}^2}
+        \exp\pqty{-C_{ij}\ltx{g}{agg}^2}},\\
+        \utx{K}{res}_{ij}&=K_{ij}\cdot\bqty{\pqty{1+C_{ij}\ltx{g}{agg}^2}
+        \exp\pqty{-C_{ij}\ltx{g}{agg}^2}-\exp\pqty{-C_{ij}\ltx{g}{frag}^2}},\\
+        \utx{K}{frag}_{ij}&=K_{ij}\cdot\exp\pqty{-C_{ij}\ltx{g}{frag}^2},\\
+        K_{ij}&=\frac{2\pi^2\sigma_{ij}^2\alpha_{ij}}{n_in_jC_{ij}^2}
+        \pqty{\frac{\pi}{A_{ij}}}^{3/2}.
+    \end{split}
+\end{equation}
+The amounts of energy lost and gained on average per single collision, for each
+specific type of collision are
+\begin{equation}
+    \begin{split}
+        \utx{\mathcal{G}}{agg}_{ij}&=\frac{3m_k}{4A_{ij}}
+        \bqty{1+\frac{R_{ij}^2}{3A_{ij}C_{ij}}\pqty{1-\utx{f}{agg}_{ij}}},\\
+        \utx{\mathcal{L}}{agg}_{ij}&=\frac{3m_k}{4A_{ij}}
+        \bqty{1+\frac{\pqty{R_{ij}+2\mu_jA_{ij}}^2}{3A_{ij}C_{ij}}
+        \pqty{1-\utx{f}{agg}_{ij}}},\\
+        \utx{\mathcal{L}}{res}_{ij}&=\bqty{\frac{1-\eps^2}{2}\frac{\mu_{ij}^2}{C_{ij}m_k}+
+        \frac{1+\eps}{2}\frac{\mu_{ij}R_{ij}}{A_{ij}C_{ij}}}\pqty{1+\utx{f}{res}_{ij}},\\
+        \utx{\mathcal{G}}{frag}_{ij}&=\frac{i+j}{4\pi}\cdot\frac{3m_k}{2A_{ij}}
+        \pqty{1+\utx{f}{frag,1}_{ij}},\\
+        \utx{\mathcal{L}}{frag}_{ij}&=\frac{3m_k}{4\pi A_{ij}}\pqty{1+\utx{f}{frag}_{ij}},
+    \end{split}
+\end{equation}
+where the correction functions are
+\begin{equation}
+    \begin{split}
+        \utx{f}{agg}_{ij}&=\frac{C_{ij}\ltx{g}{agg}^2}{2}
+        \frac{C_{ij}\ltx{g}{agg}^2\exp\pqty{-C_{ij}\ltx{g}{agg}^2}}
+        {1-\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}},\\
+        \utx{f}{res}_{ij}&=\frac{C_{ij}\ltx{g}{agg}^2}{2}
+        \frac{C_{ij}\ltx{g}{agg}^2\exp\pqty{-C_{ij}\ltx{g}{agg}^2}-
+        2\pqty{\ltx{g}{frag}/\ltx{g}{agg}}^2\exp\pqty{-C_{ij}\ltx{g}{frag}^2}}
+        {\pqty{1+C_{ij}\ltx{g}{agg}^2}\exp\pqty{-C_{ij}\ltx{g}{agg}^2}-
+        \exp\pqty{-C_{ij}\ltx{g}{frag}^2}},\\
+        \utx{f}{frag,1}_{1j}&=\frac{R_{1j}^2}{6A_{1j}C_{1j}}
+        \pqty{2+C_{1j}\ltx{g}{frag}^2}-\frac{2\gamma_{1j}A_{1j}}{3C_{1j}}
+        \pqty{1+C_{1j}\ltx{g}{frag}^2+C_{1j}^2\ltx{g}{frag}^4},\\
+        \utx{f}{frag}_{ij}&=\frac{\pqty{R_{ij}+2\mu_jA_{ij}}^2}{6A_{ij}C_{ij}}
+        \pqty{2+C_{ij}\ltx{g}{frag}^2}.
+    \end{split}
+\end{equation}
+The $A_{ij}$, $R_{ij}$ and $C_{ij}$ terms are the functions of temperatures, given by
+\begin{equation}
+    \begin{split}
+        A_{ij} &= \frac{m_i}{2T_i}+\frac{m_j}{2T_j},\\
+        R_{ij} &= \frac{\mu}{T_j}-\frac{\mu}{T_i},\\
+        C_{ij} &= \frac{m_im_j}{2T_im_j+2T_jm_i},\\
+        \frac{R_{ij}^2}{A_{ij}C_{ij}} &= \frac{4\mu^2}{m_im_j}
+        \frac{\pqty{T_j-T_i}^2}{T_iT_j},\\
+        \frac{\pqty{R_{ij}+2\mu_jA_{ij}}^2}{A_{ij}C_{ij}} &=
+        \frac{4T_i}{T_j}\frac{m_j}{m_i}.
+    \end{split}
+\end{equation}
+We can also introduce the functions
+\begin{equation}
+    \begin{split}
+        Q_{ij} &= C_{ij}\ltx{g}{agg}^2,\\
+        P_{ij} &= C_{ij}\ltx{g}{frag}^2.
+    \end{split}
+\end{equation}
+
+\section{Binary system}
+Let us consider a system of only monomers and dimers, e.g a system where the aggregates
+cannot exceed the size of $k=2$. The collisional terms for such a system are written as
+\begin{equation}
+    \begin{split}
+        \ltx{\avg{\pdv{n_1}{t}}}{coll}&=
+        \frac{1}{2}\utx{K}{frag}_{22}\cdot n_2^2+\utx{K}{frag}_{12}\cdot n_1n_2
+        -\utx{K}{agg}_{11}\cdot n_1^2,\\
+        \ltx{\avg{\pdv{n_2}{t}}}{coll}&=\frac{1}{2}\utx{K}{agg}_{11}\cdot n_1^2
+        -\utx{K}{frag}_{12}\cdot n_1n_2-\utx{K}{frag}_{22}\cdot n_2^2,\\
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_1T_1}}}{coll}&=
+        \frac{1}{2}\utx{K}{frag}_{22}\cdot n_2^2\cdot\utx{\mathcal{G}}{frag}_{22}+
+        \utx{K}{frag}_{12}\cdot n_1n_2\cdot\utx{\mathcal{G}}{frag}_{12}
+        -\pqty{\utx{K}{agg}_{11}\cdot \utx{\mathcal{L}}{agg}_{11}
+            +\utx{K}{res}_{11}\cdot\utx{\mathcal{L}}{res}_{11}}\cdot n_1^2
+        -\utx{K}{res}_{12}\cdot\utx{\mathcal{L}}{res}_{12}\cdot n_1n_2,\\
+        \ltx{\avg{\pdv{t}\pqty{\frac{3}{2}n_2T_2}}}{coll}&=
+        \frac{1}{2}\utx{K}{agg}_{11}\cdot n_1^2\cdot
+        \utx{\mathcal{G}}{agg}_{11}
+        -\pqty{\utx{K}{res}_{12}\cdot\utx{\mathcal{L}}{res}_{12}+
+            \utx{K}{frag}_{12}\cdot\utx{\mathcal{L}}{frag}_{12}}\cdot n_1n_2
+        -\pqty{\utx{K}{res}_{22}\cdot\utx{\mathcal{L}}{res}_{22}+
+            \utx{K}{frag}_{22}\cdot\utx{\mathcal{L}}{frag}_{22}}\cdot n_2^2,
+    \end{split}
+\end{equation}
+where we have removed the terms containing $\utx{K}{agg}_{12}$ and $\utx{K}{agg}_{22}$, since they
+correspond to creation of particles of size larger than $k=2$. Needs recalculation!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
